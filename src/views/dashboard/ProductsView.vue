@@ -96,22 +96,25 @@ export default {
     };
   },
   mounted() {
-    this.getProducts(1);
+    this.getProducts();
   },
   methods: {
     getProducts(page = 1) {
       this.isLoading = true;
-      const url = `${VITE_URL}/api/${VITE_NAME}/products?page=${page}`;
+      const url = `${VITE_URL}/api/${VITE_NAME}/admin/products?page=${page}`;
       this.$http
         .get(url)
         .then((res) => {
+          // eslint-disable-next-line no-console
           console.log(res);
           this.products = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
+          // eslint-disable-next-line no-console
           console.log(this.products);
         })
         .catch((err) => {
+          // eslint-disable-next-line no-console
           console.log(err);
         });
     },
@@ -143,11 +146,13 @@ export default {
       this.$http
         .delete(url, { data: this.tempProduct })
         .then((res) => {
+          // eslint-disable-next-line no-console
           alert(res.data.message);
           this.$refs.dModal.closeProduct();
           this.getData();
         })
         .catch((err) => {
+          // eslint-disable-next-line no-console
           alert(err.data.message);
         });
     },

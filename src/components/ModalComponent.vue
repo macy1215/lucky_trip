@@ -171,20 +171,19 @@ export default {
       if (!this.isNew) {
       // 當確認為新增時，更新資料。這個是編輯的不是新增
         url = `${VITE_URL}/api/${VITE_NAME}/admin/product/${this.tempProduct.id}`;
-        http = 'put'; // 更新資料
+        http = 'put';// 更新資料
       }
 
       axios[http](url, { data: this.tempProduct })
         .then((res) => {
-          console.log(url);
+          // eslint-disable-next-line no-alert
           alert(res.data.message);
+          this.$refs.modal.hideModal();
           this.$emit('update');
-          this.productModal.hideModal();
         })
         .catch((err) => {
-          console.log(err);
           // eslint-disable-next-line no-alert
-          alert(err.response.data.message);
+          alert(err.response);
           // .data.message
         });
     },
