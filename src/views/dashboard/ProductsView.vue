@@ -4,7 +4,8 @@
     <div class="row justify-content-between">
       <h2 class="text-primary mb-3 h2 text-start col-6">方案列表</h2>
       <div class="text-end col-6">
-        <button type="button" class="btn btn-primary text-white fw-bold ">新增方案</button>
+        <button type="button" class="btn btn-primary text-white fw-bold"
+        @click="openModal('new')">新增方案</button>
       </div>
     </div>
     <table class="table table-hover border rounded rounded-3">
@@ -35,7 +36,7 @@
                     <button
                         type="button"
                         class="btn btn-outline-secondary"
-                        @click="editProduct(item.id)"
+                        @click="openModal('edit',item)"
                         >
                       <span
                         class="spinner-border spinner-border-sm"
@@ -46,7 +47,7 @@
                     <button
                       type="button"
                       class="btn btn-outline-danger"
-                      @click="deletProduct(item.id)"
+                      @click="openModal('delete',item)"
                       >
                       <span class="spinner-border spinner-border-sm"
                       role="status" aria-hidden="true"  v-if="item.num === 0"
@@ -59,6 +60,12 @@
         </tbody>
     </table>
   </div>
+  <!-- Modal 新增產品-->
+  <ModalCompanent ref="modal" :temp-product="tempProduct" :is-new="isNew"
+  :clear-input="clearInput" @update="getProducts"></ModalCompanent>
+
+  <!-- 刪除方案 -->
+  <!-- <ModalDelCompanent ref="delModal" :temp-product="tempProduct"></ModalDelCompanent> -->
 </template>
 
 <style lang="scss">
@@ -66,12 +73,26 @@
 </style>
 
 <script>
+import ModalCompanent from '@/components/ModalComponent.vue';
+// import ModalDelCompanent from '@/components/ModalDelComponent.vue';
+
+const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
+  components: {
+    ModalCompanent,
+    // ModalDelCompanent,
+  },
   data() {
     return {
-      products: {},
+      products: [],
       isLoading: false,
+      tempProduct: { // 暫存
+        imagesUrl: [], // 小圖
+      },
+      // 判斷是新增還是修改
+      isNew: false,
+      pagination: {},
     };
   },
   mounted() {
@@ -80,11 +101,13 @@ export default {
   methods: {
     getProducts(page = 1) {
       this.isLoading = true;
-      const url = `${import.meta.env.VITE_URL}/api/${import.meta.env.VITE_NAME}/products?page=${page}`;
+      const url = `${VITE_URL}/api/${VITE_NAME}/products?page=${page}`;
       this.$http
         .get(url)
         .then((res) => {
+          console.log(res);
           this.products = res.data.products;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
           console.log(this.products);
         })
@@ -92,11 +115,41 @@ export default {
           console.log(err);
         });
     },
-    editProduct(id) {
-      console.log('編輯產品', id);
+    openModal(isNew, item) {
+      if (isNew === 'new') {
+        // 內容淨空
+        this.tempProduct = {
+          imagesUrl: [],
+        };
+        this.isNew = true;
+        this.$refs.modal.showModal();
+      } else if (isNew === 'edit') {
+        this.tempProduct = { ...item }; // 因為修改所以要將將值帶入input
+        this.isNew = false;
+        this.$refs.modal.showModal();
+      } else if (isNew === 'delete') {
+        this.tempProduct = { ...item };
+        this.$refs.delModal.showModal();
+      }
+      // myModal.show();
     },
-    deletProduct(id) {
-      console.log('刪除產品', id);
+    clearInput() {
+      this.tempProduct = { // 清除
+        imageUrl: [],
+      };
+    },
+    deleteProduct() {
+      const url = `${this.apiUrl}/api/${this.path}/admin/product/${this.tempProduct.id}`;
+      this.$http
+        .delete(url, { data: this.tempProduct })
+        .then((res) => {
+          alert(res.data.message);
+          this.$refs.dModal.closeProduct();
+          this.getData();
+        })
+        .catch((err) => {
+          alert(err.data.message);
+        });
     },
   },
 };
