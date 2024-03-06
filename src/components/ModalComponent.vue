@@ -178,12 +178,12 @@ export default {
         .then((res) => {
           // eslint-disable-next-line no-alert
           alert(res.data.message);
-          this.$refs.modal.hideModal();
+          this.hideModal();
           this.$emit('update');
         })
         .catch((err) => {
           // eslint-disable-next-line no-alert
-          alert(err.response);
+          alert(err.response.data.message);
           // .data.message
         });
     },
