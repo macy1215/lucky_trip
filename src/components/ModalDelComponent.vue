@@ -9,9 +9,14 @@
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-start">
         是否刪除
-        <strong class="text-danger">{{ tempProduct.title}}</strong> 商品(刪除後將無法恢復)。
+          <strong class="text-danger ">
+            <span class="fw-bold">{{ tempProduct.title}}</span>
+          </strong> 方案
+          <div class="mt-2">
+            (刪除後將無法恢復)。
+          </div>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -27,24 +32,42 @@
 </template>
 
 <script>
-import Modal from 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
+import axios from 'axios';
+
+const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
+  props: ['tempProduct', 'getProducts'],
   data() {
     return {
       delProductModal: null,
     };
   },
   methods: {
-    openModal() {
-      this.myModal.show();
+    showModal() {
+      this.delProductModal.show();
     },
-    closeModal() {
-      this.myModal.hide();
+    hideModal() {
+      this.delProductModal.hide();
+    },
+    deleteProduct() {
+      const url = `${VITE_URL}/api/${VITE_NAME}/admin/product/${this.tempProduct.id}`;
+      axios.delete(url, { data: this.tempProduct })
+        .then((res) => {
+          // eslint-disable-next-line no-alert
+          alert(res.data.message);
+          this.hideModal();
+          this.$emit('update');
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-alert
+          alert(err.response.data.message);
+        });
     },
   },
   mounted() {
-    this.delProductModal = new Modal(this.$ref.delProductModal, {
+    this.delProductModal = new Modal(this.$refs.delProductModal, {
       keyboard: false,
       backdrop: 'static',
     });

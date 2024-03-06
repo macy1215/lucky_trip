@@ -59,12 +59,14 @@ export default {
             this.$router.push('/login');
           });
       } else {
+        // eslint-disable-next-line no-alert
         alert('尚未登入');
         this.$router.push('/login');
       }
     },
     signout() {
       document.cookie = 'luckyTrip=;expires=;';
+      // eslint-disable-next-line no-alert
       alert('登出帳號，token 已清除');
       this.$router.push('/login');
     },

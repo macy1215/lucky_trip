@@ -65,7 +65,9 @@
   :clear-input="clearInput" @update="getProducts"></ModalCompanent>
 
   <!-- 刪除方案 -->
-  <!-- <ModalDelCompanent ref="delModal" :temp-product="tempProduct"></ModalDelCompanent> -->
+  <ModalDelComponent ref="delModal" :temp-product="tempProduct"
+  @update="getProducts" ></ModalDelComponent>
+
 </template>
 
 <style lang="scss">
@@ -74,14 +76,14 @@
 
 <script>
 import ModalCompanent from '@/components/ModalComponent.vue';
-// import ModalDelCompanent from '@/components/ModalDelComponent.vue';
+import ModalDelComponent from '@/components/ModalDelComponent.vue';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
   components: {
     ModalCompanent,
-    // ModalDelCompanent,
+    ModalDelComponent,
   },
   data() {
     return {
@@ -116,6 +118,7 @@ export default {
         .catch((err) => {
           // eslint-disable-next-line no-console
           console.log(err);
+          this.$router.push('/login');
         });
     },
     openModal(isNew, item) {
