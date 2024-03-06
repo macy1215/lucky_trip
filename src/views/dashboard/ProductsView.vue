@@ -59,6 +59,7 @@
             </tr>
         </tbody>
     </table>
+    <Pagination :pagination="pagination" @emit-pages="getProducts"></Pagination>
   </div>
   <!-- Modal 新增產品-->
   <ModalCompanent ref="modal" :temp-product="tempProduct" :is-new="isNew"
@@ -77,6 +78,7 @@
 <script>
 import ModalCompanent from '@/components/ModalComponent.vue';
 import ModalDelComponent from '@/components/ModalDelComponent.vue';
+import Pagination from '@/components/PaginationView.vue';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -84,6 +86,7 @@ export default {
   components: {
     ModalCompanent,
     ModalDelComponent,
+    Pagination,
   },
   data() {
     return {

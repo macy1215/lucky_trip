@@ -1,3 +1,4 @@
+<!-- eslint-disable space-infix-ops -->
 <!-- eslint-disable no-alert -->
 <!-- eslint-disable no-alert -->
 <!-- eslint-disable max-len -->
@@ -32,34 +33,37 @@
               <div class="row">
                 <div class="col-sm-4">
                   <div class="mb-2">
-
                     <div class="mb-3 text-start">
                       <label for="imagesUrl" class="form-label h5">主要圖片</label>
                       <input
                       type="text"
                       id="imageUrl"
                       class="form-control" v-model="tempProduct.imageUrl" placeholder="請輸入圖片連結">
-                      <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
+                      <img class="img-fluid mt-3" :src="tempProduct.imageUrl" alt="">
                     </div>
-
+                    <!-- 如果tempProduct.imagesUrl不為空，顯示以下資訊 -->
                     <h5 class="mb-3 text-start h5">多圖新增</h5>
-                    <div v-if="Array.isArray(tempProduct.imagesUrl)" class="mb-5">
+                    <div v-if="Array.isArray(tempProduct.imagesUrl)">
                         <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
-                          <div class="mb-3">
-                            <label :for="imagesUrl" class="form-label mb-0">圖片網址{{ key+1 }}</label>
-                            <input
-                            :id='imagesUrl'
+                          <div class="form-group">
+                            <label :for="`imageUrl${key}`" class="form-label mb-0">圖片網址{{ key+1 }}</label>
+                            <input :id="`imageUrl${key}`"
                             type="text"
                             class="form-control mb-1"
-                            v-model="tempProduct.imagesUrl[key]" placeholder="請輸入圖片連結">
+                            v-model="tempProduct.imagesUrl[key]"
+                            placeholder="請輸入圖片連結" >
                           </div>
+                          <!-- v-if="item.length"：檢查目前item（圖像 URL）的屬性是否為真
+                            - 如果item是undefined或空字串，則條件計算結果為假，則不渲染影像 -->
                           <img class="img-fluid" :src="item" alt="">
-                        </div>
+                          </div>
+                        <!-- 若陣列為空或最後一個元素為真，則顯示「新增圖片」按鈕；否則，顯示“刪除圖片”按鈕 -->
                         <div v-if="!tempProduct.imagesUrl.length ||
-                        tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]" class="my-2">
+                        tempProduct.imagesUrl.at(-1).trim()" class="my-2">
                           <button
                           class="btn btn-outline-primary btn-sm d-block w-100"
-                          @click="tempProduct.imagesUrl.push('')">
+                          @click="tempProduct.imagesUrl.push('')" >
+                          <!-- tempProduct.imagesUrl.push('') -->
                             新增圖片
                           </button>
                         </div>
@@ -69,14 +73,17 @@
                             刪除圖片
                           </button>
                         </div>
-                    </div>
+                      </div>
+                    <!-- 如果tempProduct.imagesUrl為空，則顯示此按鈕，允許新增第一張圖像。 -->
+                    <!-- tempProduct.imagesUrl=['']替換了數組引用 -->
                     <div v-else>
-                      <button class="btn btn-outline-primary btn-sm d-block w-100"  @click="createImages">
+                      <button class="btn btn-outline-primary btn-sm d-block w-100" @click = "tempProduct.imagesUrl = ['']">
                         新增圖片
                       </button>
                     </div>
                   </div>
                 </div>
+
                 <div class="col-sm-8">
                   <div class="mb-3 text-start">
                     <label for="title" class="form-label">標題</label>
@@ -87,7 +94,7 @@
                     <div class="mb-3 col-md-6">
                       <label for="category" class="form-label">分類</label>
                       <input id="category" type="text" class="form-control"
-                             placeholder="請輸入分類" v-model="tempProduct.category">
+                        placeholder="請輸入分類" v-model="tempProduct.category">
                     </div>
                     <div class="mb-3 col-md-6">
                       <label for="price" class="form-label">單位</label>
@@ -139,7 +146,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
@@ -187,6 +194,14 @@ export default {
           // .data.message
         });
     },
+    test() {
+
+    },
+    // createImages() {
+    //   // 新增圖片。將陣列中資料清空，新增新資料
+    //   this.tempProduct.imagesUrl=[];
+    //   this.tempProduct.imagesUrl.push('');
+    // },
   },
   mounted() {
     // this.productModal = new Modal(this.$ref.productModal, {
