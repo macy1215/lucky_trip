@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-duplicate-attributes -->
 <!-- eslint-disable space-infix-ops -->
 <!-- eslint-disable no-alert -->
 <!-- eslint-disable no-alert -->
@@ -31,9 +32,9 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="col-sm-4">
-                  <div class="mb-2">
-                    <div class="mb-3 text-start">
+                <div class="col-sm-12">
+                  <div class="row mb-2">
+                    <div class="mb-3 text-start col-sm-6">
                       <label for="imagesUrl" class="form-label h5">主要圖片</label>
                       <input
                       type="text"
@@ -42,62 +43,66 @@
                       <img class="img-fluid mt-3" :src="tempProduct.imageUrl" alt="">
                     </div>
                     <!-- 如果tempProduct.imagesUrl不為空，顯示以下資訊 -->
-                    <h5 class="mb-3 text-start h5">多圖新增</h5>
-                    <div v-if="Array.isArray(tempProduct.imagesUrl)">
-                        <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
-                          <div class="form-group">
-                            <label :for="`imageUrl${key}`" class="form-label mb-0">圖片網址{{ key+1 }}</label>
-                            <input :id="`imageUrl${key}`"
-                            type="text"
-                            class="form-control mb-1"
-                            v-model="tempProduct.imagesUrl[key]"
-                            placeholder="請輸入圖片連結" >
+                    <div class="col-sm-6">
+                      <h5 class="text-start h5">多圖新增</h5>
+                      <div v-if="Array.isArray(tempProduct.imagesUrl)">
+                          <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
+                              <div class="form-group d-flex mb-2 align-items-center">
+                                <label :for="`imageUrl${key}`" class="form-label col-1 mb-0">網址{{ key+1 }}</label>
+                                <input :id="`imageUrl${key}`"
+                                type="text"
+                                class="form-control ms-2"
+                                v-model="tempProduct.imagesUrl[key]"
+                                placeholder="請輸入圖片連結" >
+                              </div>
+                            <!-- v-if="item.length"：檢查目前item（圖像 URL）的屬性是否為真
+                              - 如果item是undefined或空字串，則條件計算結果為假，則不渲染影像 -->
+                              <div>
+                                <img class="img-fluid" :src="item" alt="">
+                              </div>
+                            </div>
+                          <!-- 若陣列為空或最後一個元素為真，則顯示「新增圖片」按鈕；否則，顯示“刪除圖片”按鈕 -->
+                          <div v-if="!tempProduct.imagesUrl.length ||
+                          tempProduct.imagesUrl.at(-1).trim()" class="my-2">
+                            <button
+                            class="btn btn-outline-primary btn-sm d-block w-100"
+                            @click="tempProduct.imagesUrl.push('')" >
+                            <!-- tempProduct.imagesUrl.push('') -->
+                              新增圖片
+                            </button>
                           </div>
-                          <!-- v-if="item.length"：檢查目前item（圖像 URL）的屬性是否為真
-                            - 如果item是undefined或空字串，則條件計算結果為假，則不渲染影像 -->
-                          <img class="img-fluid" :src="item" alt="">
+                          <div v-else>
+                            <button class="btn btn-outline-danger btn-sm d-block w-100" @click="tempProduct.imagesUrl.pop()">
+                              <!-- 移除 tempProduct.imagesUrl pop一個元素 -->
+                              刪除圖片
+                            </button>
                           </div>
-                        <!-- 若陣列為空或最後一個元素為真，則顯示「新增圖片」按鈕；否則，顯示“刪除圖片”按鈕 -->
-                        <div v-if="!tempProduct.imagesUrl.length ||
-                        tempProduct.imagesUrl.at(-1).trim()" class="my-2">
-                          <button
-                          class="btn btn-outline-primary btn-sm d-block w-100"
-                          @click="tempProduct.imagesUrl.push('')" >
-                          <!-- tempProduct.imagesUrl.push('') -->
-                            新增圖片
-                          </button>
                         </div>
-                        <div v-else>
-                          <button class="btn btn-outline-danger btn-sm d-block w-100" @click="tempProduct.imagesUrl.pop()">
-                            <!-- 移除 tempProduct.imagesUrl pop一個元素 -->
-                            刪除圖片
-                          </button>
-                        </div>
+                      <!-- 如果tempProduct.imagesUrl為空，則顯示此按鈕，允許新增第一張圖像。 -->
+                      <!-- tempProduct.imagesUrl=['']替換了數組引用 -->
+                      <div v-else>
+                        <button class="btn btn-outline-primary btn-sm d-block w-100" @click = "tempProduct.imagesUrl = ['']">
+                          新增圖片
+                        </button>
                       </div>
-                    <!-- 如果tempProduct.imagesUrl為空，則顯示此按鈕，允許新增第一張圖像。 -->
-                    <!-- tempProduct.imagesUrl=['']替換了數組引用 -->
-                    <div v-else>
-                      <button class="btn btn-outline-primary btn-sm d-block w-100" @click = "tempProduct.imagesUrl = ['']">
-                        新增圖片
-                      </button>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                   <div class="mb-3 text-start">
-                    <label for="title" class="form-label">標題</label>
+                    <label for="title" class="form-label">旅遊方案標題</label>
                     <input id="title" type="text" class="form-control" placeholder="請輸入標題"  v-model="tempProduct.title">
                   </div>
 
                   <div class="row text-start">
                     <div class="mb-3 col-md-6">
-                      <label for="category" class="form-label">分類</label>
+                      <label for="category" class="form-label">旅遊類型</label>
                       <input id="category" type="text" class="form-control"
                         placeholder="請輸入分類" v-model="tempProduct.category">
                     </div>
                     <div class="mb-3 col-md-6">
-                      <label for="price" class="form-label">單位</label>
+                      <label for="unit" class="form-label">單位</label>
                       <input id="unit" type="text" class="form-control" placeholder="請輸入單位" v-model="tempProduct.unit">
                     </div>
                   </div>
@@ -114,18 +119,47 @@
                     </div>
                   </div>
 
+<!-- 城市中的有著不一樣的寧靜-「北投」，充斥著滿滿的溫泉香氣，給人一種放鬆的感覺。
+跟著一日導遊～帶你深度暢遊北投！be -->
                   <div class="mb-3 text-start">
-                    <label for="description" class="form-label">產品描述</label>
+                    <label for="description" class="form-label">旅遊行程文字說明</label>
                     <textarea id="description" type="text" class="form-control"
                               placeholder="請輸入產品描述" v-model="tempProduct.description">
                     </textarea>
                   </div>
                   <div class="mb-3 text-start">
-                    <label for="content" class="form-label">說明內容</label>
+                    <label for="content" class="form-label">注意事項</label>
                     <textarea id="description" type="text" class="form-control"
                     placeholder="請輸入說明內容"  v-model="tempProduct.content">
                     </textarea>
                   </div>
+                  <div class="mb-3 text-start">
+                    <label for="feeincluded" class="form-label">費用包含</label>
+                    <textarea id="description" type="text" class="form-control"
+                    placeholder="請輸入費用內容"  v-model="tempProduct.feeincluded">
+                    </textarea>
+                  </div>
+
+                  <div class="d-flex">
+                    <div class="mb-3 text-start w-25">
+                      <label for="peoplemin" class="form-label">最少成行人數</label>
+                        <input id="peoplemin" type="number" min="0" class="form-control"
+                        placeholder="請輸入最少成行人數" v-model="tempProduct.minpeople">
+                    </div>
+
+                    <div class="mb-3 ms-4 text-start w-25">
+                      <label for="registpeople" class="form-label">可報名人數</label>
+                      <input id="registpeople" type="number" min="0" class="form-control"
+                        placeholder="請輸入最多可報名人數" v-model="tempProduct.regist">
+                    </div>
+                  </div>
+                 <div class="mb-3 text-start">
+                    <label for="content" class="form-label">取消退費政策</label>
+                    <textarea id="description" type="text" class="form-control"
+                    placeholder="請輸入取消政策"  v-model="tempProduct.canclepolic">
+                    </textarea>
+                  </div>
+
                   <div class="mb-3 text-start">
                     <div class="form-check">
                       <input id="is_enabled" class="form-check-input" type="checkbox"
@@ -156,7 +190,7 @@ import axios from 'axios';
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
-  props: ['tempProduct', 'isNew', 'clearInput', 'getProducts'],
+  props: ['tempProduct', 'isNew', 'clearInput', 'getProducts', 'description'],
   data() {
     return {
       productModal: null,
@@ -194,8 +228,14 @@ export default {
           // .data.message
         });
     },
-    test() {
-
+    addDescription() {
+      console.log(this.tempProduct.description);
+      let descriptions = this.tempProduct.description;
+      if (!Array.isArray(descriptions)) {
+        descriptions = [descriptions];
+      }
+      descriptions.push('');
+      this.$emit('update:tempProduct', { ...this.tempProduct, description: descriptions });
     },
     // createImages() {
     //   // 新增圖片。將陣列中資料清空，新增新資料

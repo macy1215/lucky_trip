@@ -11,12 +11,12 @@
     <table class="table table-hover border rounded rounded-3">
         <thead>
             <tr>
-                <th scope="col"> 順序</th>
+                <th scope="col"> 上架日期</th>
                 <th colspan="1" scope="col">方案類別</th>
                 <th colspan="1" scope="col">方案標題</th>
                 <th colspan="1" scope="col">原始價格</th>
                 <th colspan="1" scope="col">上線價格</th>
-                <th colspan="1" scope="col">是否啟用</th>
+                <th colspan="1" scope="col">啟用狀態</th>
                 <th colspan="1" scope="col">編輯</th>
             </tr>
         </thead>
@@ -94,6 +94,9 @@ export default {
       isLoading: false,
       tempProduct: { // 暫存
         imagesUrl: [], // 小圖
+        minpeople: '',
+        regist: '',
+        description: [],
       },
       // 判斷是新增還是修改
       isNew: false,

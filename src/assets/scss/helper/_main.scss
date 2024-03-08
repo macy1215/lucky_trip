@@ -68,3 +68,8 @@ q:before, q:after {
     white-space: nowrap;
   }
 };
+
+.custom-select {
+  max-height: 200px; /* 或者您想要的最大高度 */
+  overflow-y: auto; /* 如果內容超過最大高度，則顯示垂直滾動條 */
+}

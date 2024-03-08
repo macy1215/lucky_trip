@@ -28,7 +28,7 @@
         </div>
       </div>
     </nav>
-    <RouterView></RouterView>
+    <RouterView v-if="checkSuccess" />
 </template>
 
 <style lang="scss">
