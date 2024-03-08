@@ -47,7 +47,7 @@
                       <h5 class="text-start h5">多圖新增</h5>
                       <div v-if="Array.isArray(tempProduct.imagesUrl)">
                           <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
-                              <div class="form-group d-flex mb-2 align-items-center">
+                              <div class="form-group d-flex mb-3 align-items-center">
                                 <label :for="`imageUrl${key}`" class="form-label col-1 mb-0">網址{{ key+1 }}</label>
                                 <input :id="`imageUrl${key}`"
                                 type="text"
@@ -119,20 +119,63 @@
                     </div>
                   </div>
 
-<!-- 城市中的有著不一樣的寧靜-「北投」，充斥著滿滿的溫泉香氣，給人一種放鬆的感覺。
-跟著一日導遊～帶你深度暢遊北投！be -->
+                  <div class="row text-start">
+                    <div class="mb-3 col-md-6">
+                      <label for="area" class="form-label">地區</label>
+                      <select class="form-select" aria-label="Default select" v-model="tempProduct.area">
+                        <option selected>請選擇地區</option>
+                        <option value="北區">北部</option>
+                        <option value="中部">中部</option>
+                        <option value="南部">南部</option>
+                        <option value="東部">東部</option>
+                      </select>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="area" class="form-label">建議使用交通工具</label>
+                        <div class="d-lg-inline-flex flex-row align-items-center mt-2">
+                          <div class="form-check me-3  form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="雙腳萬能" id="walk" v-model="tempProduct.is_walk" :true-value="1" :false-value="0">
+                            <label class="form-check-label" for="walk">
+                              雙腳萬能
+                            </label>
+                          </div>
+                          <div class="form-check me-3  form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="包車" id="Intercitybus" v-model="tempProduct.is_intercitybus" :true-value="1" :false-value="0">
+                            <label class="form-check-label" for="Intercitybus">
+                              包車(租賃、遊覽車)
+                            </label>
+                          </div>
+                          <div class="form-check  form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="大眾交通" id="publictrans" v-model="tempProduct.is_publictrans" :true-value="1" :false-value="0">
+                            <label class="form-check-label" for="publictrans">
+                              大眾交通(火車、公車、捷運等)
+                            </label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 text-start">
+                    <label for="description" class="form-label">旅遊簡介說明</label>
+                    <textarea id="description" type="text" class="form-control"
+                              placeholder="旅遊簡介說明" v-model="tempProduct.description">
+                    </textarea>
+                  </div>
+
                   <div class="mb-3 text-start">
                     <label for="description" class="form-label">旅遊行程文字說明</label>
                     <textarea id="description" type="text" class="form-control"
-                              placeholder="請輸入產品描述" v-model="tempProduct.description">
+                              placeholder="旅遊行程文字說明" v-model="tempProduct.schedule">
                     </textarea>
                   </div>
+
                   <div class="mb-3 text-start">
                     <label for="content" class="form-label">注意事項</label>
                     <textarea id="description" type="text" class="form-control"
-                    placeholder="請輸入說明內容"  v-model="tempProduct.content">
+                    placeholder="請輸入注意事項"  v-model="tempProduct.content">
                     </textarea>
                   </div>
+
                   <div class="mb-3 text-start">
                     <label for="feeincluded" class="form-label">費用包含</label>
                     <textarea id="description" type="text" class="form-control"
@@ -228,14 +271,14 @@ export default {
           // .data.message
         });
     },
-    addDescription() {
-      console.log(this.tempProduct.description);
-      let descriptions = this.tempProduct.description;
-      if (!Array.isArray(descriptions)) {
-        descriptions = [descriptions];
+    addschedules() {
+      console.log(this.tempProduct.schedule[0]);
+      let schedules = this.tempProduct.schedule;
+      if (!Array.isArray(schedules)) {
+        schedules = [schedules];
       }
-      descriptions.push('');
-      this.$emit('update:tempProduct', { ...this.tempProduct, description: descriptions });
+      schedules.push('');
+      this.$emit('update:tempProduct', { ...this.tempProduct, schedule: schedules });
     },
     // createImages() {
     //   // 新增圖片。將陣列中資料清空，新增新資料

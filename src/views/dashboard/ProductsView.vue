@@ -96,7 +96,7 @@ export default {
         imagesUrl: [], // 小圖
         minpeople: '',
         regist: '',
-        description: [],
+        schedule: [],
       },
       // 判斷是新增還是修改
       isNew: false,
