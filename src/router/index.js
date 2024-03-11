@@ -4,12 +4,12 @@ const routes = [
   {
     path: '/',
     name: '首頁',
-    component: () => import('../views/HomeView.vue'),
+    component: () => import('../views/user/UserLayout.vue'),
     children: [
       {
         path: 'products',
         name: '預計產品頁',
-        component: () => import('../views/AboutView.vue'),
+        component: () => import('../views/user/AboutView.vue'),
       },
     ],
   },
