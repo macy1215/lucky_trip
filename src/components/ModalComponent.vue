@@ -39,7 +39,8 @@
                       <input
                       type="text"
                       id="imageUrl"
-                      class="form-control" v-model="tempProduct.imageUrl" placeholder="請輸入圖片連結">
+                      class="form-control" :v-model="tempProduct.imageUrl" placeholder="請輸入圖片連結"
+                      >
                       <img class="img-fluid mt-3" :src="tempProduct.imageUrl" alt="">
                     </div>
                     <!-- 如果tempProduct.imagesUrl不為空，顯示以下資訊 -->
@@ -280,11 +281,21 @@ export default {
       schedules.push('');
       this.$emit('update:tempProduct', { ...this.tempProduct, schedule: schedules });
     },
-    // createImages() {
-    //   // 新增圖片。將陣列中資料清空，新增新資料
-    //   this.tempProduct.imagesUrl=[];
-    //   this.tempProduct.imagesUrl.push('');
-    // },
+    uploadFile() {
+      // const uploadfile = this.$refs.fileInput.files[0];
+      // console.dir(uploadfile);
+      // const fileName = this.$refs.fileInput.id;
+      // const formData = new FormData();
+      // formData.append('file-to-upload', uploadfile);
+      // // append 增加一個欄位到表單內，其中一個 file-to-upload
+      // const url = `${VITE_URL}/api/${VITE_NAME}/admin/upload`;
+      // this.$http.post(url, formData).then((res) => {
+      //   if (res.data.success) {
+      //     this.tempProducts.imageUrl = res.data.imageUrl;
+      //     document.getElementById(fileName).value = '';
+      //   }
+      // });
+    },
   },
   mounted() {
     // this.productModal = new Modal(this.$ref.productModal, {
