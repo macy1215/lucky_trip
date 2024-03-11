@@ -19,6 +19,11 @@ const routes = [
     component: () => import('@/views/LogInView.vue'),
   },
   {
+    path: '/:pathMatch(.*)*',
+    name: '404Page',
+    component: () => import('@/views/404PageView.vue'),
+  },
+  {
     path: '/admin',
     name: '後台驗證',
     component: () => import('../views/dashboard/DashboardView.vue'),
