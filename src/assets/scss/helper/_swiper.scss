@@ -1,0 +1,56 @@
+.swiper{
+    .swiper-wrapper {
+        height: 80vh;
+    }
+}
+.banTitle{
+    z-index:10;
+    height: 80vh;
+}
+.banBgCol{
+    z-index:9;
+    height: 80vh;
+    width: 45%;
+}
+.banner-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-right: 200px;
+    padding-bottom: 40px;
+    // margin-top: -96px; /* 往上 */
+}
+.banner-img1 {
+    background-image: url("@/assets/images/banner_1.png");
+    
+}
+  .banner-img2 {
+      background-image: url("@/assets/images/banner_2.png");
+      
+  }
+  .banner-img3 {
+      background-image: url("@/assets/images/banner_3.png");
+}
+/*在 iPhone11 直式下變更樣式 */
+@media(max-width: 767px){
+  /*產品手機*/
+  .swiper-slide{
+    width: 100%;
+    margin-right: 0px;
+  }
+  .banTitle{
+    margin-top: 40px;
+    .mobiltitle{
+        font-size: 3em;
+        line-height: 1.6em;
+        margin-top: 240px;
+        padding-left: 20px;
+    }
+  }
+  .banBgCol{
+    z-index:9;
+    margin-top: 240px;
+    height: 25vh;
+    width: 90%;
+  }
+}

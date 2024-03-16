@@ -125,6 +125,8 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import axios from 'axios';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Swal from 'sweetalert2';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -150,8 +152,13 @@ export default {
         .then((res) => {
           alert(res.data.message);
           this.$emit('update');
+          Swal.fire({
+            icon: 'success',
+            title: '成功取得產品資訊',
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.hideModal();
-          console.log(this.order, this.tempOrder);
         })
         .catch((err) => {
           // eslint-disable-next-line no-alert

@@ -1,31 +1,44 @@
 <template>
-    <nav class="navbar navbar-expand-lg mb-3 container">
+    <nav class="navbar navbar-expand-md mb-3 container">
       <div class="container-fluid">
             <RouterLink to="/" >
                 <span class="nav-link logostyle">
                     <a>lucky-trip</a>
                 </span>
             </RouterLink>
-        <div class="collapse navbar-collapse justify-content-end" id="nav">
-              <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <RouterLink class="nav-link text-primary active" aria-current="page"
-                    to="/admin/products" >方案列表</RouterLink>
-                  </li>
-                  <li class="nav-item">
-                    <RouterLink class="nav-link text-primary" aria-current="page"
-                    to="/admin/orders" >訂單列表</RouterLink>
-                  </li>
-                  <li class="nav-item">
-                    <RouterLink class="nav-link text-primary" aria-current="page"
-                    to="/admin/blogs" >文章列表</RouterLink>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link text-primary" aria-current="page"
-                    @click.prevent="signout()">登出</a>
-                  </li>
-              </ul>
-        </div>
+            <button
+            class="navbar-toggler"
+            type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-label="Toggle navigation"
+            @click="toggleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+            class="collapse navbar-collapse navbar-nav ms-auto py-10 py-lg-0"
+            id="navbarSupportedContent"
+            ref="headerNavDrop"
+            v-show="isNavbarOpen">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <RouterLink class="nav-link text-primary active" aria-current="page"
+                      to="/admin/products" >方案列表</RouterLink>
+                    </li>
+                    <li class="nav-item">
+                      <RouterLink class="nav-link text-primary" aria-current="page"
+                      to="/admin/orders" >訂單列表</RouterLink>
+                    </li>
+                    <li class="nav-item">
+                      <RouterLink class="nav-link text-primary" aria-current="page"
+                      to="/admin/blogs" >文章列表</RouterLink>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link text-primary" aria-current="page"
+                      @click.prevent="signout()">登出</a>
+                    </li>
+                </ul>
+              </div>
       </div>
     </nav>
     <RouterView v-if="checkSuccess" />
@@ -36,11 +49,14 @@
 </style>
 
 <script>
+import Collapse from 'bootstrap/js/dist/collapse';
 
 export default {
   data() {
     return {
       checkSuccess: false,
+      headerNavDrop: null,
+      isNavbarOpen: false,
     };
   },
   methods: {
@@ -70,9 +86,14 @@ export default {
       alert('登出帳號，token 已清除');
       this.$router.push('/login');
     },
+    toggleNavbar() {
+      this.isNavbarOpen = !this.isNavbarOpen;
+      this.headerNavDrop.toggle();
+    },
   },
   mounted() {
     this.checkLogin();
+    this.headerNavDrop = new Collapse(this.$refs.headerNavDrop, { toggle: false });
   },
 };
 

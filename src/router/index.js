@@ -3,19 +3,44 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    name: '首頁',
+    name: '前台頁面',
     component: () => import('../views/user/UserLayout.vue'),
     children: [
       {
-        path: 'products',
-        name: '預計產品頁',
-        component: () => import('../views/user/AboutView.vue'),
+        path: '',
+        name: '首頁',
+        component: () => import('../views/user/UserHome.vue'),
+      },
+      {
+        path: '/about',
+        name: '關於我們',
+        component: () => import('../views/user/UserAbout.vue'),
+      },
+      {
+        path: '/products',
+        name: '產品頁',
+        component: () => import('../views/user/UserProducts.vue'),
+      },
+      {
+        path: '/carts',
+        name: '購物車頁',
+        component: () => import('../views/user/UserCart.vue'),
+      },
+      {
+        path: '/saved',
+        name: '我的收藏',
+        component: () => import('../views/user/UserSaved.vue'),
+      },
+      {
+        path: '/qalist',
+        name: '問答清單',
+        component: () => import('../views/user/UserQA.vue'),
       },
     ],
   },
   {
     path: '/login',
-    name: 'login',
+    name: '登入頁面',
     component: () => import('@/views/LogInView.vue'),
   },
   {

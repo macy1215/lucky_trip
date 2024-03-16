@@ -1,5 +1,8 @@
 <template>
-  <VueLoading v-model:active="isLoading"/>
+  <div class="vl-parent">
+  <VueLoading v-model:active="isLoading"
+              loader="bars"
+              :is-full-page="fullpage"/>
   <div class="container">
     <div class="row justify-content-between">
       <h2 class="text-primary mb-3 h2 text-start col-6">方案列表</h2>
@@ -68,7 +71,7 @@
   <!-- 刪除方案 -->
   <ModalDelComponent ref="delModal" :temp-product="tempProduct"
   @update="getProducts" ></ModalDelComponent>
-
+  </div>
 </template>
 
 <style lang="scss">
@@ -79,6 +82,8 @@
 import ModalCompanent from '@/components/ModalComponent.vue';
 import ModalDelComponent from '@/components/ModalDelComponent.vue';
 import Pagination from '@/components/PaginationView.vue';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Swal from 'sweetalert2';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -92,6 +97,7 @@ export default {
     return {
       products: [],
       isLoading: false,
+      fullpage: false,
       tempProduct: { // 暫存
         imagesUrl: [], // 小圖
         minpeople: '',
@@ -114,12 +120,17 @@ export default {
         .get(url)
         .then((res) => {
           // eslint-disable-next-line no-console
-          console.log(res);
           this.products = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
           // eslint-disable-next-line no-console
-          console.log(this.products);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '成功取得產品資訊',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
