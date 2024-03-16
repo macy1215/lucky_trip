@@ -1,13 +1,15 @@
 <template>
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="container">
-        <div class="row  justify-content-center position-absolute top-50 start-50 translate-middle">
-        <h2 class="brandImg justify-content-cente mx-auto mb-4">
-            <a>lucky-trip</a>
-        </h2>
-        <h1 class="h3 mb-3 font-weight-normal text-primary">
-            管理者登入頁面
-        </h1>
-            <div class="col-8">
+    <h2 class="h3 mb-3 font-weight-normal text-primary">
+      管理者登入頁面
+    </h2>
+    <h2 class="brandImg justify-content-cente mx-auto mb-4">
+      <a>lucky-trip</a>
+    </h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-10">
                 <form id="form" class="form-signin">
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="usernameInput"
@@ -32,6 +34,8 @@
             </p>
         </div>
     </div>
+  </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -71,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style>
+@media(max-width: 767px){
+
+}
+</style>

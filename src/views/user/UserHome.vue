@@ -85,7 +85,7 @@
       </div>
     </div>
    </div>
-   <footer-banner class="mt-5"></footer-banner>
+   <footer-banner></footer-banner>
 </template>
 
 <script>

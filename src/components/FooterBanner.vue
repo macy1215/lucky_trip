@@ -1,6 +1,6 @@
 <template>
-    <div class="footerbg py-5">
-        <div class="container">
+    <div class="footerbg ">
+        <div class="container mt-5">
         <div class="row align-items-center py-3 position-relative">
             <div class="col-md-6 col-12">
             <h2 class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm">
@@ -39,14 +39,14 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-
+      products: [],
     };
   },
   methods: {
-
   },
   mounted() {
   },
