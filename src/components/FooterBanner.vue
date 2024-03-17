@@ -7,13 +7,33 @@
                 訂閱獲得最新情報<br>及特別折扣！
             </h2>
             <div class="input-group mx-2 pe-5 pb-5">
-                <input type="text" class="form-control"
-                        placeholder="請輸入email信箱"
-                        aria-label="scributBtn"
-                        aria-describedby="scributBtn">
-                <button class="btn btn-primary" type="button" id="scributBtn"
-                    @click="sendEmail">
-                    訂閱我們</button>
+                <VeeForm
+                ref="form"
+                class="col-md-6"
+                @submit="sendSubscription"
+                v-slot="{ errors }"
+                >
+                <div class="d-flex">
+                    <VeeField
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="form-control rounded-start rounded-0"
+                        :class="{ 'is-invalid': errors['email'] }"
+                        placeholder="請輸入email信箱 "
+                        ref="emailInput"
+                        rules="email|required"
+                        v-model="form.email"></VeeField>
+                            <button class="btn btn-primary text-white
+                            rounded-end rounded-0 text-nowrap" type="button" id="scributBtn"
+                            @click="sendSubscription">
+                                訂閱我們
+                            </button>
+                </div>
+                    <error-message name="email" class="invalid-feedback d-block text-start"
+                    >
+                </error-message>
+                </VeeForm>
             </div>
             </div>
         </div>
@@ -39,14 +59,33 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 
 export default {
   data() {
     return {
       products: [],
+      form: {
+        email: '',
+      },
     };
   },
   methods: {
+    sendSubscription() {
+      Swal.fire({
+        title: '訂閱好嗨遊',
+        text: '成功送出，感謝您的訂閱',
+        icon: 'success',
+        confirmButtonText: '確定',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.form.email = '';
+          this.$refs.form.resetValidation();
+        }
+      });
+    //   console.log(this.$refs.emailInput.value);
+    //   this.$refs.emailInput.value = '';
+    },
   },
   mounted() {
   },

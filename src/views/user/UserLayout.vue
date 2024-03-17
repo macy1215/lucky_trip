@@ -73,6 +73,9 @@ export default {
       this.headerNavDrop.toggle();
     },
   },
+  watch: {
+
+  },
   mounted() {
     this.headerNavDrop = new Collapse(this.$refs.headerNavDrop, { toggle: false });
   },

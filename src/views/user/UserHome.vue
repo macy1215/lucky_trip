@@ -34,19 +34,20 @@
         好嗨遊讓您用最優惠的價格玩到最豐富的行程！</p>
       <button type="button" class="btn btn-primary text-white px-4">前往探索</button>
     </div>
-    <div class="section mt-5 pt-4 justify-content-between">
+    <div class="mt-5 pt-4 justify-content-between container">
       <h3 class="h3 text-primary fw-bold">焦點話題</h3>
-      <div class="mt-3 row px-md-0 px-4">
-        <div class="card col-md-4 col-sm-12">
-        <img src="@/assets/images/taitung.png" class="card-img-top img-fluid" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            範例範例範例
-          </p>
-          <a href="#" class="btn btn-primary">點我看行程</a>
-        </div>
-        </div>
+      <div class="mt-3 gx-3 px-md-0 px-4 d-flex justify-content-evenly">
+          <div class="card col-md-3 p-0"
+          v-for="product in products.slice(-3)" :key="product+123">
+          <img class="img-fluid" :src="product.imageUrl" alt="...">
+          <div class="card-body">
+            <h5 class="card-title h5 text-primary">{{product.title}}</h5>
+            <p class="card-text overflow-hidden lh-base text-start">
+              {{product.description}}
+            </p>
+            <a href="#" class="btn btn-primary text-white">點我看行程</a>
+          </div>
+          </div>
       </div>
     </div>
     <div class="section mt-5 pt-4 pb-4 justify-content-between">
