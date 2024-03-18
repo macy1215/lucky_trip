@@ -20,7 +20,7 @@
               class="position-absolute bottom-0 end-0 w-25 pe-4
               d-md-block d-none" style="z-index:10;" alt="旅行者">
       </div>
-      <div class="bg-primary bg-gradient bg-opacity-50
+      <div class="
           position-absolute pe-5 banBgCol"
           ></div>
     <swiper-banner></swiper-banner>
@@ -37,9 +37,9 @@
     <div class="mt-5 pt-4 justify-content-between container">
       <h3 class="h3 text-primary fw-bold">焦點話題</h3>
       <div class="mt-3 gx-3 px-md-0 px-4 d-flex justify-content-evenly">
-          <div class="card col-md-3 p-0"
+          <div class="card col-md-3 p-0 border-0 shadow "
           v-for="product in products.slice(-3)" :key="product+123">
-          <img class="img-fluid" :src="product.imageUrl" alt="...">
+          <img class="img-fluid border-0 rounded " :src="product.imageUrl" alt="...">
           <div class="card-body">
             <h5 class="card-title h5 text-primary">{{product.title}}</h5>
             <p class="card-text overflow-hidden lh-base text-start">
@@ -203,6 +203,10 @@ export default {
   }
   .activebox{
     margin-left: -100px;
+  }
+  .banBgCol{
+    background:linear-gradient(to bottom, #3BB3B6 30%, #774630 100%);
+    opacity: 0.6;
   }
   @media(max-width: 767px){
   /*產品手機*/
