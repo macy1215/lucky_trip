@@ -63,12 +63,38 @@
   <div class="container">
     <div class="row ">
       <div class="col-md-4" v-for="product in products" :key="product.id">
-        <div class="card">
-          <img :src=product.imageUrl class="card-img-top" :alt="product.title">
+        <div class="card mb-4">
+          <div style="height: 250px;" class="overflow-hidden">
+            <img :src=product.imageUrl class="card-img-top img-influid" :alt="product.title">
+          </div>
+          <div class="position-relative d-flex" style="top: -40px; left:12px">
+
+            <div @click="addToCart()">
+              <i v-if="addCart" class="bi bi-cart-plus fs-4 text-white me-3"></i>
+              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i>
+            </div>
+
+            <div @click="addToSave()">
+              <i v-if="addSave" class="bi bi-heart fs-4 text-white "></i>
+              <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
+            </div>
+
+          </div>
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>
-            <p class="card-text text-start">{{ product.description }}</p>
-            <a href="#" class="btn btn-primary">看看行程<i class="bi bi-chevron-right"></i></a>
+            <div class="text-start d-flex justify-content-between align-items-center">
+              <div>
+                售價
+                <span class="text-decoration-line-through text-black-50 fs-6">
+                  NT {{ product.origin_price }}
+                </span>
+                <span class="text-primary h5">NT {{ product.price }}</span>
+              </div>
+              <RouterLink to="/product/:id" >
+                <a class="btn btn-primary text-white">
+                看看行程<i class="bi bi-chevron-right"></i></a>
+              </RouterLink>
+            </div>
           </div>
         </div>
       </div>
@@ -98,6 +124,8 @@ export default {
       fullpage: true,
       catart: [],
       products: [],
+      addCart: true,
+      addSave: true,
     };
   },
   methods: {
@@ -118,6 +146,12 @@ export default {
           this.catart = item;
         });
       }
+    },
+    addToCart() {
+      this.addCart = !this.addCart;
+    },
+    addToSave() {
+      this.addSave = !this.addSave;
     },
   },
   components: {

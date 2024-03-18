@@ -149,6 +149,7 @@ export default {
       } else if (isNew === 'edit') {
         this.tempProduct = { ...item }; // 因為修改所以要將將值帶入input
         this.isNew = false;
+        console.log(this.tempProduct);
         this.$refs.modal.showModal();
       } else if (isNew === 'delete') {
         this.tempProduct = { ...item };
@@ -158,7 +159,7 @@ export default {
     },
     clearInput() {
       this.tempProduct = { // 清除
-        imageUrl: [],
+        imageUrl: '',
       };
     },
     deleteProduct() {
