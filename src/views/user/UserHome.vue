@@ -50,11 +50,13 @@
           </div>
       </div>
     </div>
-    <div class="section mt-5 pt-4 pb-4 justify-content-between">
+    <!-- <div class="section mt-5 pt-4 pb-4 justify-content-between">
       <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
       <ul class="d-md-flex justify-content-around mt-3 align-middle">
         <li class="circleBox circletxt1 my-0px mx-auto ">
-          <img src="@/assets/images/circle-walk.png" alt="" class="circleImg ">
+          <RouterLink :to="`/products?category=文化探索`">
+            <img src="@/assets/images/circle-walk.png" alt="" class="circleImg ">
+          </RouterLink>
         </li>
         <li class="circleBox  circletxt2 my-0px mx-auto ">
           <img src="@/assets/images/circle-food.png" alt="" class="circleImg">
@@ -69,7 +71,7 @@
           <img src="@/assets/images/circle-nature.png" alt="" class="circleImg">
         </li>
       </ul>
-    </div>
+    </div> -->
    </div>
    <div class="bg-primary w-auto bg-opacity-10 mt-md-5 py-md-3">
     <div class="container my-5 py-4">
@@ -100,6 +102,7 @@ export default {
     return {
       products: [],
       recommend: [],
+      categories: ['文化探索', '休閒渡假', '自然景色', '親子出遊', '美食之旅'],
     };
   },
   mounted() {
@@ -118,6 +121,23 @@ export default {
           console.log(err);
         });
     },
+  },
+  getCategories() {
+    this.isLoading = true;
+    const { category = '' } = this.$route.query;
+    const url = `${VITE_URL}/api/${VITE_NAME}/products/?category=${category}`;
+    this.$http
+      .get(url)
+      .then((res) => {
+        this.products = res.data.products;
+        this.isLoading = false;
+      })
+      .catch(() => {
+        // this.$Swal.fire({
+        //   icon: 'error',
+        //   title: err.response.data.message,
+        // });
+      });
   },
   components: {
     SwiperBanner,
@@ -141,7 +161,7 @@ export default {
     display: block;
     object-fit: cover;
   }
-  .circleBox::before {
+  /* .circleBox::before {
     content: attr(data-text);
     position: absolute;
     top: 50%;
@@ -153,9 +173,9 @@ export default {
     color: white;
     opacity: 0;
     transition: opacity 0.6s ease;
-  }
+  } */
 
-   .circleBox:hover::before {
+   /* .circleBox:hover::before {
     content: attr(data-text);
     position: absolute;
     top: 50%;
@@ -166,13 +186,14 @@ export default {
     padding: 100px 0px;
     color: white;
     opacity: 1;
-  }
+  } */
 
-  .circletxt1:hover::before {
+  /* .circletxt1:hover::before {
     content: '雙腳萬能';
     font-size: 30px;
     font-weight: bold;
-  }
+  } */
+/*
 
   .circletxt2:hover::before {
     content: '美食饗宴';
@@ -196,7 +217,7 @@ export default {
     content: '自然美景';
     font-size: 30px;
     font-weight: bold;
-  }
+  } */
   .activeTitle{
     font-size: 40px;
     line-height:1.6em;
@@ -210,7 +231,7 @@ export default {
   }
   @media(max-width: 767px){
   /*產品手機*/
-  ul{
+  /* ul{
     padding:0px 36px;
     li{
       height: 160px;
@@ -230,7 +251,7 @@ export default {
     display: block;
     object-fit: cover;
     border-radius:4%;
-  }
+  } */
   .activebox {
     margin-top: 24px;
     margin-left: 0px;

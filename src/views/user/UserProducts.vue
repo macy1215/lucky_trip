@@ -8,51 +8,54 @@
   </div>
 
   <div class="container">
-    <div class="position-relative w-75 mx-auto">
-      <div class="bg-white shadow position-relative border-0 rounded-3 py-5 justify-content-start
-      text-start"
-      style="top: -40px; padding-left:80px; padding-right:80px;">
-        <ul class="w-100 d-flex align-items-center justify-content-start">
-          <li>
-            <span class="fw-bold text-start">主題選擇</span><span class="px-4">|</span>
-          </li>
+    <div class="row py-5">
+     <div class="col-3">
+      <div class="bg-white shadow border-0 rounded-3 justify-content-start
+      text-start py-5 px-4">
+        <h3 class="fw-bold text-start">主題選擇</h3>
+        <hr>
+        <ul class="px-0 d-flex flex-wrap">
           <li>
             <RouterLink :to="`/products`">
               <button type="button"
-              class="btn btn-outline-primary btn-sm me-3 text-start btnHover">全部行程</button>
+              class="btn btn-outline-primary btn-sm me-3
+              text-start btnHover mb-2
+              ">全部行程</button>
             </RouterLink>
           </li>
           <li class="list-group-item" v-for="item in categories" :key="item">
             <RouterLink :to="`/products?category=${item}`">
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
+            <button type="button"
+            class="btn btn-outline-primary
+            btn-sm me-3 text-start
+            btnHover mb-2"
             >{{ item }}</button>
             </RouterLink>
           </li>
         </ul>
-    </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row ">
-      <div class="col-md-4" v-for="product in products" :key="product.id">
+      </div>
+     </div>
+     <div class="col-9">
+      <div class="row">
+        <div class="col-md-6 d-flex" v-for="product in products" :key="product.id">
         <div class="card mb-4">
           <div style="height: 250px;" class="overflow-hidden">
-            <img :src=product.imageUrl class="card-img-top img-influid" :alt="product.title">
+            <img :src=product.imageUrl class="card-img-top  object-fit-cover"
+            :alt="product.title"
+            style="width: 105%;"
+            >
           </div>
           <div class="position-relative d-flex" style="top: -40px; left:12px">
-
             <div @click.prevent="addToCart(product.id, qty)">
               <span class="text-white me-2">加入購物車</span>
               <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
                 class="bi bi-cart-plus fs-4 text-white me-3"></i>
               <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
             </div>
-
             <div @click="addToSave()">
               <i v-if="addSave" class="bi bi-heart fs-4 text-white "></i>
               <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
             </div>
-
           </div>
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>
@@ -64,31 +67,25 @@
                 </span>
                 <span class="text-primary h5">NT {{ product.price }}</span>
               </div>
-              <RouterLink :to="'/product/'+product.id" >
+              <RouterLink :to="`/product/${product.id}`" >
                 <a class="btn btn-primary text-white">
                 看看行程<i class="bi bi-chevron-right"></i></a>
               </RouterLink>
-              {{ product.category }}
             </div>
           </div>
         </div>
       </div>
+      </div>
+      <Pagination :pagination="pagination" @emit-pages="getProducts"></Pagination>
+     </div>
     </div>
   </div>
-  <!-- <div>
-    <ul class="vl-parent"
-          ref="formContainer">
-      <li v-for="product in products" :key="product.id">
-        <h3>{{ product }}</h3>
-        <img :src="product.imageUrl" width="200" alt="">
-      </li>
-    </ul>
-  </div> -->
   <footer-banner></footer-banner>
 </template>
 <script type="module">
 import { mapActions } from 'pinia';
 import FooterBanner from '@/components/FooterBanner.vue';
+import Pagination from '@/components/PaginationView.vue';
 
 // eslint-disable-next-line import/order
 import cartStore from '@/stores/cartStore';
@@ -106,13 +103,12 @@ export default {
       products: [],
       productId: '',
       categories: ['文化探索', '休閒渡假', '自然景色', '親子出遊', '美食之旅'],
-      areas: ['北部', '南部', '東部'],
+      pagination: {},
     };
   },
   watch: {
     '$route.query': {
       handler() {
-        this.getCategories();
         this.getUserProduct();
       },
       deep: true,
@@ -120,22 +116,7 @@ export default {
   },
   methods: {
     getUserProduct() {
-      this.isLoading = true;
-      const url = `${VITE_URL}/api/${VITE_NAME}/products/all`;
-      this.$http
-        .get(url)
-        .then((res) => {
-          this.products = res.data.products;
-          this.isLoading = false;
-        })
-        .catch((err) => {
-          this.$Swal.fire({
-            icon: 'error',
-            title: err.response.data.message,
-          });
-        });
-    },
-    getCategories() {
+      console.log(this.$route);
       this.isLoading = true;
       const { category = '' } = this.$route.query;
       const url = `${VITE_URL}/api/${VITE_NAME}/products/?category=${category}`;
@@ -143,6 +124,7 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
         })
         .catch((err) => {
@@ -152,7 +134,22 @@ export default {
           });
         });
     },
-
+    getProducts(page = 1) {
+      this.isLoading = true;
+      const url = `${VITE_URL}/api/${VITE_NAME}/products?page=${page}`;
+      this.$http
+        .get(url)
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          this.products = res.data.products;
+          this.pagination = res.data.pagination;
+          this.isLoading = false;
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.log(err);
+        });
+    },
     ...mapActions(cartStore, ['addToCart']),
     // ...mapActions(productsStore, ['getProduct']),
     addToSave() {
@@ -161,6 +158,7 @@ export default {
   },
   components: {
     FooterBanner,
+    Pagination,
   },
   mounted() {
     this.getUserProduct();
