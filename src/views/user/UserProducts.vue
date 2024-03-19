@@ -1,6 +1,8 @@
 <template>
   <VueLoading v-model:active="isLoading"
-              loader="bars" :is-full-page="fullpage"/>
+              loader="bars"
+              :can-cancel="false"
+              :is-full-page="fullpage"/>
   <div class="productBox">
     <div class="productAllbg"></div>
   </div>
@@ -15,46 +17,16 @@
             <span class="fw-bold text-start">主題選擇</span><span class="px-4">|</span>
           </li>
           <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('文學探索')">文學探索</button>
+            <RouterLink :to="`/products`">
+              <button type="button"
+              class="btn btn-outline-primary btn-sm me-3 text-start btnHover">全部行程</button>
+            </RouterLink>
           </li>
-          <li>
+          <li class="list-group-item" v-for="item in categories" :key="item">
+            <RouterLink :to="`/products?category=${item}`">
             <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('親子出遊')">親子出遊</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('休閒渡假')">休閒渡假</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('自然景色')">自然景色</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('美食之旅')">美食之旅</button>
-          </li>
-        </ul>
-        <ul class="w-100 d-flex align-items-center justify-content-start"
-        style="top: -40px;">
-          <li>
-            <span class="fw-bold text-start">地區選擇</span><span class="px-4">|</span>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('文學探索')">北部</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('休閒渡假')">南部</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('自然景色')">東部</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-outline-primary btn-sm me-3 text-start btnHover"
-            @click="showCategory('美食之旅')">美食之旅</button>
+            >{{ item }}</button>
+            </RouterLink>
           </li>
         </ul>
     </div>
@@ -69,9 +41,11 @@
           </div>
           <div class="position-relative d-flex" style="top: -40px; left:12px">
 
-            <div @click="addToCart()">
-              <i v-if="addCart" class="bi bi-cart-plus fs-4 text-white me-3"></i>
-              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i>
+            <div @click.prevent="addToCart(product.id, qty)">
+              <span class="text-white me-2">加入購物車</span>
+              <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
+                class="bi bi-cart-plus fs-4 text-white me-3"></i>
+              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
             </div>
 
             <div @click="addToSave()">
@@ -90,10 +64,11 @@
                 </span>
                 <span class="text-primary h5">NT {{ product.price }}</span>
               </div>
-              <RouterLink to="/product/:id" >
+              <RouterLink :to="'/product/'+product.id" >
                 <a class="btn btn-primary text-white">
                 看看行程<i class="bi bi-chevron-right"></i></a>
               </RouterLink>
+              {{ product.category }}
             </div>
           </div>
         </div>
@@ -112,7 +87,11 @@
   <footer-banner></footer-banner>
 </template>
 <script type="module">
-import FooterBanner from '../../components/FooterBanner.vue';
+import { mapActions } from 'pinia';
+import FooterBanner from '@/components/FooterBanner.vue';
+
+// eslint-disable-next-line import/order
+import cartStore from '@/stores/cartStore';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
@@ -122,14 +101,25 @@ export default {
     return {
       isLoading: false,
       fullpage: true,
-      catart: [],
-      products: [],
-      addCart: true,
       addSave: true,
+      carts: [],
+      products: [],
+      productId: '',
+      categories: ['文化探索', '休閒渡假', '自然景色', '親子出遊', '美食之旅'],
+      areas: ['北部', '南部', '東部'],
     };
   },
+  watch: {
+    '$route.query': {
+      handler() {
+        this.getCategories();
+        this.getUserProduct();
+      },
+      deep: true,
+    },
+  },
   methods: {
-    getMore() {
+    getUserProduct() {
       this.isLoading = true;
       const url = `${VITE_URL}/api/${VITE_NAME}/products/all`;
       this.$http
@@ -137,19 +127,34 @@ export default {
         .then((res) => {
           this.products = res.data.products;
           this.isLoading = false;
+        })
+        .catch((err) => {
+          this.$Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
         });
     },
-    showCategory() {
-      console.log(this.products);
-      if (this.products.category === '文學探索') {
-        this.products.forEach((item) => {
-          this.catart = item;
+    getCategories() {
+      this.isLoading = true;
+      const { category = '' } = this.$route.query;
+      const url = `${VITE_URL}/api/${VITE_NAME}/products/?category=${category}`;
+      this.$http
+        .get(url)
+        .then((res) => {
+          this.products = res.data.products;
+          this.isLoading = false;
+        })
+        .catch((err) => {
+          this.$Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
         });
-      }
     },
-    addToCart() {
-      this.addCart = !this.addCart;
-    },
+
+    ...mapActions(cartStore, ['addToCart']),
+    // ...mapActions(productsStore, ['getProduct']),
     addToSave() {
       this.addSave = !this.addSave;
     },
@@ -158,7 +163,7 @@ export default {
     FooterBanner,
   },
   mounted() {
-    this.getMore();
+    this.getUserProduct();
   },
 };
 </script>
