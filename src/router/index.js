@@ -37,6 +37,11 @@ const routes = [
         component: () => import('../views/user/UserForm.vue'),
       },
       {
+        path: '/paycheck/:id',
+        name: '付款頁面',
+        component: () => import('../views/user/UserPaycheck.vue'),
+      },
+      {
         path: '/saved',
         name: '我的收藏',
         component: () => import('../views/user/UserSaved.vue'),
