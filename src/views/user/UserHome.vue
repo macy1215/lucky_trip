@@ -36,8 +36,8 @@
     </div>
     <div class="mt-5 pt-4 justify-content-between container">
       <h3 class="h3 text-primary fw-bold">焦點話題</h3>
-      <div class="mt-3 gx-3 px-md-0 px-4 d-flex justify-content-evenly">
-          <div class="card col-md-3 p-0 border-0 shadow "
+      <div class="mt-3 gx-3 px-md-0 px-md-4 px-1 d-md-flex justify-content-evenly">
+          <div class="card col-md-3 col-12 p-0 mb-md-0 mb-4 border-0 shadow "
           v-for="product in products.slice(-3)" :key="product+123">
           <img class="img-fluid border-0 rounded " :src="product.imageUrl" alt="...">
           <div class="card-body">

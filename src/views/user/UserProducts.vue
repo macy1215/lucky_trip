@@ -9,7 +9,7 @@
 
   <div class="container">
     <div class="row py-5">
-     <div class="col-3">
+     <div class="col-md-3 col-12">
       <div class="bg-white shadow border-0 rounded-3 justify-content-start
       text-start py-5 px-4">
         <h3 class="fw-bold text-start">主題選擇</h3>
@@ -35,23 +35,19 @@
         </ul>
       </div>
      </div>
-     <div class="col-9">
+     <div class="col-md-9 col-12">
       <div class="row">
         <div class="col-md-6 d-flex" v-for="product in products" :key="product.id">
         <div class="card mb-4">
           <div style="height: 250px;" class="overflow-hidden">
+            <RouterLink :to="`/product/${product.id}`" >
             <img :src=product.imageUrl class="card-img-top  object-fit-cover"
             :alt="product.title"
             style="width: 105%;"
             >
+            </RouterLink>
           </div>
           <div class="position-relative d-flex" style="top: -40px; left:12px">
-            <div @click.prevent="addToCart(product.id, qty)">
-              <span class="text-white me-2">加入購物車</span>
-              <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
-                class="bi bi-cart-plus fs-4 text-white me-3"></i>
-              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
-            </div>
             <div @click="addToSave()">
               <i v-if="addSave" class="bi bi-heart fs-4 text-white "></i>
               <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
@@ -67,10 +63,12 @@
                 </span>
                 <span class="text-primary h5">NT {{ product.price }}</span>
               </div>
-              <RouterLink :to="`/product/${product.id}`" >
-                <a class="btn btn-primary text-white">
-                看看行程<i class="bi bi-chevron-right"></i></a>
-              </RouterLink>
+              <div @click.prevent="addToCart(product.id, qty)">
+              <button class="btn btn-primary text-white" type="submit">加入購物車</button>
+              <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
+                class="bi bi-cart-plus fs-4 text-white me-3"></i>
+              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
+            </div>
             </div>
           </div>
         </div>
@@ -192,9 +190,13 @@ export default {
 .btnHover:hover{
   color: white;
 }
+
 @media(max-width: 767px){
   .productAllbg{
     height: 200px;
   }
+  .productBox{
+  height: 20vh;
+}
 }
 </style>

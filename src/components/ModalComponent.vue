@@ -162,7 +162,6 @@
                               placeholder="旅遊簡介說明" v-model="tempProduct.description">
                     </textarea>
                   </div>
-
                   <div class="mb-3 text-start">
                     <label for="description" class="form-label">旅遊行程文字說明</label>
                     <textarea id="description" type="text" class="form-control"
@@ -171,12 +170,28 @@
                   </div>
 
                   <div class="mb-3 text-start">
-                    <label for="content" class="form-label">注意事項</label>
+                    <label for="content" class="form-label">餐點內容</label>
                     <textarea id="description" type="text" class="form-control"
                     placeholder="請輸入注意事項"  v-model="tempProduct.content">
                     </textarea>
                   </div>
 
+                  <div class="mb-3 text-start">
+                    <label for="content" class="form-label">發布集合地點</label>
+                    <textarea id="description" type="text" class="form-control"
+                    placeholder="請輸入注意事項"  v-model="tempProduct.place">
+                    </textarea>
+                  </div>
+                  <div class="mb-3 text-start">
+                    <label for="content" class="form-label">包車</label>
+                    <div class="form-check ms-3  form-check-inline">
+                            <input class="form-check-input" type="checkbox"
+                            value="可包車" id="needcar" v-model="tempProduct.need_car" :true-value="1" :false-value="0">
+                            <label class="form-check-label" for="needcar">
+                              可包車
+                            </label>
+                      </div>
+                  </div>
                   <div class="mb-3 text-start">
                     <label for="feeincluded" class="form-label">費用包含</label>
                     <textarea id="description" type="text" class="form-control"
@@ -197,12 +212,12 @@
                         placeholder="請輸入最多可報名人數" v-model="tempProduct.regist">
                     </div>
                   </div>
-                 <div class="mb-3 text-start">
+                 <!-- <div class="mb-3 text-start">
                     <label for="content" class="form-label">取消退費政策</label>
                     <textarea id="description" type="text" class="form-control"
                     placeholder="請輸入取消政策"  v-model="tempProduct.canclepolic">
                     </textarea>
-                  </div>
+                  </div> -->
 
                   <div class="mb-3 text-start">
                     <div class="form-check">

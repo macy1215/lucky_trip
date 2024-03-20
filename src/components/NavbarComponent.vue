@@ -1,5 +1,5 @@
 <template>
-  <!-- <nav class="navbar navbar-expand-md container align-items-center">
+    <nav class="navbar navbar-expand-md container align-items-center">
       <div class="container-fluid">
             <RouterLink to="/" >
                 <span class="nav-link logostyle">
@@ -33,10 +33,10 @@
                     <RouterLink class="nav-link text-primary active fw-bold" aria-current="page"
                     to="/about" >關於我們</RouterLink>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <RouterLink class="nav-link text-primary  fw-bold" aria-current="page"
                     to="/qalist" >常見QA</RouterLink>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                     <RouterLink class="nav-link text-primary fw-bold" aria-current="page"
                     to="/saved" >
@@ -50,7 +50,7 @@
                       <i class="bi bi-cart-fill fw-bolder position-relative align-top"></i>
                       <span class="position-absolute
                         top-20 start-100 translate-middle
-                        badge rounded-pill bg-danger fs-6">2
+                        badge rounded-pill bg-danger fs-6">{{this.carts?.length}}
                         <span class="visually-hidden">New alerts</span>
                       </span>
 
@@ -59,21 +59,35 @@
               </ul>
         </div>
       </div>
-  </nav> -->
-    <Navbar-Component></Navbar-Component>
-    <RouterView></RouterView>
+  </nav>
 </template>
 
 <script>
-import NavbarComponent from '@/components/NavbarComponent.vue';
+import Collapse from 'bootstrap/js/dist/collapse';
+import { mapActions, mapState } from 'pinia';
+
+import cartStore from '../stores/cartStore';
 
 export default {
-  components: {
-    NavbarComponent,
+  data() {
+    return {
+      headerNavDrop: null,
+      isNavbarOpen: false,
+    };
+  },
+  methods: {
+    ...mapActions(cartStore, ['getCart', 'removeCartItem', 'removeAllCart']),
+    toggleNavbar() {
+      this.isNavbarOpen = !this.isNavbarOpen;
+      this.headerNavDrop.toggle();
+    },
+  },
+  computed: {
+    ...mapState(cartStore, ['carts']),
+  },
+  mounted() {
+    this.headerNavDrop = new Collapse(this.$refs.headerNavDrop, { toggle: false });
+    this.getCart();
   },
 };
 </script>
-
-<style lang="scss">
-@import '../src/assets/scss/helper/_main.scss';
-</style>
