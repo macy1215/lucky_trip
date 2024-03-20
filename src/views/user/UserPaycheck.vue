@@ -53,7 +53,7 @@
             </div>
           </div>
         </div> -->
-        <button class="btn btn-primary mt-3 text-white w-25" @click="payOrder">確定付款</button>
+        <button class="btn btn-primary mt-3 text-white w-25" @click="submitPayment">確定付款</button>
       </div>
       <div class="col-md-3">
         <div class="bg-secondary bg-opacity-10 px-md-3 pb-md-5 pt-md-3 h-auto">
@@ -114,13 +114,14 @@ export default {
           this.user = res.data.order.user;
           this.message = res.data.order.message;
           this.final_total = res.data.order.total;
+          this.orderId = this.$route.params;
           // console.log('取得Order id 資料', this.message);
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    payOrder() {
+    submitPayment() {
       Swal.fire({
         title: '確定付款嗎？',
         icon: 'warning',
@@ -142,6 +143,7 @@ export default {
                 icon: 'success',
                 timer: 1500,
               });
+              this.$router.push({ name: '付款完成頁面', params: { orderId: this.orderId } });
             })
             .catch((err) => {
               console.log(err);

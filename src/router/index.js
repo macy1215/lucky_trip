@@ -42,6 +42,11 @@ const routes = [
         component: () => import('../views/user/UserPaycheck.vue'),
       },
       {
+        path: '/success/:id',
+        name: '付款完成頁面',
+        component: () => import('../views/user/UserPaycheckPass.vue'),
+      },
+      {
         path: '/saved',
         name: '我的收藏',
         component: () => import('../views/user/UserSaved.vue'),
