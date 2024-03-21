@@ -64,7 +64,7 @@
     </table>
     <Pagination :pagination="pagination" @emit-pages="getProducts"></Pagination>
   </div>
-  <!-- Modal 新增產品-->
+  <!-- Modal 編輯產品-->
   <ModalCompanent ref="modal" :temp-product="tempProduct" :is-new="isNew"
   :clear-input="clearInput" @update="getProducts"></ModalCompanent>
 

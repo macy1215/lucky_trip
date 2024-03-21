@@ -84,6 +84,11 @@ const routes = [
         component: () => import('../views/dashboard/OrdersView.vue'),
       },
       {
+        path: 'coupons',
+        name: '優惠卷',
+        component: () => import('../views/dashboard/AdminCoupon.vue'),
+      },
+      {
         path: 'blogs',
         name: '部落格文章',
         component: () => import('../views/dashboard/BlogView.vue'),

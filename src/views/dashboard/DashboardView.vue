@@ -33,6 +33,10 @@
                       to="/admin/orders" >訂單列表</RouterLink>
                     </li>
                     <li class="nav-item">
+                      <RouterLink class="nav-link text-primary" aria-current="page"
+                      to="/admin/coupons" >優惠卷列表</RouterLink>
+                    </li>
+                    <li class="nav-item">
                       <a href="#" class="nav-link text-primary" aria-current="page"
                       @click.prevent="signout()">登出</a>
                     </li>
