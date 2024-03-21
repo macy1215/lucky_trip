@@ -32,46 +32,31 @@
         想在台灣旅遊，你又多了一種選擇！<br>
         好嗨遊了解你跟團不自由的感覺，也了解你自由行查資料的辛苦。
         好嗨遊讓您用最優惠的價格玩到最豐富的行程！</p>
-      <button type="button" class="btn btn-primary text-white px-4">前往探索</button>
+        <RouterLink :to="`/products`" >
+          <button type="button" class="btn btn-primary text-white px-4">前往探索</button>
+        </RouterLink>
     </div>
     <div class="mt-5 pt-4 justify-content-between container">
       <h3 class="h3 text-primary fw-bold">焦點話題</h3>
       <div class="mt-3 gx-3 px-md-0 px-md-4 px-1 d-md-flex justify-content-evenly">
           <div class="card col-md-3 col-12 p-0 mb-md-0 mb-4 border-0 shadow "
           v-for="product in products.slice(-3)" :key="product+123">
-          <img class="img-fluid border-0 rounded " :src="product.imageUrl" alt="...">
+          <RouterLink :to="`/product/${product.id}`" >
+            <img class="img-fluid border-0 rounded " :src="product.imageUrl" :alt="product">
+          </RouterLink>
           <div class="card-body">
             <h5 class="card-title h5 text-primary">{{product.title}}</h5>
-            <p class="card-text overflow-hidden lh-base text-start">
+            <p class="card-text overflow-hidden lh-base text-start"
+            style="height: 70px;">
               {{product.description}}
             </p>
-            <a href="#" class="btn btn-primary text-white">點我看行程</a>
+            <RouterLink :to="`/product/${product.id}`">
+              <a href="#" class="btn btn-primary text-white">點我看行程</a>
+            </RouterLink>
           </div>
           </div>
       </div>
     </div>
-    <!-- <div class="section mt-5 pt-4 pb-4 justify-content-between">
-      <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
-      <ul class="d-md-flex justify-content-around mt-3 align-middle">
-        <li class="circleBox circletxt1 my-0px mx-auto ">
-          <RouterLink :to="`/products?category=文化探索`">
-            <img src="@/assets/images/circle-walk.png" alt="" class="circleImg ">
-          </RouterLink>
-        </li>
-        <li class="circleBox  circletxt2 my-0px mx-auto ">
-          <img src="@/assets/images/circle-food.png" alt="" class="circleImg">
-        </li>
-        <li class="circleBox  circletxt3 my-0px mx-auto ">
-          <img src="@/assets/images/circle-family.png" alt="" class="circleImg">
-        </li>
-        <li class="circleBox  circletxt4 my-0px mx-auto ">
-          <img src="@/assets/images/circle-culture.png" alt="" class="circleImg">
-        </li>
-        <li class="circleBox  circletxt5 my-0px mx-auto ">
-          <img src="@/assets/images/circle-nature.png" alt="" class="circleImg">
-        </li>
-      </ul>
-    </div> -->
    </div>
    <div class="bg-primary w-auto bg-opacity-10 mt-md-5 py-md-3">
     <div class="container my-5 py-4">
@@ -92,6 +77,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 import SwiperBanner from '../../components/SwiperBanner.vue';
 import FooterBanner from '../../components/FooterBanner.vue';
 
@@ -115,10 +102,12 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products;
-          console.log(this.products);
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
         });
     },
   },
@@ -132,11 +121,11 @@ export default {
         this.products = res.data.products;
         this.isLoading = false;
       })
-      .catch(() => {
-        // this.$Swal.fire({
-        //   icon: 'error',
-        //   title: err.response.data.message,
-        // });
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.response.data.message,
+        });
       });
   },
   components: {

@@ -88,6 +88,8 @@
 import axios from 'axios';
 import Modal from 'bootstrap/js/dist/modal';
 
+import Swal from 'sweetalert2';
+
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {

@@ -26,23 +26,23 @@
             v-show="isNavbarOpen">
               <ul class="navbar-nav">
                   <li class="nav-item">
-                    <RouterLink class="nav-link text-primary active  fw-bold" aria-current="page"
-                    to="/products" >好嗨遊行程</RouterLink>
-                  </li>
-                  <li class="nav-item">
                     <RouterLink class="nav-link text-primary active fw-bold" aria-current="page"
                     to="/about" >關於我們</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink class="nav-link text-primary active  fw-bold" aria-current="page"
+                    to="/products" >好嗨遊行程</RouterLink>
                   </li>
                   <!-- <li class="nav-item">
                     <RouterLink class="nav-link text-primary  fw-bold" aria-current="page"
                     to="/qalist" >常見QA</RouterLink>
                   </li> -->
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <RouterLink class="nav-link text-primary fw-bold" aria-current="page"
                     to="/saved" >
                      我的收藏
                   </RouterLink>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                     <RouterLink aria-current="page" to="/carts"
                     class="nav-link cart nav-link fs-4 ms-lg-4 me-1 position-relative" >

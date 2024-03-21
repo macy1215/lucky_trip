@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -19,7 +20,6 @@ export default defineStore('cartStore', {
   }),
   actions: {
     addToCart(id, qty = 1) {
-      console.log(id, qty);
       const cart = {
         product_id: id,
         qty,
@@ -27,10 +27,10 @@ export default defineStore('cartStore', {
         // this.status.addCartLoading = id
       axios.post(`${VITE_URL}/api/${VITE_NAME}/cart`, { data: cart })
         .then((res) => {
-          console.log(res);
           this.getCart();
+          console.log(res);
           Swal.fire({
-            title: '成功加入購物車',
+            title: '加入購物車',
             icon: 'success',
             timer: 1500,
             showConfirmButton: false,
@@ -39,23 +39,24 @@ export default defineStore('cartStore', {
         .catch((err) => {
           Swal.fire({
             icon: 'error',
-            title: err,
-            // title: err.response.data.message,
+            title: '錯誤',
           });
+          console.log(err, 'err.response.data.message');
         });
     },
     getCart() {
       axios.get(`${VITE_URL}/api/${VITE_NAME}/cart`)
         .then((res) => {
-          console.log(res);
           this.carts = res.data.data.carts;
           this.final_total = res.data.data.final_total;
           this.total = res.data.data.total;
           this.order_total = res.data.data.total;
-          console.log('pinia cart', this.carts);
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
         });
     },
     removeCartItem(id) {
@@ -71,21 +72,22 @@ export default defineStore('cartStore', {
         if (result.isConfirmed) {
           this.status.cartQtyLoading = id;
           this.status.showCartLoading = id;
-          console.log(id);
           axios.delete(`${VITE_URL}/api/${VITE_NAME}/cart/${id}`)
             .then((res) => {
-              console.log(res);
               this.status.cartQtyLoading = '';
               this.status.showCartLoading = '';
               this.getCart();
               Swal.fire({
-                title: '刪除該商品',
+                title: res.response.data.message,
                 text: '確定已將產品刪除',
                 icon: 'success',
               });
             })
             .catch((err) => {
-              console.log(err);
+              Swal.fire({
+                icon: 'error',
+                title: err.response.data.message,
+              });
             });
         }
       });
@@ -103,18 +105,15 @@ export default defineStore('cartStore', {
         if (result.isConfirmed) {
           axios.delete(`${VITE_URL}/api/${VITE_NAME}/carts`)
             .then((res) => {
-              // eslint-disable-next-line no-console
-              console.log(res);
               this.getCart();
               Swal.fire({
-                title: '刪除所有商品',
+                title: res.response.data.message,
                 text: '確定已將列表刪除',
                 icon: 'success',
               });
             })
             .catch((err) => {
-              // eslint-disable-next-line no-alert
-              window.alert(err.data.message);
+              toast.error(err.response.data.message);
             });
         }
       });
@@ -127,14 +126,13 @@ export default defineStore('cartStore', {
       this.status.cartQtyLoading = item.id;
       // 帶入購物車 id
       axios.put(`${VITE_URL}/api/${VITE_NAME}/cart/${item.id}`, { data: order })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.status.cartQtyLoading = '';
           // 加完購物車，會重跑顯示列表
           this.getCart();
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(err.response.data.message);
         });
     },
   },

@@ -54,7 +54,9 @@
         </div>
         <div class="row justify-content-start">
           <div class="col-md-6 text-start">
-            <button type="button" class="btn btn-primary text-white round-0">加入購物車
+            <button type="button"
+            @click.prevent="addToCart(product.id)"
+            class="btn btn-primary text-white round-0">加入購物車
               <i class="bi bi-cart-plus text-white"></i>
             </button>
           </div>
@@ -95,6 +97,7 @@ import FooterBanner from '@/components/FooterBanner.vue';
 import { mapActions } from 'pinia';
 
 import cartStore from '@/stores/cartStore';
+import Swal from 'sweetalert2';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -115,7 +118,12 @@ export default {
           this.product = res.data.product;
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            title: err.response.data.message,
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false,
+          });
         });
     },
     ...mapActions(cartStore, ['addToCart']),
@@ -123,7 +131,7 @@ export default {
   watch: {
     '$route.query': {
       handler() {
-        this.getUserProduct();
+        this.getProduct();
       },
       deep: true,
     },
@@ -132,8 +140,7 @@ export default {
     FooterBanner,
   },
   mounted() {
-  // 存取路由的屬性 $route
-    // console.log(this.$route);
+  // 存取路由的屬性 $route -> this.$route
     this.getProduct();
   },
 };

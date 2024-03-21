@@ -79,6 +79,8 @@
 </style>
 
 <script>
+import { toast } from 'vue3-toastify';
+
 import ModalCompanent from '@/components/ModalComponent.vue';
 import ModalDelComponent from '@/components/ModalDelComponent.vue';
 import Pagination from '@/components/PaginationView.vue';
@@ -119,22 +121,20 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // eslint-disable-next-line no-console
           this.products = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
-          // eslint-disable-next-line no-console
+          console.log(res.data.message);
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: '成功取得產品資訊',
+            title: '成功取得產品列表',
             showConfirmButton: false,
             timer: 1500,
           });
         })
         .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          toast.error(err.response.data.message);
           this.$router.push('/login');
         });
     },
@@ -149,7 +149,6 @@ export default {
       } else if (isNew === 'edit') {
         this.tempProduct = { ...item }; // 因為修改所以要將將值帶入input
         this.isNew = false;
-        console.log(this.tempProduct);
         this.$refs.modal.showModal();
       } else if (isNew === 'delete') {
         this.tempProduct = { ...item };
@@ -168,13 +167,18 @@ export default {
         .delete(url, { data: this.tempProduct })
         .then((res) => {
           // eslint-disable-next-line no-console
-          alert(res.data.message);
+          Swal.fire({
+            position: 'top-end',
+            icon: res.data.message,
+            title: '成功取得產品資訊',
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.$refs.dModal.closeProduct();
           this.getData();
         })
         .catch((err) => {
-          // eslint-disable-next-line no-console
-          alert(err.data.message);
+          toast.error(err.response.data.message);
         });
     },
   },

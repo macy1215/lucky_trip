@@ -14,7 +14,7 @@
       text-start py-5 px-4">
         <h3 class="fw-bold text-start">主題選擇</h3>
         <hr>
-        <ul class="px-0 d-flex flex-wrap">
+        <ul class="px-0 d-flex flex-wrap list-unstyled">
           <li>
             <RouterLink :to="`/products`">
               <button type="button"
@@ -23,7 +23,8 @@
               ">全部行程</button>
             </RouterLink>
           </li>
-          <li class="list-group-item" v-for="item in categories" :key="item">
+          <li class="list-group-item"
+            v-for="item in categories" :key="item">
             <RouterLink :to="`/products?category=${item}`">
             <button type="button"
             class="btn btn-outline-primary
@@ -85,9 +86,9 @@ import { mapActions } from 'pinia';
 import FooterBanner from '@/components/FooterBanner.vue';
 import Pagination from '@/components/PaginationView.vue';
 
-// eslint-disable-next-line import/order
+import Swal from 'sweetalert2';
+
 import cartStore from '@/stores/cartStore';
-// eslint-disable-next-line import/no-extraneous-dependencies
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -114,7 +115,6 @@ export default {
   },
   methods: {
     getUserProduct() {
-      console.log(this.$route);
       this.isLoading = true;
       const { category = '' } = this.$route.query;
       const url = `${VITE_URL}/api/${VITE_NAME}/products/?category=${category}`;
@@ -126,7 +126,7 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          this.$Swal.fire({
+          Swal.fire({
             icon: 'error',
             title: err.response.data.message,
           });
@@ -138,18 +138,20 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // eslint-disable-next-line no-console
           this.products = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
         })
         .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          Swal.fire({
+            title: err.response.data.message,
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false,
+          });
         });
     },
     ...mapActions(cartStore, ['addToCart']),
-    // ...mapActions(productsStore, ['getProduct']),
     addToSave() {
       this.addSave = !this.addSave;
     },

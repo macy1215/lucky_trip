@@ -35,6 +35,9 @@
 import Modal from 'bootstrap/js/dist/modal';
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
+
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
@@ -55,14 +58,17 @@ export default {
       const url = `${VITE_URL}/api/${VITE_NAME}/admin/product/${this.tempProduct.id}`;
       axios.delete(url, { data: this.tempProduct })
         .then((res) => {
-          // eslint-disable-next-line no-alert
-          alert(res.data.message);
+          Swal.fire({
+            title: res.response.data.message,
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+          });
           this.hideModal();
           this.$emit('update');
         })
         .catch((err) => {
-          // eslint-disable-next-line no-alert
-          alert(err.response.data.message);
+          toast.error(err.response.data.message);
         });
     },
   },
