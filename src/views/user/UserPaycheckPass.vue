@@ -26,11 +26,9 @@
             </div>
         </div>
     </div>
-    <!-- <footer-banner></footer-banner> -->
 </template>
 
 <script>
-// import FooterBanner from '@/components/FooterBanner.vue';
 
 export default {
   data() {
@@ -39,9 +37,6 @@ export default {
       fullpage: false,
     };
   },
-//   components: {
-//     FooterBanner,
-//   },
 };
 </script>
 

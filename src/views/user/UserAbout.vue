@@ -35,30 +35,34 @@
         </div>
       </div>
     </div>
-    <div class="row position-relative">
-      <div class="col-md-7 top-md-20 position-relative" >
-        <div class="p-3 py-md-4 px-md-4 bg-white-80 rounded-1 text-start
-        shadow">
-          <h3 class="fs-4">為什麼需要好嗨遊？</h3>
-          <p class="text-secondary
-          text-prewrap mb-1 text-start"
-          style="line-height: 1.6;">在這個匆匆忙忙的世界裡，
-            我們常常忽略了周遭的美好。
-            遊台灣這件事情是一道耀眼的光，
-            穿透了日常的灰濛。
-            為你在匆忙的生活
-            為我們帶來了片刻的寧靜和歡笑。
-          </p>
-          <p class="text-secondary
-          text-prewrap mb-0 text-start"
-          style="line-height: 1.6;">
-            踏上這段旅程，彷彿進入了一幅繽紛的畫卷，
-            每一個角落都是那麼生動。從繁華的都市到幽靜的山林，台灣一日遊展現了這片土地多樣的風貌，讓人仿佛穿越了時空，感受到了無盡的驚喜和美好。
-          </p>
-        </div>
+    <div class="row flex-row-reverse position-relative my-md-5">
+      <div class="col-md-7 d-md-block overflow-hidden offset-md-1">
+        <img src="@/assets/images/aboutTitle2.png" alt="旅遊圖"
+        class="rounded-2 object-fit-cover">
       </div>
-      <div class="d-none d-md-block col-md-5">
-        <img src="@/assets/images/aboutTitle2.png" alt="創立好嗨遊" class="rounded-2 object-fit-cover">
+      <div class="col-md-5 position-absolute" style="top:15%; left:10%">
+        <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
+          <div class="row">
+            <div class="col-md-12 text-start" style="padding-right: 24px;">
+              <h3 class="fs-4">為什麼需要好嗨遊？</h3>
+              <p class="text-secondary
+              text-prewrap mb-1 text-start"
+              style="line-height: 1.6;">在這個匆匆忙忙的世界裡，
+                我們常常忽略了周遭的美好。
+                遊台灣這件事情是一道耀眼的光，
+                穿透了日常的灰濛。
+                為你在匆忙的生活
+                為我們帶來了片刻的寧靜和歡笑。
+              </p>
+              <p class="text-secondary
+              text-prewrap mb-0 text-start"
+              style="line-height: 1.6;">
+                踏上這段旅程，彷彿進入了一幅繽紛的畫卷，
+                每一個角落都是那麼生動。從繁華的都市到幽靜的山林，台灣一日遊展現了這片土地多樣的風貌，讓人仿佛穿越了時空，感受到了無盡的驚喜和美好。
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

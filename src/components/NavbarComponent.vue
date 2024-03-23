@@ -33,10 +33,10 @@
                     <RouterLink class="nav-link text-primary active  fw-bold" aria-current="page"
                     to="/products" >好嗨遊行程</RouterLink>
                   </li>
-                  <!-- <li class="nav-item">
+                  <li class="nav-item">
                     <RouterLink class="nav-link text-primary  fw-bold" aria-current="page"
-                    to="/qalist" >常見QA</RouterLink>
-                  </li> -->
+                    to="/qalist" >常見問題</RouterLink>
+                  </li>
                   <!-- <li class="nav-item">
                     <RouterLink class="nav-link text-primary fw-bold" aria-current="page"
                     to="/saved" >

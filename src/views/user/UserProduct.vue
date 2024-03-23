@@ -119,7 +119,7 @@ export default {
         })
         .catch((err) => {
           Swal.fire({
-            title: err.response.data.message,
+            title: err.data.message,
             icon: 'error',
             timer: 1500,
             showConfirmButton: false,

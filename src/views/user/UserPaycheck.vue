@@ -118,7 +118,10 @@ export default {
           // console.log('取得Order id 資料', this.message);
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
         });
     },
     submitPayment() {
@@ -136,17 +139,19 @@ export default {
           this.$http
             .post(url)
             .then((res) => {
-              console.log(res);
               this.getOrder();
               Swal.fire({
-                title: '已完成訂單付款',
+                title: res.data.message,
                 icon: 'success',
                 timer: 1500,
               });
               this.$router.push({ name: '付款完成頁面', params: { orderId: this.orderId } });
             })
             .catch((err) => {
-              console.log(err);
+              Swal.fire({
+                icon: 'error',
+                title: err.data.message,
+              });
             });
         }
       });
