@@ -49,10 +49,10 @@
             </RouterLink>
           </div>
           <div class="position-relative d-flex" style="top: -40px; left:12px">
-            <div @click="addToSave()">
+            <!-- <div @click="addToSave()">
               <i v-if="addSave" class="bi bi-heart fs-4 text-white "></i>
               <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
-            </div>
+            </div> -->
           </div>
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>

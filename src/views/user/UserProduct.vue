@@ -37,9 +37,9 @@
           </div>
         </div>
         <div class="mt-5">
-          <div class="text-start">
+          <!-- <div class="text-start">
             <i class="bi bi-heart"></i>
-          </div>
+          </div> -->
           <ul class="text-start list-unstyled lh-lg">
             <li>費用包含：{{ product.feeincluded }}</li>
             <li>
