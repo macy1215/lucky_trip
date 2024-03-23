@@ -2,13 +2,14 @@
   <div class="aboutBanner"></div>
   <div class="container">
     <div class="row position-relative my-md-5 mobilBox">
-      <div class="d-md-block col-md-7 col-12 offset-md-1 overflow-hidden my-sm-5 rounded-2">
-        <img src="@/assets/images/aboutTitle.png" alt="關於我" class="rounded-2 object-fit-cover">
+      <div class="d-md-block col-md-7 col-12 offset-md-1 overflow-hidden my-md-5 my-4 rounded-2">
+        <img src="@/assets/images/aboutTitle.png" alt="關於我"
+        class="rounded-2 object-fit-cover overflow-hidden img-fluid">
       </div>
       <div class="col-md-5 position-absolute aboutBox1">
         <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
-            <div class="col-md-12" style="padding-right: 60px;">
+            <div class="col-md-12 boxText">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                   <li class="breadcrumb-item">
@@ -35,15 +36,15 @@
         </div>
       </div>
     </div>
-    <div class="row flex-row-reverse position-relative my-md-5 mobilBox">
-      <div class="col-md-7 col-12 d-md-block overflow-hidden offset-md-1 my-sm-5 rounded-2">
+    <div class="row flex-row-reverse position-relative  my-md-5 my-4  mobilBox">
+      <div class="col-md-7 col-12 d-md-block overflow-hidden offset-md-1 rounded-2">
         <img src="@/assets/images/aboutTitle2.png" alt="旅遊圖"
-        class="rounded-2 object-fit-cover">
+        class="rounded-2 object-fit-cover overflow-hidden img-fluid">
       </div>
       <div class="col-md-5 col-12 position-absolute aboutBox2">
         <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
-            <div class="col-md-12 text-start" style="padding-right: 24px;">
+            <div class="col-md-12 text-start">
               <h3 class="fs-4">為什麼需要好嗨遊？</h3>
               <p class="text-secondary
               text-prewrap mb-1 text-start"
@@ -55,7 +56,7 @@
                 為我們帶來了片刻的寧靜和歡笑。
               </p>
               <p class="text-secondary
-              text-prewrap mb-0 text-start"
+              text-prewrap mb-0 text-start d-md-block d-none"
               style="line-height: 1.6;">
                 踏上這段旅程，彷彿進入了一幅繽紛的畫卷，
                 每一個角落都是那麼生動。從繁華的都市到幽靜的山林，台灣一日遊展現了這片土地多樣的風貌，讓人仿佛穿越了時空，感受到了無盡的驚喜和美好。
@@ -104,20 +105,26 @@ export default {
   top:15%;
   left:10%;
 }
+.boxText{
+  padding-right: 60px;
+}
 @media (max-width: 999px) {
   .aboutBanner{
   padding: 80px 0px;
  }
   .aboutBox1{
-    top:30%;
-    left:50%;
-  }
-  .aboutBox2{
-    top:15%;
+    top:50%;
     left:10%;
   }
+  .aboutBox2{
+    top:50%;
+    left:10%;
+  }
+  .boxText{
+  padding-right: 20px;
 }
-@media (max-width: 767px) {
+}
+@media (max-width: 700px) {
   .aboutBox1{
     top:60%;
     left:1%;
@@ -126,18 +133,24 @@ export default {
     top:60%;
     left:1%;
   }
+  .boxText{
+  padding-right: 0px;
+}
 }
 @media (max-width: 440px) {
   .mobilBox{
     margin: 20px 8px;
   }
   .aboutBox1{
-    top:20%;
+    top:40%;
     left:2%;
   }
   .aboutBox2{
-    top:20%;
+    top:40%;
     left:2%;
   }
+  .boxText{
+  padding-right: 0px;
+}
 }
 </style>
