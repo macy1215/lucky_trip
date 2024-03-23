@@ -1,11 +1,11 @@
 <template>
   <div class="aboutBanner"></div>
   <div class="container">
-    <div class="row position-relative my-md-5">
-      <div class="d-md-block col-md-7 offset-md-1">
+    <div class="row position-relative my-md-5 mobilBox">
+      <div class="d-md-block col-md-7 col-12 offset-md-1 overflow-hidden my-sm-5 rounded-2">
         <img src="@/assets/images/aboutTitle.png" alt="關於我" class="rounded-2 object-fit-cover">
       </div>
-      <div class="col-md-5 position-absolute" style="top:30%; left:57%">
+      <div class="col-md-5 position-absolute aboutBox1">
         <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12" style="padding-right: 60px;">
@@ -35,12 +35,12 @@
         </div>
       </div>
     </div>
-    <div class="row flex-row-reverse position-relative my-md-5">
-      <div class="col-md-7 d-md-block overflow-hidden offset-md-1">
+    <div class="row flex-row-reverse position-relative my-md-5 mobilBox">
+      <div class="col-md-7 col-12 d-md-block overflow-hidden offset-md-1 my-sm-5 rounded-2">
         <img src="@/assets/images/aboutTitle2.png" alt="旅遊圖"
         class="rounded-2 object-fit-cover">
       </div>
-      <div class="col-md-5 position-absolute" style="top:15%; left:10%">
+      <div class="col-md-5 col-12 position-absolute aboutBox2">
         <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12 text-start" style="padding-right: 24px;">
@@ -96,9 +96,48 @@ export default {
   background-size: cover;
   padding: 160px 0px;
 }
-@media (max-width: 767px) {
+.aboutBox1{
+  top:30%;
+  left:57%;
+}
+.aboutBox2{
+  top:15%;
+  left:10%;
+}
+@media (max-width: 999px) {
   .aboutBanner{
   padding: 80px 0px;
  }
+  .aboutBox1{
+    top:30%;
+    left:50%;
+  }
+  .aboutBox2{
+    top:15%;
+    left:10%;
+  }
+}
+@media (max-width: 767px) {
+  .aboutBox1{
+    top:60%;
+    left:1%;
+  }
+  .aboutBox2{
+    top:60%;
+    left:1%;
+  }
+}
+@media (max-width: 440px) {
+  .mobilBox{
+    margin: 20px 8px;
+  }
+  .aboutBox1{
+    top:20%;
+    left:2%;
+  }
+  .aboutBox2{
+    top:20%;
+    left:2%;
+  }
 }
 </style>

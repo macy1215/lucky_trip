@@ -106,6 +106,7 @@ export default {
 }
 @media(max-width: 767px){
     .footerTitle{
+        margin-top: 40px;
         font-size: 40px;
         line-height:1.3em;
         text-align: left;
