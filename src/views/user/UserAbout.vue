@@ -56,7 +56,7 @@
                 為我們帶來了片刻的寧靜和歡笑。
               </p>
               <p class="text-secondary
-              text-prewrap mb-0 text-start d-md-block d-none"
+              text-prewrap mb-0 text-start d-lg-block d-none"
               style="line-height: 1.6;">
                 踏上這段旅程，彷彿進入了一幅繽紛的畫卷，
                 每一個角落都是那麼生動。從繁華的都市到幽靜的山林，台灣一日遊展現了這片土地多樣的風貌，讓人仿佛穿越了時空，感受到了無盡的驚喜和美好。
@@ -113,31 +113,31 @@ export default {
   padding: 80px 0px;
  }
   .aboutBox1{
-    top:50%;
-    left:10%;
+    top:30%;
+    left:50%;
   }
   .aboutBox2{
-    top:50%;
+    top:10%;
     left:10%;
   }
   .boxText{
   padding-right: 20px;
 }
 }
-@media (max-width: 700px) {
+@media (max-width: 770px) {
   .aboutBox1{
     top:60%;
-    left:1%;
+    left:0%;
   }
   .aboutBox2{
     top:60%;
-    left:1%;
+    left:0%;
   }
   .boxText{
   padding-right: 0px;
 }
 }
-@media (max-width: 440px) {
+@media (max-width: 577px) {
   .mobilBox{
     margin: 20px 8px;
   }
