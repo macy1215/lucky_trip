@@ -12,6 +12,8 @@ import axios from 'axios';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+import Swal from 'sweetalert2';
+
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default {
@@ -36,16 +38,25 @@ export default {
     fetchProduct() {
       axios
         .get(`${VITE_URL}/api/${VITE_NAME}/admin/article/-Ns6PAFkxXqUVGmEolbo`)
-        .then((response) => {
-          console.log(response);
-          if (response.data.success) {
-            this.editorData = response.data.article.content.replace(/\n/g, '<br>');
+        .then((res) => {
+          if (res.data.success) {
+            this.editorData = res.data.article.content.replace(/\n/g, '<br>');
           } else {
-            console.error('找不到產品編號！');
+            Swal.fire({
+              title: '找不到產品編號！',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false,
+            });
           }
         })
-        .catch((error) => {
-          console.error(error);
+        .catch((err) => {
+          Swal.fire({
+            title: err.data.message,
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false,
+          });
         });
     },
   },

@@ -126,7 +126,7 @@ export default {
       } else if (isNew === 'edit') {
         this.tempCoupons = { ...item }; // 帶入資料
         this.isNew = false;
-        console.log('父元件', this.tempCoupons);
+        // console.log('父元件', this.tempCoupons);
         this.$refs.couponModal.showModal();
       } else if (isNew === 'delete') {
         this.tempCoupons = { ...item };
