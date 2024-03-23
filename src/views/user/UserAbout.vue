@@ -130,7 +130,7 @@ export default {
     left:0%;
   }
   .aboutBox2{
-    top:60%;
+    top:70%;
     left:0%;
   }
   .boxText{
