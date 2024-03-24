@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
-  <div class="container px-5">
+  <div class="container px-md-5 px-2">
     <table class="table align-middle">
             <thead class="border">
               <tr>
@@ -25,12 +25,15 @@
                   </td>
                   <td class="w-auto align-middle">
                     <div class="row align-items-center">
-                      <div class="col-2">
+                      <div class="col-md-2 col-6">
                         <img :src=cart.product.imageUrl
                         class="img-fluid rounded object-fit-cover"
                         :alt="product.title">
                       </div>
-                      <h4 class="my-0 py-0 col-md-6">{{ cart.product.title }}</h4>
+                      <h4 class="col-md-6 col-6
+                        my-0 py-0 text-start ps-4">
+                        {{ cart.product.title }}
+                      </h4>
                     </div>
                     <!-- <div class="text-success">
                       已套用優惠券

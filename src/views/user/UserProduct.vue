@@ -7,7 +7,7 @@
             :alt="product.title">
       </div>
 
-      <div class="col-md-6 col-12 my-md-0 my-4 ">
+      <div class="col-md-6 col-12 my-md-0 my-md-0 my-4 align-self-stretch">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -41,18 +41,20 @@
             <i class="bi bi-heart"></i>
           </div> -->
           <ul class="text-start list-unstyled lh-lg">
-            <li>費用包含：{{ product.feeincluded }}</li>
+            <li><strong class="text-primary">費用包含 | </strong>{{ product.feeincluded }}</li>
             <li>
-              可成團人數：{{ product.minpeople }} 人</li>
-            <li>最高報名人數：{{ product.regist }} 人</li>
-            <li>交通方式
+              <strong class="text-primary">可成團人數 | </strong>{{ product.minpeople }} 人</li>
+            <li>
+              <strong class="text-primary">最高報名人數 | </strong>{{ product.regist }} 人</li>
+            <li>
+              <strong class="text-primary">交通方式 | </strong>
               <span v-if="product.is_intercitybus === 1">包車(租賃、遊覽車)</span>
               <span v-if="product.is_walk === 1">雙腳萬能</span>
               <span v-if="product.is_publictrans === 1">大眾交通(火車、公車、捷運等)</span>
             </li>
           </ul>
         </div>
-        <div class="row justify-content-start">
+        <div class="row justify-content-start align-items-stretch mt-auto">
           <div class="col-md-6 text-start">
             <button type="button"
             @click.prevent="addToCart(product.id)"

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <h2 class="fs-4 text-start col-md-9">收件者資訊</h2>
-      <div class="col-md-6 text-start">
+      <h2 class="fs-4 text-start col-lg-10 col-12">收件者資訊</h2>
+      <div class="col-lg-6 text-start">
         <div class="border border-1 rounded-1">
           <div class="border-bottom text-start px-3 pt-4">
             <ul class="lh-lg  list-unstyled">
@@ -53,9 +53,12 @@
             </div>
           </div>
         </div> -->
-        <button class="btn btn-primary mt-3 text-white w-25" @click="submitPayment">確定付款</button>
+        <button class="btn btn-primary mt-3 mb-lg-0 mb-5 text-white w-25"
+          @click="submitPayment">
+          確定付款
+        </button>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="bg-secondary bg-opacity-10 px-md-3 pb-md-5 pt-md-3 h-auto">
             <div v-for="item in order" :key="item.id">
                 <div class="d-flex row mb-3 align-items-center">
@@ -74,7 +77,29 @@
                 <span>NT${{ final_total }}</span>
             </div>
             </div>
-      </div>
+      </div> -->
+      <div class="col-lg-4 px-md-1 ">
+            <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
+              <h3 class="my-lg-2 my-4">購買清單</h3>
+              <div v-for="item in order" :key="item.id">
+                  <div class="d-flex row mb-3 align-items-center px-4">
+                      <div class="col-md-3 col-4 px-md-0">
+                          <img :src=item.product.imageUrl alt=""
+                          class="img-fluid rounded rounded-1">
+                      </div>
+                      <div class="col-md-6 col-5 text-start">{{ item.product.title }}
+                       x {{item.qty}}/{{item.product.unit }}</div>
+                      <div class="col-md-3  col-3 text-end">NT${{ item.final_total }}元</div>
+                  </div>
+            </div>
+              <hr>
+            <div class="fs-3 text-end fw-bold d-flex justify-content-between
+                px-lg-0 px-4 pb-lg-0 pb-4">
+                <span>總計</span>
+                <span>NT${{ final_total }}元</span>
+            </div>
+            </div>
+        </div>
     </div>
   </div>
 

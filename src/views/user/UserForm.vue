@@ -2,7 +2,7 @@
  <h1></h1>
  <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-8">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -108,23 +108,26 @@
           </VeeForm>
         </div>
         </div>
-        <div class="col-md-4" >
-            <div class="bg-secondary bg-opacity-10 px-md-4 pb-md-5 pt-md-3 h-auto">
-            <h3>購買清單</h3>
-            <div v-for="cart in carts" :key="cart.id">
-                <div class="d-flex row mb-3 align-items-center">
-                    <div class="col-md-3">
-                        <img :src=cart.product.imageUrl alt=""
-                        class="img-fluid rounded rounded-1">
-                    </div>
-                    <div class="col-md-6 text-start">{{ cart.product.title }}</div>
-                    <div class="col-md-3">{{ cart.final_total }}</div>
-                </div>
+        <div class="col-lg-4 px-md-1 ">
+            <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
+              <h3 class="my-lg-2 my-4">購買清單</h3>
+              <div v-for="cart in carts" :key="cart.id">
+                  <div class="d-flex row mb-3 align-items-center px-4">
+                      <div class="col-md-3 col-5 px-md-0">
+                          <img :src=cart.product.imageUrl alt=""
+                          class="img-fluid rounded rounded-1">
+                      </div>
+                      <div class="col-md-6 col-4 text-start">
+                        {{ cart.product.title }}
+                      </div>
+                      <div class="col-md-3 col-3 text-end">NT${{ cart.final_total }}元</div>
+                  </div>
             </div>
-            <hr>
-            <div class="fs-3 text-end fw-bold d-flex justify-content-between">
+              <hr>
+            <div class="fs-3 text-end fw-bold d-flex justify-content-between
+                px-lg-0 px-4 pb-lg-0 pb-4">
                 <span>總計</span>
-                <span>NT${{ final_total }}</span>
+                <span>NT${{ final_total }}元</span>
             </div>
             </div>
         </div>

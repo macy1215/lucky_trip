@@ -6,9 +6,9 @@
         <div class="row justify-content-center">
             <div class="col-md-6
             d-flex flex-column
-            align-items-center
-            align-items-md-start
-            justify-content-between justify-content-lg-center py-4">
+            align-items-start
+            justify-content-lg-center py-4
+            ">
                 <h1 class="h1 text-start">完成結帳</h1>
                 <div class="fs-5 text-black-50 text-wrap text-start"
                 style="line-height: 1.6;">

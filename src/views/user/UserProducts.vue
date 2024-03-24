@@ -11,10 +11,10 @@
     <div class="row py-5">
      <div class="col-md-3 col-12">
       <div class="bg-white shadow border-0 rounded-3 justify-content-start
-      text-start py-md-5 py-3 px-4 my-md-0 my-4">
+      text-start py-md-5 py-3 px-4 my-md-0 my-5">
         <h3 class="fw-bold text-start">主題選擇</h3>
         <hr>
-        <ul class="px-0 d-flex flex-wrap list-unstyled">
+        <ul class="px-0 d-flex flex-wrap my-0 list-unstyled">
           <li>
             <RouterLink :to="`/products`">
               <button type="button"
