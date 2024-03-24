@@ -1,1 +1,0 @@
-import{_ as t,a,o as s,c as o,f as r,t as n,F as c,b as p}from"./index-D--wlP2t.js";import{s as l}from"./saveStore-N7PF1gog.js";const d={data(){return{}},computed:{...a(l,["savelist"])}},i=p("h1",null,"我的收藏頁面",-1);function _(e,m,f,u,v,S){return s(),o(c,null,[i,r(" "+n(e.savelist),1)],64)}const x=t(d,[["render",_]]);export{x as default};
