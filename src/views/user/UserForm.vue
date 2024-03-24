@@ -3,7 +3,7 @@
  <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <nav aria-label="breadcrumb">
+            <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         建立訂單
@@ -12,8 +12,8 @@
                         付款
                     </li>
                 </ol>
-            </nav>
-            <div class="my-5 row justify-content-center">
+            </nav> -->
+            <div class="my-md-0 my-5 row justify-content-center">
           <VeeForm ref="form" class="col-md-10" @submit="createOrder" v-slot="{ errors }" >
             <div class="mb-4">
               <h3 class="text-start fs-3">聯絡資訊</h3>
