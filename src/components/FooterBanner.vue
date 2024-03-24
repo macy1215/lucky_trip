@@ -1,5 +1,6 @@
 <template>
-    <div class="footerbg ">
+  <footer class="bottom-0">
+    <div class="footerbg align-self-end">
         <div class="container mt-5">
         <div class="row align-items-center py-3 position-relative">
             <div class="col-md-6 col-12">
@@ -55,7 +56,8 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
+  </footer>
 </template>
 
 <script>

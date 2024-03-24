@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container h-100">
     <div class="row justify-content-center">
       <h2 class="fs-4 text-start col-lg-10 col-12">收件者資訊</h2>
       <div class="col-lg-6 text-start">

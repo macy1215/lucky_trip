@@ -11,7 +11,7 @@
     <div class="row py-5">
      <div class="col-md-3 col-12">
       <div class="bg-white shadow border-0 rounded-3 justify-content-start
-      text-start py-md-5 py-3 px-4 my-md-0 my-5">
+      text-start py-md-4 py-3 px-4 my-md-0 mt-2 mb-4">
         <h3 class="fw-bold text-start">主題選擇</h3>
         <hr>
         <ul class="px-0 d-flex flex-wrap my-0 list-unstyled">
@@ -40,7 +40,7 @@
       <div class="row">
         <div class="col-md-6 d-flex" v-for="product in products" :key="product.id">
         <div class="card mb-4">
-          <div style="height: 250px;" class="overflow-hidden">
+          <div class="overflow-hidden productImg">
             <RouterLink :to="`/product/${product.id}`" >
             <img :src=product.imageUrl class="card-img-top  object-fit-cover"
             :alt="product.title"
@@ -48,25 +48,27 @@
             >
             </RouterLink>
           </div>
-          <div class="position-relative d-flex" style="top: -40px; left:12px">
-            <div @click="addToSave(product)">
-              <!-- prevent -->
+          <!-- <div class="position-relative d-flex" style="top: -40px; left:12px"> -->
+            <!-- prevent -->
+            <!-- <div @click="addToSave(product)">
               <i v-if="!isProductSaved(product)" class="bi bi-heart fs-4 text-white"></i>
               <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
-            </div>
-          </div>
+            </div> -->
+          <!-- </div> -->
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>
-            <div class="text-start d-flex justify-content-between align-items-center">
-              <div>
+            <div class="row text-start justify-content-between align-items-center">
+              <div class="col-lg-7 col-md-12 col-6">
                 售價
                 <span class="text-decoration-line-through text-black-50 fs-6">
                   NT {{ product.origin_price }}
                 </span>
                 <span class="text-primary h5">NT {{ product.price }}</span>
               </div>
-              <div @click.prevent="addToCart(product.id, qty)">
-              <button class="btn btn-primary text-white" type="submit">加入購物車</button>
+              <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
+                    pt-lg-0 pt-md-3 pt-0"
+                @click.prevent="addToCart(product.id, qty)">
+                <button class="btn btn-primary text-white" type="submit">加入購物車</button>
               <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
                 class="bi bi-cart-plus fs-4 text-white me-3"></i>
               <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
@@ -202,13 +204,20 @@ export default {
 .btnHover:hover{
   color: white;
 }
-
+.productImg{
+  height: 250px;
+}
+@media(max-width: 999px){
+  .productImg{
+  height: auto;
+  }
+}
 @media(max-width: 767px){
   .productAllbg{
     height: 200px;
   }
   .productBox{
   height: 20vh;
-}
+  }
 }
 </style>

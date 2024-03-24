@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
   <div class="container px-md-5 px-2">
-    <table class="table align-middle">
+    <table class="table align-middle" :class="{ 'fullH': Object.keys(product).length < 3 }">
             <thead class="border">
               <tr>
                 <th></th>
@@ -133,4 +133,7 @@ export default {
 </script>
 
 <style scoped>
+.fullH{
+  height: 400px;
+}
 </style>
