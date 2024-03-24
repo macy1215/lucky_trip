@@ -58,11 +58,11 @@
       </div>
     </div>
    </div>
-   <div class="bg-primary w-auto bg-opacity-10 mt-md-5 py-md-3">
+   <div class="bg-primary w-auto bg-opacity-10 mt-md-5 py-md-3 pb-5">
     <div class="container my-5 py-4">
       <div class="row align-items-md-center py-3 px-md-0 px-2 position-relative">
         <div class="col-md col-12">
-          <h2 class="text-wrap activeTitle text-md-start fw-bold " style="z-index:10;">
+          <h2 class="text-wrap activeTitle text-md-start fw-bold mb-5" style="z-index:10;">
             在愛的旅途中每一步都是溫暖的延續。讓我們攜手為偏鄉孩子的未來繪上希望的色彩...
           </h2>
         </div>

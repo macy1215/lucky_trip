@@ -1,13 +1,13 @@
 <template>
   <div class="banner"></div>
-  <div class="container">
+  <div class="container px-4">
     <div class="row mt-4 pt-4 align-items-center">
       <div class="col-md-6">
-        <img :src=product.imageUrl class="card-img-top  object-fit-cover"
+        <img :src=product.imageUrl class="card-img-top  object-fit-cover img-fluid rounded-2"
             :alt="product.title">
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-12 my-md-0 my-4 ">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -25,13 +25,13 @@
         </nav>
         <div class="h2 text-start fw-bold">{{ product.title }}</div>
         <div class="row align-items-center justify-content-between pt-3">
-          <div class="col-md-6 align-middle text-black-50 text-start">
+          <div class="col-6 align-middle text-black-50 text-start">
            原價
            <span class="text-decoration-line-through text-black-50">
             NT${{ product.origin_price }}
           </span>
           </div>
-          <div class="col-md-6 text-start">
+          <div class="col-6 text-start">
             <span class="fw-bold me-2">好遊價</span>
             <span class="fs-3 text-primary fw-bold">NT${{ product.price }}</span>
           </div>
@@ -62,11 +62,11 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 my-md-4 text-start">
+      <div class="col-md-12 my-4 text-start">
         <h4 class="fs-4 fw-bold pb-2">旅遊行程</h4>
         <div>{{ product.schedule }}</div>
       </div>
-      <div class="col-md-12 my-md-4 text-start">
+      <div class="col-md-12 my-4 text-start">
         <h4 class="fs-4 fw-bold pb-2">注意事項</h4>
         <div>餐點：{{ product.content }}</div>
         <ol class="text-primary mt-3 lh-base fw-bold">
@@ -74,7 +74,7 @@
               <li>*如想客製化行程皆由當日導遊與路況來進行而外調整。</li>
         </ol>
       </div>
-      <div class="col-md-12 my-md-4 text-start">
+      <div class="col-md-12 my-4 text-start">
         <h4 class="fs-4 fw-bold pb-2">退費政策</h4>
         <div class="fw-bold text-primary mb-2">*團體與個人皆適用</div>
         <ul class="lh-lg">

@@ -1,11 +1,20 @@
 <template>
-    <h1>This is About page.</h1>
-    <RouterLink to="/">Home</RouterLink> |
-    <RouterLink to="/about">About</RouterLink>
+    <h1>我的收藏頁面</h1>
+    {{ savelist }}
   </template>
 
 <script>
+import { mapState } from 'pinia';
+import saveStore from '@/stores/saveStore';
+
 export default {
+  data() {
+    return {
+    };
+  },
+  computed: {
+    ...mapState(saveStore, ['savelist']),
+  },
 };
 </script>
 

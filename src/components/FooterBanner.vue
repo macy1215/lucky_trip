@@ -105,6 +105,9 @@ export default {
     line-height:1.6em;
 }
 @media(max-width: 767px){
+  .footerbg{
+    margin-top: 20px;
+}
     .footerTitle{
         margin-top: 40px;
         font-size: 40px;

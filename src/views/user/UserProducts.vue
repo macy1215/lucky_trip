@@ -11,7 +11,7 @@
     <div class="row py-5">
      <div class="col-md-3 col-12">
       <div class="bg-white shadow border-0 rounded-3 justify-content-start
-      text-start py-5 px-4">
+      text-start py-md-5 py-3 px-4 my-md-0 my-4">
         <h3 class="fw-bold text-start">主題選擇</h3>
         <hr>
         <ul class="px-0 d-flex flex-wrap list-unstyled">
@@ -49,10 +49,11 @@
             </RouterLink>
           </div>
           <div class="position-relative d-flex" style="top: -40px; left:12px">
-            <!-- <div @click="addToSave()">
-              <i v-if="addSave" class="bi bi-heart fs-4 text-white "></i>
+            <div @click="addToSave(product)">
+              <!-- prevent -->
+              <i v-if="!isProductSaved(product)" class="bi bi-heart fs-4 text-white"></i>
               <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
-            </div> -->
+            </div>
           </div>
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>
@@ -82,13 +83,14 @@
   <footer-banner></footer-banner>
 </template>
 <script type="module">
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import FooterBanner from '@/components/FooterBanner.vue';
 import Pagination from '@/components/PaginationView.vue';
 
 import Swal from 'sweetalert2';
 
 import cartStore from '@/stores/cartStore';
+import saveStore from '@/stores/saveStore';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -103,6 +105,7 @@ export default {
       productId: '',
       categories: ['文化探索', '休閒渡假', '自然景色', '親子出遊', '美食之旅'],
       pagination: {},
+      // savelist: [],
     };
   },
   watch: {
@@ -152,9 +155,16 @@ export default {
         });
     },
     ...mapActions(cartStore, ['addToCart']),
-    addToSave() {
-      this.addSave = !this.addSave;
-    },
+    ...mapActions(saveStore, ['addToSave', 'isProductSaved']),
+    // addToSave(item) {
+    //   console.dir(item);
+    //   if (!this.savelist.find((favorite) => favorite.id === item.id)) {
+    //     this.savelist.push(item);
+    //   }
+    // },
+  },
+  computed: {
+    ...mapState(saveStore, ['savelist']),
   },
   components: {
     FooterBanner,
