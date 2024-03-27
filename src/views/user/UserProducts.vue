@@ -48,13 +48,19 @@
             >
             </RouterLink>
           </div>
-          <!-- <div class="position-relative d-flex" style="top: -40px; left:12px"> -->
+          <div class="position-relative d-flex saveBox">
             <!-- prevent -->
-            <!-- <div @click="addToSave(product)">
-              <i v-if="!isProductSaved(product)" class="bi bi-heart fs-4 text-white"></i>
-              <i v-else class="bi bi-heart-fill fs-4 text-white"></i>
-            </div> -->
-          <!-- </div> -->
+            <div @click="addToSave(product)"
+            class="rounded-circle btn btn-outline-light border border-2 pb-1 ">
+              <i v-if="!isProductSaved(product.id)"
+              class="bi bi-heart fs-4 icon"
+              :class="{ 'text-dark': isHover[product.id] }"
+                @mouseover="isHover[product.id] = true"
+                @mouseleave="isHover[product.id] = false"
+              ></i>
+              <i v-else class="bi bi-heart-fill fs-4 icon"></i>
+            </div>
+          </div>
           <div class="card-body">
             <h5 class="card-title text-start">{{product.title}}</h5>
             <div class="row text-start justify-content-between align-items-center">
@@ -76,7 +82,7 @@
             </div>
           </div>
         </div>
-      </div>
+       </div>
       </div>
       <Pagination :pagination="pagination" @emit-pages="getProducts"></Pagination>
      </div>
@@ -108,6 +114,7 @@ export default {
       categories: ['文化探索', '休閒渡假', '自然景色', '親子出遊', '美食之旅'],
       pagination: {},
       // savelist: [],
+      isHover: {},
     };
   },
   watch: {
@@ -157,7 +164,7 @@ export default {
         });
     },
     ...mapActions(cartStore, ['addToCart']),
-    ...mapActions(saveStore, ['addToSave', 'isProductSaved']),
+    ...mapActions(saveStore, ['addToSave']),
     // addToSave(item) {
     //   console.dir(item);
     //   if (!this.savelist.find((favorite) => favorite.id === item.id)) {
@@ -166,7 +173,7 @@ export default {
     // },
   },
   computed: {
-    ...mapState(saveStore, ['savelist']),
+    ...mapState(saveStore, ['savelist', 'isProductSaved']),
   },
   components: {
     FooterBanner,
@@ -206,6 +213,17 @@ export default {
 }
 .productImg{
   height: 250px;
+}
+.saveBox{
+  top: -60px;
+  left:12px
+}
+.icon {
+  transition: transform 0.1s ease, color 0.1s ease; /* 添加颜色过渡效果 */
+}
+.icon:hover {
+  text-transform: scale(1.2); /* 指定放大倍数，这里为1.2倍 */
+  color: black;
 }
 @media(max-width: 999px){
   .productImg{

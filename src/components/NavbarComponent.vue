@@ -37,12 +37,18 @@
                     <RouterLink class="nav-link text-primary  fw-bold" aria-current="page"
                     to="/qalist" >常見問題</RouterLink>
                   </li>
-                  <!-- <li class="nav-item">
+                  <li class="nav-item">
                     <RouterLink class="nav-link text-primary fw-bold" aria-current="page"
                     to="/saved" >
-                     我的收藏
+                     <span>我的收藏</span>
+                     <!-- class="position-relative align-top" -->
+                     <!-- <span class="position-absolute
+                        top-20 start-90 translate-middle
+                        badge rounded-pill bg-danger fs-6">{{this.saveProductList?.length}}
+                        <span class="visually-hidden">New alerts</span>
+                      </span> -->
                   </RouterLink>
-                  </li> -->
+                  </li>
                   <li class="nav-item">
                     <RouterLink aria-current="page" to="/carts"
                     class="nav-link cart nav-link fs-4 ms-lg-4 me-1 position-relative" >
@@ -66,7 +72,8 @@
 import Collapse from 'bootstrap/js/dist/collapse';
 import { mapActions, mapState } from 'pinia';
 
-import cartStore from '../stores/cartStore';
+import cartStore from '@/stores/cartStore';
+import saveStore from '@/stores/saveStore';
 
 export default {
   data() {
@@ -84,6 +91,7 @@ export default {
   },
   computed: {
     ...mapState(cartStore, ['carts']),
+    ...mapState(saveStore, ['saveIdlist', 'saveProductList', 'isProductSaved']),
   },
   mounted() {
     this.headerNavDrop = new Collapse(this.$refs.headerNavDrop, { toggle: false });

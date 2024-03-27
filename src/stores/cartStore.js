@@ -102,10 +102,9 @@ export default defineStore('cartStore', {
         if (result.isConfirmed) {
           axios.delete(`${VITE_URL}/api/${VITE_NAME}/carts`)
             .then((res) => {
-              console.log(res);
               this.getCart();
               Swal.fire({
-                title: '列表刪除',
+                title: res.data.message,
                 text: '確定已將列表刪除',
                 icon: 'success',
               });
