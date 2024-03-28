@@ -49,8 +49,7 @@
             </RouterLink>
           </div>
           <div class="position-relative d-flex saveBox">
-            <!-- prevent -->
-            <div @click="addToSave(product)"
+            <div @click.prevent="addToSave(product)"
             class="rounded-circle btn btn-outline-light border border-2 pb-1 ">
               <i v-if="!isProductSaved(product.id)"
               class="bi bi-heart fs-4 icon"
@@ -67,17 +66,23 @@
               <div class="col-lg-7 col-md-12 col-6">
                 售價
                 <span class="text-decoration-line-through text-black-50 fs-6">
-                  NT {{ product.origin_price }}
+                      {{ product.origin_price.toLocaleString('zh-TW', {
+                          style: 'currency',
+                          currency: 'NTD'
+                        })
+                      }}
                 </span>
-                <span class="text-primary h5">NT {{ product.price }}</span>
+                <span class="text-primary h5">
+                    {{ product.price.toLocaleString('zh-TW', {
+                          style: 'currency',
+                          currency: 'NTD'
+                        })
+                    }}</span>
               </div>
               <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
                     pt-lg-0 pt-md-3 pt-0"
                 @click.prevent="addToCart(product.id, qty)">
                 <button class="btn btn-primary text-white" type="submit">加入購物車</button>
-              <!-- <i v-if="!carts.find(carts => carts.product_id !== product.id)"
-                class="bi bi-cart-plus fs-4 text-white me-3"></i>
-              <i v-else class="bi bi-cart-plus-fill text-white  fs-4 me-3"></i> -->
             </div>
             </div>
           </div>
@@ -88,7 +93,7 @@
      </div>
     </div>
   </div>
-  <footer-banner></footer-banner>
+  <footer-banner/>
 </template>
 <script type="module">
 import { mapActions, mapState } from 'pinia';
@@ -134,6 +139,8 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products;
+          this.pricethuand = res.data.products;
+          this.priceorithouand = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
         })

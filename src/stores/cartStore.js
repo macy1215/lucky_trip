@@ -62,9 +62,11 @@ export default defineStore('cartStore', {
         text: '一但刪除將無法復原',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ADADAD',
         confirmButtonText: '我要刪除',
+        cancelButtonText: '再想想',
+        reverseButtons: true,
       }).then((result) => {
         if (result.isConfirmed) {
           this.status.cartQtyLoading = id;
@@ -95,9 +97,11 @@ export default defineStore('cartStore', {
         text: '一但刪除將無法復原',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ADADAD',
         confirmButtonText: '我要刪除',
+        cancelButtonText: '再想想',
+        reverseButtons: true,
       }).then((result) => {
         if (result.isConfirmed) {
           axios.delete(`${VITE_URL}/api/${VITE_NAME}/carts`)

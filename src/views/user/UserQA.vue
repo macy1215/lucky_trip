@@ -121,7 +121,7 @@
       </div>
     </div>
   </div>
-  <footer-banner></footer-banner>
+  <footer-banner/>
 </template>
 
 <script>

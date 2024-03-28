@@ -18,66 +18,11 @@
             備註 <span>{{ message }}</span>
           </div>
         </div>
-        <!-- <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button"
-              type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseOne" aria-expanded="true"
-              aria-controls="collapseOne">
-                聯絡 {{ user.name }} / {{ user.email }} / {{ user.tel }}
-              </button>
-            </h2>
-            <div id="collapseOne"
-                  class="accordion-collapse collapse show"
-                  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body  text-start">
-                {{ user.name }} / {{ user.email }} / {{ user.tel }}
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed"
-              type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false"
-              aria-controls="collapseTwo">
-                地址 {{ user.address }}
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse
-            collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                {{ user.address }}
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <button class="btn btn-primary mt-3 mb-lg-0 mb-5 text-white w-25"
+        <button class="btn btn-primary mt-3 mb-lg-0 mb-5 w-25"
           @click="submitPayment">
-          確定付款
+          <span class="text-white">確定付款</span>
         </button>
       </div>
-      <!-- <div class="col-md-3">
-        <div class="bg-secondary bg-opacity-10 px-md-3 pb-md-5 pt-md-3 h-auto">
-            <div v-for="item in order" :key="item.id">
-                <div class="d-flex row mb-3 align-items-center">
-                    <div class="col-md-3">
-                        <img :src=item.product.imageUrl alt=""
-                        class="img-fluid rounded rounded-1">
-                    </div>
-                    <div class="col-md-6 text-start">{{ item.product.title }}
-                       x {{item.qty}}/{{item.product.unit }}</div>
-                    <div class="col-md-3">{{ item.final_total }}</div>
-                </div>
-            </div>
-            <hr>
-            <div class="fs-3 text-end fw-bold d-flex justify-content-between">
-                <span>總計</span>
-                <span>NT${{ final_total }}</span>
-            </div>
-            </div>
-      </div> -->
       <div class="col-lg-4 px-md-1 ">
             <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
               <h3 class="my-lg-2 my-4">購買清單</h3>
@@ -103,7 +48,7 @@
     </div>
   </div>
 
- <footer-banner></footer-banner>
+  <footer-banner/>
 </template>
 
 <script>
@@ -152,11 +97,13 @@ export default {
     submitPayment() {
       Swal.fire({
         title: '確定付款嗎？',
-        icon: 'warning',
+        icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#2e949c',
+        cancelButtonColor: '#ADADAD',
         confirmButtonText: '付款',
+        cancelButtonText: '先不要',
+        reverseButtons: true,
       }).then((result) => {
         if (result.isConfirmed) {
           const { id } = this.$route.params;

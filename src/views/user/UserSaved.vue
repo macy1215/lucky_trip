@@ -54,7 +54,7 @@
         </div>
         <div v-else class="text-primary fw-bold h5 col-12">目前沒有收藏唷！快去看看吧</div>
     </div>
-    <footer-banner></footer-banner>
+    <footer-banner/>
   </template>
 
 <script>

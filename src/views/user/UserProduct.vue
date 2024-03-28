@@ -25,15 +25,27 @@
         </nav>
         <div class="h2 text-start fw-bold">{{ product.title }}</div>
         <div class="row align-items-center justify-content-between pt-3">
-          <div class="col-6 align-middle text-black-50 text-start">
+          <div class="col-6 align-middle text-black-50 text-start"
+              v-if="typeof product.origin_price === 'number'">
            原價
            <span class="text-decoration-line-through text-black-50">
-            NT${{ product.origin_price }}
+            {{ product.origin_price.toLocaleString('zh-TW', {
+                          style: 'currency',
+                          currency: 'NTD'
+                        })
+            }}
           </span>
           </div>
-          <div class="col-6 text-start">
+          <div class="col-6 text-start"
+          v-if="typeof product.origin_price === 'number'">
             <span class="fw-bold me-2">好遊價</span>
-            <span class="fs-3 text-primary fw-bold">NT${{ product.price }}</span>
+            <span class="fs-3 text-primary fw-bold">
+              {{ product.price.toLocaleString('zh-TW', {
+                          style: 'currency',
+                          currency: 'NTD'
+                        })
+                  }}
+            </span>
           </div>
         </div>
         <div class="mt-5">
@@ -80,18 +92,18 @@
         <h4 class="fs-4 fw-bold pb-2">退費政策</h4>
         <div class="fw-bold text-primary mb-2">*團體與個人皆適用</div>
         <ul class="lh-lg">
-          <li>旅遊開始前第31日取消:平台需賠償百分之10</li>
-          <li>旅遊開始前第21-30日取消:平台需賠償百分之20。</li>
-          <li>旅遊開始前第11-20日取消:平台需賠償百分之30。</li>
-          <li>旅遊開始前第4-10日取消:平台需賠償百分之50。</li>
-          <li>旅遊開始前第1-3日取消:平台需賠償百分之70。 </li>
+          <li>旅遊開始前第31日取消：平台需賠償百分之10</li>
+          <li>旅遊開始前第21-30日取消：平台需賠償百分之20。</li>
+          <li>旅遊開始前第11-20日取消：平台需賠償百分之30。</li>
+          <li>旅遊開始前第4-10日取消：平台需賠償百分之50。</li>
+          <li>旅遊開始前第1-3日取消：平台需賠償百分之70。 </li>
           <li>如於出發當天取消訂單、團隊集合逾時、因個人因素私自脫隊、及未通知不參加者恕不退費</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <footer-banner></footer-banner>
+  <footer-banner/>
 </template>
 
 <script>

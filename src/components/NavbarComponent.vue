@@ -1,6 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-md container align-items-center">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-md align-items-center fixed-top shadow-sm">
+      <div class="container">
             <RouterLink to="/" >
                 <span class="nav-link logostyle">
                     <a>lucky-trip</a>

@@ -84,12 +84,7 @@
               <tr>
                 <td colspan="3" class="text-end">總計</td>
                 <td class="text-end fs-5">{{ final_total }}</td>
-                <!-- cart.product.title  -->
               </tr>
-              <!-- <tr>
-                <td colspan="3" class="text-end text-success">折扣價</td>
-                <td class="text-end text-success">{{  }}</td>
-              </tr> -->
             </tfoot>
     </table>
     <div class="text-end">
@@ -98,13 +93,13 @@
       @click="removeAllCart(carts)">清空購物車</button>
     </div>
     <RouterLink :to="`/form`">
-      <button class="btn btn-primary" type="submit">
+      <button class="btn btn-primary text-white" type="submit">
         確認結帳
       </button>
     </RouterLink>
   </div>
-          <footer-banner></footer-banner>
-  </template>
+  <footer-banner/>
+</template>
 
 <script>
 import FooterBanner from '@/components/FooterBanner.vue';

@@ -7,7 +7,7 @@
             <h2 class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm">
                 訂閱獲得最新情報<br>及特別折扣！
             </h2>
-            <div class="input-group mx-2 pe-5 pb-5">
+            <div class="input-group pe-5 pb-5">
                 <VeeForm
                 ref="form"
                 class="col-md-6"

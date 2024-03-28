@@ -1,5 +1,5 @@
 <template>
-    <Navbar-Component></Navbar-Component>
+    <Navbar-Component class="bg-white"></Navbar-Component>
     <RouterView></RouterView>
 </template>
 
