@@ -68,8 +68,8 @@
 
   <div class="container mt-5 pt-4 pb-4 justify-content-between">
       <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
-      <ul class="d-md-flex justify-content-around mt-3 align-middle">
-        <li class="circleBox my-0px mx-auto rounded-circle">
+      <ul class="d-md-flex mt-3 justify-content-center align-middle px-5">
+        <li class="circleBox my-0px mx-4 rounded-circle">
           <RouterLink :to="`/products?category=文化探索`"
             class="img-fluid d-block walkImg h-100 w-100 text-decoration-none">
             <div class="coverTxtBox">
@@ -79,26 +79,47 @@
             </div>
           </RouterLink>
         </li>
-        <!-- <li class="circleBox rounded-circle my-0px mx-auto ">
-          <RouterLink :to="`/products?category=美食之旅`">
-            <img src="@/assets/images/circle-food.png" alt="" class="h-100 coverTxtBox">
+        <li class="circleBox my-0px  mx-4 rounded-circle">
+          <RouterLink :to="`/products?category=美食之旅`"
+            class="img-fluid d-block foodImg h-100 w-100 text-decoration-none">
+            <div class="coverTxtBox">
+              <span class="fs-2 fw-bold text-warp text-white">
+                美食之旅
+              </span>
+            </div>
           </RouterLink>
         </li>
-        <li class="circleBox rounded-circle my-0px mx-auto ">
-          <RouterLink :to="`/products?category=親子出遊`">
-            <img src="@/assets/images/circle-family.png" alt="" class="h-100 coverTxtBox">
+        <li class="circleBox my-0px  mx-4 rounded-circle">
+          <RouterLink :to="`/products?category=親子出遊`"
+          class="img-fluid d-block familyImg h-100 w-100 text-decoration-none"
+          >
+            <div class="coverTxtBox">
+              <span class="fs-2 fw-bold text-warp text-white">
+                親子旅遊
+              </span>
+            </div>
           </RouterLink>
         </li>
-        <li class="circleBox rounded-circle my-0px mx-auto ">
-          <RouterLink :to="`/products?category=休閒渡假`">
-            <img src="@/assets/images/circle-culture.png" alt="" class="h-100 coverTxtBox">
+        <li class="circleBox my-0px  mx-4 rounded-circle">
+          <RouterLink :to="`/products?category=親子出遊`"
+          class="img-fluid d-block vacationImg h-100 w-100 text-decoration-none">
+            <div class="coverTxtBox">
+              <span class="fs-2 fw-bold text-warp text-white">
+                休閒旅遊
+              </span>
+            </div>
           </RouterLink>
         </li>
-        <li class="circleBox rounded-circle my-0px mx-auto ">
-          <RouterLink :to="`/products?category=自然景色`">
-            <img src="@/assets/images/circle-nature.png" alt="" class="h-100 coverTxtBox">
+        <li class="circleBox my-0px  mx-4 rounded-circle">
+          <RouterLink :to="`/products?category=自然景色`"
+          class="img-fluid d-block natureImg h-100 w-100 text-decoration-none">
+            <div class="coverTxtBox">
+              <span class="fs-2 fw-bold text-warp text-white">
+                自然景色
+              </span>
+            </div>
           </RouterLink>
-        </li> -->
+        </li>
       </ul>
     </div>
 
@@ -209,9 +230,28 @@ export default {
 .coverTxtBox:hover{
   opacity: 0.75;
 }
+.circleBox:hover{
+  animation: jump 1s ease;
+}
 
 .walkImg{
   background-image: url('@/assets/images/circle-walk.png');
+  background-size: cover;
+}
+.foodImg{
+  background-image: url('@/assets/images/circle-food.png');
+  background-size: cover;
+}
+.familyImg{
+  background-image: url('@/assets/images/circle-family.png');
+  background-size: cover;
+}
+.vacationImg{
+  background-image: url('@/assets/images/circle-culture.png');
+  background-size: cover;
+}
+.natureImg{
+  background-image: url('@/assets/images/circle-nature.png');
   background-size: cover;
 }
 @keyframes  swing {
@@ -222,10 +262,10 @@ export default {
   100% { transform:  translateX(0px); }
 }
 @keyframes  jump {
-  15% { transform:  translateY(2px) rotate(1deg);}
-  30% { transform:  translateY(-2px) rotate(-1deg); }
-  45% { transform:  translateY(2px) rotate(1deg); }
-  60% { transform:  translateY(-2px) rotate(-1deg);}
+  15% { transform:  translateY(5px) rotate(3deg);}
+  30% { transform:  translateY(-5px) rotate(-3deg); }
+  45% { transform:  translateY(5px) rotate(3deg); }
+  60% { transform:  translateY(-5px) rotate(-3deg);}
   100% { transform:  translateY(0px); }
 }
 @keyframes  zoom  {
