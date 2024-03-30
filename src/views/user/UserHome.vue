@@ -68,53 +68,53 @@
 
   <div class="container mt-5 pt-4 pb-4 justify-content-between">
       <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
-      <ul class="d-md-flex mt-3 justify-content-center align-middle px-5">
-        <li class="circleBox my-0px mx-4 rounded-circle">
+      <ul class="d-md-flex mt-4 justify-content-center align-items-center px-md-0">
+        <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=文化探索`"
             class="img-fluid d-block walkImg h-100 w-100 text-decoration-none">
             <div class="coverTxtBox">
-              <span class="fs-2 fw-bold text-warp text-white">
+              <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
                 文化探索
               </span>
             </div>
           </RouterLink>
         </li>
-        <li class="circleBox my-0px  mx-4 rounded-circle">
+        <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=美食之旅`"
             class="img-fluid d-block foodImg h-100 w-100 text-decoration-none">
             <div class="coverTxtBox">
-              <span class="fs-2 fw-bold text-warp text-white">
+              <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
                 美食之旅
               </span>
             </div>
           </RouterLink>
         </li>
-        <li class="circleBox my-0px  mx-4 rounded-circle">
+        <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=親子出遊`"
           class="img-fluid d-block familyImg h-100 w-100 text-decoration-none"
           >
             <div class="coverTxtBox">
-              <span class="fs-2 fw-bold text-warp text-white">
+              <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
                 親子旅遊
               </span>
             </div>
           </RouterLink>
         </li>
-        <li class="circleBox my-0px  mx-4 rounded-circle">
+        <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=親子出遊`"
           class="img-fluid d-block vacationImg h-100 w-100 text-decoration-none">
             <div class="coverTxtBox">
-              <span class="fs-2 fw-bold text-warp text-white">
+              <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
                 休閒旅遊
               </span>
             </div>
           </RouterLink>
         </li>
-        <li class="circleBox my-0px  mx-4 rounded-circle">
+        <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=自然景色`"
           class="img-fluid d-block natureImg h-100 w-100 text-decoration-none">
             <div class="coverTxtBox">
-              <span class="fs-2 fw-bold text-warp text-white">
+              <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
                 自然景色
               </span>
             </div>
@@ -125,7 +125,7 @@
 
   <div class="bg-primary w-auto bg-opacity-10 mt-md-5 py-md-3 pb-5">
   <div class="container my-5 py-4">
-    <div class="row align-items-md-center py-3 px-md-0 px-2 position-relative">
+    <div class="row align-items-md-center py-3 px-0 px-2 position-relative">
       <div class="col-md col-12">
         <h2 class="text-wrap activeTitle text-md-start fw-bold mb-5" style="z-index:10;">
           在愛的旅途中每一步都是溫暖的延續。讓我們攜手為偏鄉孩子的未來繪上希望的色彩...
@@ -231,7 +231,7 @@ export default {
   opacity: 0.75;
 }
 .circleBox:hover{
-  animation: jump 1s ease;
+  animation: zoom 1s ease;
 }
 
 .walkImg{
@@ -288,10 +288,20 @@ export default {
     width: 50%;
     height: 80vh;
   }
+  @media(max-width: 1200px){
+
+  }
   @media(max-width: 998px){
     .banBgCol{
     width: 50%;
     height: 80vh;
+  }
+  .circleBox{
+    height: 130px;
+    overflow: hidden;
+  }
+  .coverTxtBox{
+    padding: 41% 0px;
   }
   }
   @media(max-width: 767px){
@@ -300,18 +310,26 @@ export default {
   width: 90%;
   }
   .activebox {
-      margin-top: 24px;
+      margin-top: -20px;
       margin-left: 0px;
   }
   .banBgCol{
     width: 80%;
     z-index: 9;
     margin-top: 120px;
-    height: 50vh;
+    height: 30vh;
   }
   .mobiltitle{
     width: 90%;
     margin-top: 100px;
+  }
+  .circleBox{
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .coverTxtBox{
+    padding: 41% 0px;
   }
   @media(max-width: 430px){
     .mobiltitle{
@@ -323,7 +341,7 @@ export default {
     width: 80%;
     z-index: 9;
     margin-top: 150px;
-    height: 35vh;
+    height: 40vh;
     }
   }
   @media(max-width: 390px){
@@ -331,7 +349,7 @@ export default {
     width: 80%;
     z-index: 9;
     margin-top: 120px;
-    height: 50vh;
+    height:45vh;
     }
   }
   @media(max-width: 280px){

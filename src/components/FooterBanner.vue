@@ -1,7 +1,7 @@
 <template>
   <footer class="bottom-0">
     <div class="footerbg align-self-end">
-        <div class="container mt-5">
+        <div class="container">
         <div class="row align-items-center py-3 position-relative">
             <div class="col-md-6 col-12">
             <h2 class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm">
@@ -96,7 +96,6 @@ export default {
 
 <style scoped>
 .footerbg{
-    margin-top: 100px;
     background-size: cover;
     background-image: url(@/assets/images/footer-news.png);
     background-repeat: no-repeat;
@@ -107,9 +106,6 @@ export default {
     line-height:1.6em;
 }
 @media(max-width: 767px){
-  .footerbg{
-    margin-top: 20px;
-}
     .footerTitle{
         margin-top: 40px;
         font-size: 40px;
