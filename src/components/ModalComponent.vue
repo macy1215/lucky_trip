@@ -245,6 +245,7 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -276,19 +277,29 @@ export default {
 
       axios[http](url, { data: this.tempProduct })
         .then((res) => {
-          // eslint-disable-next-line no-alert
-          alert(res.data.message);
           this.hideModal();
           this.$emit('update');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         })
         .catch((err) => {
           // eslint-disable-next-line no-alert
           alert(err.response.data.message);
-          // .data.message
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
     },
     addschedules() {
-      console.log(this.tempProduct.schedule[0]);
       let schedules = this.tempProduct.schedule;
       if (!Array.isArray(schedules)) {
         schedules = [schedules];
@@ -298,10 +309,6 @@ export default {
     },
   },
   mounted() {
-    // this.productModal = new Modal(this.$ref.productModal, {
-    //   keyboard: false,
-    //   backdrop: 'static',
-    // });
     this.productModal = new Modal(this.$refs.productModal, {
       keyboard: false,
       backdrop: 'static',

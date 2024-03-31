@@ -40,52 +40,46 @@
       <div class="row">
         <div class="col-md-6 d-flex" v-for="product in products" :key="product.id">
         <div class="card mb-4">
-          <div class="overflow-hidden productImg">
-            <RouterLink :to="`/product/${product.id}`" >
-            <img :src=product.imageUrl class="card-img-top  object-fit-cover"
-            :alt="product.title"
-            style="width: 105%;"
-            >
-            </RouterLink>
-          </div>
-          <div class="position-relative d-flex saveBox">
-            <div @click.prevent="addToSave(product)"
-            class="rounded-circle btn btn-outline-light border border-2 pb-1 ">
-              <i v-if="!isProductSaved(product.id)"
-              class="bi bi-heart fs-4 icon"
-              :class="{ 'text-dark': isHover[product.id] }"
-                @mouseover="isHover[product.id] = true"
-                @mouseleave="isHover[product.id] = false"
-              ></i>
-              <i v-else class="bi bi-heart-fill fs-4 icon"></i>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-start">{{product.title}}</h5>
-            <div class="row text-start justify-content-between align-items-center">
-              <div class="col-lg-7 col-md-12 col-6">
-                售價
-                <span class="text-decoration-line-through text-black-50 fs-6">
-                      {{ product.origin_price.toLocaleString('zh-TW', {
-                          style: 'currency',
-                          currency: 'NTD'
-                        })
-                      }}
-                </span>
-                <span class="text-primary h5">
-                    {{ product.price.toLocaleString('zh-TW', {
-                          style: 'currency',
-                          currency: 'NTD'
-                        })
-                    }}</span>
+          <RouterLink :to="`/product/${product.id}`" class="text-decoration-none">
+
+            <div class="overflow-hidden productImg position-relative">
+              <img :src=product.imageUrl class="card-img-top  object-fit-cover"
+              :alt="product.title"
+              style="width: 105%;"
+              >
+              <div class="d-flex position-absolute end-0 bottom-0 pe-2 pb-2">
+                <div @click.prevent="addToSave(product)"
+                class="rounded-circle btn btn-outline-light border border-2 pb-1 ">
+                  <i v-if="!isProductSaved(product.id)"
+                  class="bi bi-heart fs-4 iconSave"
+                  :class="{ 'text-dark': isHover[product.id] }"
+                    @mouseover="isHover[product.id] = true"
+                    @mouseleave="isHover[product.id] = false"
+                  ></i>
+                  <i v-else class="bi bi-heart-fill fs-4 iconSave"></i>
+                </div>
               </div>
-              <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
-                    pt-lg-0 pt-md-3 pt-0"
-                @click.prevent="addToCart(product.id, qty)">
-                <button class="btn btn-primary text-white" type="submit">加入購物車</button>
             </div>
+
+            <div class="card-body">
+              <h5 class="card-title text-start">{{product.title}}</h5>
+              <div class="row text-start justify-content-between align-items-center">
+                <div class="col-lg-7 col-md-12 col-6">
+                  售價
+                  <span class="text-decoration-line-through text-black-50 fs-6 pe-2">
+                        {{ product.origin_price}}
+                  </span>
+                  <span class="text-primary h5">
+                      {{ product.price}}</span>
+                </div>
+                <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
+                      pt-lg-0 pt-md-3 pt-0"
+                  @click.prevent="addToCart(product.id, qty)">
+                  <button class="btn btn-primary text-white addBtn" type="submit">加入購物車</button>
+              </div>
+              </div>
             </div>
-          </div>
+          </RouterLink>
         </div>
        </div>
       </div>
@@ -221,16 +215,36 @@ export default {
 .productImg{
   height: 250px;
 }
-.saveBox{
-  top: -60px;
-  left:12px
-}
-.icon {
+.iconSave {
   transition: transform 0.1s ease, color 0.1s ease; /* 添加颜色过渡效果 */
 }
-.icon:hover {
-  text-transform: scale(1.2); /* 指定放大倍数，这里为1.2倍 */
+.iconSave:hover {
+  animation: swing 1s ease; /* 指定放大倍数，这里为1.2倍 */
   color: black;
+}
+.addBtn:hover{
+  animation: zoom 1s ease;
+}
+@keyframes  swing {
+  15% { transform:  translateX(5px) rotate(1deg);}
+  30% { transform:  translateX(-5px) rotate(-1deg); }
+  45% { transform:  translateX(2px) rotate(1deg); }
+  60% { transform:  translateX(-2px) rotate(-1deg);}
+  100% { transform:  translateX(0px); }
+}
+@keyframes  jump {
+  15% { transform:  translateY(5px) rotate(3deg);}
+  30% { transform:  translateY(-5px) rotate(-3deg); }
+  45% { transform:  translateY(5px) rotate(3deg); }
+  60% { transform:  translateY(-5px) rotate(-3deg);}
+  100% { transform:  translateY(0px); }
+}
+@keyframes  zoom  {
+  15% { transform:  scale(1.1) rotate(1deg);}
+  30% { transform:  scale(0.9) rotate(-1deg); }
+  45% { transform:  scale(1.1) rotate(1deg); }
+  60% { transform:  scale(0.9) rotate(-1deg);}
+  100% { transform:  scale(1); }
 }
 @media(max-width: 999px){
   .productImg{

@@ -73,7 +73,6 @@ export default {
       keyboard: false,
       backdrop: 'static',
     });
-    console.log(this.orders);
   },
 };
 </script>
