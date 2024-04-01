@@ -18,10 +18,10 @@
                 <div class="d-flex saveBox position-absolute">
                   <!-- prevent -->
                   <div @click="addToSave(savedProduct.product)"
-                  class="rounded-circle btn btn-outline-light border border-2 pb-1 ">
+                  class="rounded-circle btn btn-light pb-1 ">
                     <i v-if="!isProductSaved(savedProduct.product.id)"
                     class="bi bi-heart fs-4 icon"
-                    :class="{ 'text-dark': isHover }"
+                    :class="{ 'text-primary': isHover }"
                     @mouseover="isHover = true"
                     @mouseleave="isHover = false"
                     ></i>
@@ -52,7 +52,17 @@
             </div>
           </div>
         </div>
-        <div v-else class="text-primary fw-bold h5 col-12">目前沒有收藏唷！快去看看吧</div>
+        <div v-else class="text-primary fw-bold h5 col-12">
+          <p>
+            目前沒有收藏唷！
+          </p>
+          <RouterLink  :to="`/products`">
+            <button class="btn btn-primary text-white fw-bold" type="submit">
+              點我看行程
+              <i class="bi bi-chevron-double-right"></i>
+            </button>
+          </RouterLink>
+        </div>
     </div>
     <footer-banner/>
   </template>
@@ -87,18 +97,31 @@ export default {
   height: 250px;
 }
 .saveBox{
-  bottom: 100px;
-  left:4px
+  bottom: 105px;
+  left:10px
 }
 .icon {
   transition: transform 0.1s ease, color 0.1s ease; /* 添加颜色过渡效果 */
 }
 .icon:hover {
   text-transform: scale(1.2); /* 指定放大倍数，这里为1.2倍 */
-  color: black;
+  color: rgb(192, 0, 0)ck;
+}
+.btn{
+  transition: transform 0.1s ease;
+}
+.btn:hover{
+  transform: scale(1.2);
+}
+@keyframes  swing {
+  15% { transform:  translateY(5px) rotate(1deg);}
+  30% { transform:  translateY(-5px) rotate(-1deg); }
+  45% { transform:  translateY(2px) rotate(1deg); }
+  60% { transform:  translateY(-2px) rotate(-1deg);}
+  100% { transform:  translateY(0px); }
 }
 .fullH{
-  height: 400px;
+  height: 500px;
 }
 @media(max-width: 1200px){
   .productImg{
