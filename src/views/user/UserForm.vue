@@ -1,6 +1,5 @@
 <template>
- <h1></h1>
- <div class="container">
+ <div class="container py-md-5 py-2">
     <div class="row">
         <div class="col-lg-8">
             <!-- <nav aria-label="breadcrumb">
