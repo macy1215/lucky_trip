@@ -62,7 +62,7 @@ export default defineStore('cartStore', {
         text: '一但刪除將無法復原',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
+        confirmButtonColor: '#2e949c',
         cancelButtonColor: '#ADADAD',
         confirmButtonText: '我要刪除',
         cancelButtonText: '再想想',

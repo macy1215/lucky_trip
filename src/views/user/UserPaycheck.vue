@@ -1,5 +1,34 @@
 <template>
-  <div class="container h-100">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+    <div class="col-10">
+      <div class="position-relative m-4 px-5">
+        <div class="progress" style="height: 1px;">
+          <div class="progress-bar w-100" role="progressbar"
+           aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+        <button type="button" class="position-absolute
+          top-0 start-0 ms-3
+          translate-middle btn btn-sm
+          btn-primary rounded-pill text-white"
+        style="width: 2rem; height:2rem; cursor: default;">1</button>
+        <button type="button" class="position-absolute top-0 start-50 translate-middle
+        btn btn-sm btn-primary rounded-pill text-white"
+        style="width: 2rem; height:2rem; cursor: default;">2</button>
+        <button type="button" class="position-absolute top-0
+        translate-middle btn btn-sm btn-primary rounded-pill text-white"
+        style="width: 2rem; height:2rem; left: 99%; cursor: default;">3</button>
+    </div>
+    <div class="row text-primary">
+      <div class="col text-start">確認商品</div>
+      <div class="col">確認購買資訊</div>
+      <div class="col text-end">付款確認</div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="container h-100 my-5">
     <div class="row justify-content-center">
       <h2 class="fs-4 text-start col-lg-10 col-12">收件者資訊</h2>
       <div class="col-lg-6 text-start">

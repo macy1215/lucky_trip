@@ -1,18 +1,38 @@
 <template>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+    <div class="col-10">
+      <div class="position-relative m-4 px-5">
+        <div class="progress" style="height: 1px;">
+          <div class="progress-bar w-50" role="progressbar"
+           aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+        <router-link type="button" class="position-absolute
+          top-0 start-0 ms-3
+          translate-middle btn btn-sm
+          btn-primary rounded-pill text-white"
+          :to="`/carts`"
+        style="width: 2rem; height:2rem;">1</router-link>
+        <button type="button" class="position-absolute top-0 start-50
+        translate-middle btn btn-sm btn-primary rounded-pill text-white"
+        style="width: 2rem; height:2rem;">2</button>
+        <button type="button" class="position-absolute top-0
+        translate-middle btn btn-sm btn-secondary rounded-pill"
+        style="width: 2rem; height:2rem; left: 99%; cursor: default;">3</button>
+    </div>
+    <div class="row text-primary">
+      <div class="col text-start">確認商品</div>
+      <div class="col">確認購買資訊</div>
+      <div class="col text-end">付款確認</div>
+    </div>
+    </div>
+    </div>
+  </div>
  <div class="container py-md-5 py-2">
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        建立訂單
-                    </li>
-                    <li class="breadcrumb-item disable" aria-current="page">
-                        付款
-                    </li>
-                </ol>
-            </nav> -->
-            <div class="my-md-0 my-5 row justify-content-center">
+  <div class="row">
+      <div class="col-lg-8">
+        <div class="my-md-0 my-5 row justify-content-center">
           <VeeForm ref="form" class="col-md-10" @submit="createOrder" v-slot="{ errors }" >
             <div class="mb-4">
               <h3 class="text-start fs-3">聯絡資訊</h3>
@@ -26,7 +46,8 @@
                     placeholder="請輸入Email信箱"
                     rules="email|required"
                     v-model="form.user.email"></VeeField>
-                    <error-message name="email" class="invalid-feedback text-start"></error-message>
+                    <error-message name="email"
+                    class="invalid-feedback text-start"></error-message>
               </div>
             </div>
 
@@ -106,31 +127,31 @@
             </div>
           </VeeForm>
         </div>
-        </div>
-        <div class="col-lg-4 px-md-1 ">
-            <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
-              <h3 class="my-lg-2 my-4">購買清單</h3>
-              <div v-for="cart in carts" :key="cart.id">
-                  <div class="d-flex row mb-3 align-items-center px-4">
-                      <div class="col-md-3 col-5 px-md-0">
-                          <img :src=cart.product.imageUrl alt=""
-                          class="img-fluid rounded rounded-1">
-                      </div>
-                      <div class="col-md-6 col-4 text-start">
-                        {{ cart.product.title }}
-                      </div>
-                      <div class="col-md-3 col-3 text-end">NT${{ cart.final_total }}元</div>
-                  </div>
-            </div>
-              <hr>
-            <div class="fs-3 text-end fw-bold d-flex justify-content-between
-                px-lg-0 px-4 pb-lg-0 pb-4">
-                <span>總計</span>
-                <span>NT${{ final_total }}元</span>
-            </div>
-            </div>
-        </div>
-    </div>
+      </div>
+      <div class="col-lg-4 px-md-1 ">
+          <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
+            <h3 class="my-lg-2 my-4">購買清單</h3>
+            <div v-for="cart in carts" :key="cart.id">
+                <div class="d-flex row mb-3 align-items-center px-4">
+                    <div class="col-md-3 col-5 px-md-0">
+                        <img :src=cart.product.imageUrl alt=""
+                        class="img-fluid rounded rounded-1">
+                    </div>
+                    <div class="col-md-6 col-4 text-start">
+                      {{ cart.product.title }}
+                    </div>
+                    <div class="col-md-3 col-3 text-end">NT${{ cart.final_total }}元</div>
+                </div>
+          </div>
+            <hr>
+          <div class="fs-3 text-end fw-bold d-flex justify-content-between
+              px-lg-0 px-4 pb-lg-0 pb-4">
+              <span>總計</span>
+              <span>NT${{ final_total }}元</span>
+          </div>
+          </div>
+      </div>
+  </div>
  </div>
  <footer-banner/>
 </template>
@@ -168,27 +189,39 @@ export default {
       return phoneNumber.test(value) ? true : '請輸入以「09」開頭的行動電話號碼';
     },
     createOrder() {
-      const order = this.form;
-      const url = `${VITE_URL}/api/${VITE_NAME}/order`;
-      this.$http
-        .post(url, { data: order })
-        .then((res) => {
-          Swal.fire({
-            icon: 'success',
-            title: '訂單成立',
-          });
-          // eslint-disable-next-line no-alert, no-console
-          console.log(res, this.form);
-          this.orderId = res.data.orderId;
-          this.$refs.form.resetForm();
-          this.$router.push(`/paycheck/${res.data.orderId}`);
-          localStorage.setItem('orderId', res.data.orderId);
-          this.getCart();
-        })
-        .catch((err) => {
-          // eslint-disable-next-line no-alert
-          alert(err.response.data.message);
-        });
+      Swal.fire({
+        title: '確定要送出訂單資訊嗎？',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#2e949c',
+        cancelButtonColor: '#ADADAD',
+        confirmButtonText: '確認送出',
+        cancelButtonText: '取消',
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const order = this.form;
+          const url = `${VITE_URL}/api/${VITE_NAME}/order`;
+          this.$http
+            .post(url, { data: order })
+            .then((res) => {
+              this.orderId = res.data.orderId;
+              this.$refs.form.resetForm();
+              this.$router.push(`/paycheck/${res.data.orderId}`);
+              localStorage.setItem('orderId', res.data.orderId);
+              this.getCart();
+              Swal.fire({
+                icon: 'success',
+                title: '訂單成立',
+              });
+            }).catch((err) => {
+              Swal.fire({
+                icon: 'success',
+                title: err.response.data.message,
+              });
+            });
+        }
+      });
     },
   },
   computed: {

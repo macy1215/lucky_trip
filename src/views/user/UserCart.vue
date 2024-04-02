@@ -1,5 +1,34 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+    <div class="col-10">
+      <div class="position-relative m-4 px-5">
+        <div class="progress" style="height: 1px;">
+          <div class="progress-bar" role="progressbar"
+           aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+        <button type="button" class="position-absolute
+          top-0 start-0 ms-3
+          translate-middle btn btn-sm
+          btn-primary rounded-pill text-white"
+        style="width: 2rem; height:2rem;">1</button>
+        <button type="button" class="position-absolute top-0 start-50
+        translate-middle btn btn-sm btn-secondary rounded-pill"
+        style="width: 2rem; height:2rem; cursor: default;">2</button>
+        <button type="button" class="position-absolute top-0
+        translate-middle btn btn-sm btn-secondary rounded-pill"
+        style="width: 2rem; height:2rem; left: 99%; cursor: default;">3</button>
+    </div>
+    <div class="row text-primary">
+      <div class="col text-start">確認商品</div>
+      <div class="col">確認購買資訊</div>
+      <div class="col text-end">付款確認</div>
+    </div>
+    </div>
+    </div>
+  </div>
   <div class="container py-md-5 py-2 px-md-5 px-2" >
     <div :class="{ 'fullH': Object.keys(product).length < 3 }">
       <h2 class="text-center text-primary fs-3 fw-bold pb-2"> 購物車列表</h2>
