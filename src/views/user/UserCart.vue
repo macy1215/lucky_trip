@@ -30,9 +30,8 @@
     </div>
   </div>
   <div class="container py-md-5 py-2 px-md-5 px-2" >
-    <div :class="{ 'fullH': Object.keys(product).length < 3 }">
+    <div :class="{ 'fullH': Object.keys(carts).length < 1 }">
       <h2 class="text-center text-primary fs-3 fw-bold pb-2"> 購物車列表</h2>
-        <template v-if="total !== 0" v-for="cart in carts" :key="cart.id" >
           <table class="table align-middle">
               <thead class="border">
                 <tr>
@@ -43,6 +42,7 @@
                 </tr>
               </thead>
               <tbody class="border">
+                <template v-if="total !== 0" v-for="cart in carts" :key="cart.id" >
                   <!-- 資料是 carts 狀態的 carts 資料 -->
                   <tr>
                     <td>
@@ -104,6 +104,18 @@
                       {{ cart.total }}
                     </td>
                   </tr>
+                </template>
+                <template v-else>
+                    <div class="h4 py-4" colspan="4">
+                      <p>購物車目前沒有品項</p>
+                      <RouterLink :to="`/products`" class="text-decoration-none" >
+                        <div class="btnProduct">
+                          來去找行程
+                          <i class="bi bi-chevron-double-right"></i>
+                        </div>
+                      </RouterLink>
+                    </div>
+                </template>
               </tbody>
               <tfoot class="border">
                 <tr>
@@ -112,18 +124,6 @@
                 </tr>
               </tfoot>
           </table>
-        </template>
-        <template v-else>
-            <div class="h4 py-4" colspan="4">
-              <p>購物車目前沒有品項</p>
-              <RouterLink :to="`/products`" class="text-decoration-none" >
-                <div class="btnProduct">
-                  來去找行程
-                  <i class="bi bi-chevron-double-right"></i>
-                </div>
-              </RouterLink>
-            </div>
-        </template>
       <div class="text-end">
         <button class="btn btn-outline-danger" type="button"
         :disabled="carts.length === 0"

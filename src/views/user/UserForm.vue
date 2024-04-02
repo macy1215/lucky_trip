@@ -123,7 +123,7 @@
                 ></textarea>
             </div>
             <div class="text-end">
-              <button class="btn btn-danger" type="submit">送出訂單</button>
+              <button class="btn btn-primary text-white" type="submit">送出訂單</button>
             </div>
           </VeeForm>
         </div>
