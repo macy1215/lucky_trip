@@ -4,9 +4,9 @@
         <div class="container">
         <div class="row align-items-center py-3 position-relative">
             <div class="col-md-6 col-12">
-            <h2 class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm">
+            <p class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm">
                 訂閱獲得最新情報<br>及特別折扣！
-            </h2>
+            </p>
             <div class="input-group pe-5 pb-5">
                 <VeeForm
                 ref="form"
@@ -102,13 +102,13 @@ export default {
     background-position: top center;
 }
 .footerTitle{
-    font-size: 40px;
+    font-size: 1.5em;
     line-height:1.6em;
 }
 @media(max-width: 767px){
     .footerTitle{
         margin-top: 40px;
-        font-size: 40px;
+        font-size: 1.5em;
         line-height:1.3em;
         text-align: left;
         padding-bottom: 12px;

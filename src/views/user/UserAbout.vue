@@ -1,13 +1,30 @@
 <template>
   <div class="aboutBanner"></div>
   <div class="container">
+    <!-- 手機版麵包 -->
     <div class="row position-relative my-md-5 my-5 mobilBox">
-      <div class="d-md-block col-md-7 col-12 offset-md-1 overflow-hidden my-md-5 my-4 rounded-2">
+      <nav aria-label="breadcrumb" class="d-md-none d-block col-12">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item">
+                    <RouterLink to="/" class="text-decoration-none">
+                      <span class="text-decoration-none link-secondary icon-link-hover">
+                        好嗨遊首頁
+                      </span>
+                    </RouterLink >
+                  </li>
+                  <li class="breadcrumb-item">
+                    <RouterLink :to="`/about`" class="text-decoration-none link-secondary">關於
+                    </RouterLink>
+                  </li>
+                </ol>
+              </nav>
+      <div class="d-md-block col-md-7 col-12 offset-md-1
+                  overflow-hidden my-md-5 mb-0 mt-4 rounded-2">
         <img src="@/assets/images/aboutTitle.png" alt="關於我"
-        class="rounded-2 object-fit-cover overflow-hidden img-fluid">
+        class="rounded-top object-fit-cover overflow-hidden img-fluid">
       </div>
       <div class="col-md-5 position-absolute  d-md-block d-none aboutBox1">
-        <div class="p-3 py-md-4 ps-md-4 ppe-md-4 bg-white rounded-1 shadow-sm">
+        <div class="p-3 py-md-4 ps-md-4 pe-md-4 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12">
               <nav aria-label="breadcrumb">
@@ -25,7 +42,7 @@
                   </li>
                 </ol>
               </nav>
-              <h2 class="fs-3 fs-md-4 fs-lg-2 fw-bold lh-base mb-4 text-start">
+              <h2 class="fs-3 fs-md-4 fs-lg-2 fw-bold lh-base mb-3 text-start">
                 旅遊可以很簡單！
               </h2>
               <p class="text-secondary text-prewrap mb-0 text-start" style="line-height: 1.6;">
@@ -35,26 +52,12 @@
           </div>
         </div>
       </div>
+      <!-- 手機版 -->
       <div class="col-md-5 d-md-none d-block aboutBox1">
-        <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
+        <div class="p-2 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item">
-                    <RouterLink to="/" class="text-decoration-none">
-                      <span class="text-decoration-none link-secondary icon-link-hover">
-                        好嗨遊首頁
-                      </span>
-                    </RouterLink >
-                  </li>
-                  <li class="breadcrumb-item">
-                    <RouterLink :to="`/about`" class="text-decoration-none link-secondary">關於
-                    </RouterLink>
-                  </li>
-                </ol>
-              </nav>
-              <h2 class="fs-3 fs-md-4 fs-lg-2 fw-bold lh-base mb-4 text-start">
+              <h2 class="fs-3 fs-md-4 fs-lg-2 fw-bold lh-base mb-3 text-start">
                 旅遊可以很簡單！
               </h2>
               <p class="text-secondary text-prewrap mb-0 text-start" style="line-height: 1.6;">
@@ -65,16 +68,17 @@
         </div>
       </div>
     </div>
-    <div class="row flex-row-reverse position-relative  my-md-5 mt-4 mb-5 pb-5  mobilBox">
-      <div class="col-md-7 col-12 d-md-block overflow-hidden offset-md-1 rounded-2">
+    <div class="row flex-row-reverse position-relative  my-md-5 mt-4 mb-5 pb-5 mobilBox">
+      <div class="d-md-block col-md-7 col-12 offset-md-1
+                  overflow-hidden my-md-5 mb-0 mt-4 rounded-2">
         <img src="@/assets/images/aboutTitle2.png" alt="旅遊圖"
-        class="rounded-2 object-fit-cover overflow-hidden img-fluid">
+        class="rounded-top object-fit-cover overflow-hidden img-fluid">
       </div>
       <div class="col-md-5 col-12 position-absolute d-md-block d-none  p-md-0 my-4 aboutBox2">
         <div class="p-3 py-md-4 ps-md-4 pe-md-4 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12 text-start">
-              <h3 class="fs-4">為什麼需要好嗨遊？</h3>
+              <h3 class="fs-4 fw-bold mb-3">為什麼需要好嗨遊？</h3>
               <p class="text-secondary
               text-prewrap mb-1 text-start"
               style="line-height: 1.6;">在這個匆匆忙忙的世界裡，
@@ -94,11 +98,11 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5 col-12 d-md-none d-block p-md-0 my-4 aboutBox2">
-        <div class="p-3 py-md-4 ps-md-4 pe-md-0 bg-white rounded-1 shadow-sm">
+      <div class="col-md-5 col-12 d-md-none d-block p-md-0 mmt-0 aboutBox2">
+        <div class="p-3 py-3 px-3 pe-md-0 bg-white rounded-1 shadow-sm">
           <div class="row">
             <div class="col-md-12 text-start">
-              <h3 class="fs-4">為什麼需要好嗨遊？</h3>
+              <h3 class="fs-4 fw-bold mb-3">為什麼需要好嗨遊？</h3>
               <p class="text-secondary
               text-prewrap mb-1 text-start"
               style="line-height: 1.6;">在這個匆匆忙忙的世界裡，

@@ -68,7 +68,7 @@
 
   <div class="container mt-5 pt-4 pb-4 justify-content-between">
       <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
-      <ul class="d-md-flex mt-4 justify-content-center align-items-center px-md-0">
+      <ul class="d-md-flex mt-4 justify-content-center align-items-center px-md-0 ps-0">
         <li class="circleBox my-0px rounded-circle mx-md-2 mx-auto">
           <RouterLink :to="`/products?category=文化探索`"
             class="img-fluid d-block walkImg h-100 w-100 text-decoration-none">
@@ -127,9 +127,9 @@
   <div class="container my-5 py-4">
     <div class="row align-items-md-center py-3 px-0 px-2 position-relative">
       <div class="col-md col-12">
-        <h2 class="text-wrap activeTitle text-md-start fw-bold mb-5" style="z-index:10;">
+        <p class="text-wrap activeTitle text-md-start fw-bold mb-5 activeFont" style="z-index:10;">
           在愛的旅途中每一步都是溫暖的延續。讓我們攜手為偏鄉孩子的未來繪上希望的色彩...
-        </h2>
+        </p>
       </div>
       <div class="col-md col-12 position-relative activebox">
         <img src="@/assets/images/benner-active.png"
@@ -254,6 +254,9 @@ export default {
   background-image: url('@/assets/images/circle-nature.png');
   background-size: cover;
 }
+.activeFont{
+  font-size: 1.5rem;
+}
 @keyframes  swing {
   15% { transform:  translateX(5px) rotate(1deg);}
   30% { transform:  translateX(-5px) rotate(-1deg); }
@@ -310,7 +313,7 @@ export default {
   width: 90%;
   }
   .activebox {
-      margin-top: -20px;
+      margin-top: 25px;
       margin-left: 0px;
   }
   .banBgCol{
@@ -334,7 +337,7 @@ export default {
   @media(max-width: 430px){
     .mobiltitle{
     width: 90%;
-    margin-top: 140px;
+    margin-top: 80px;
     padding-left: 0px;
     }
     .banBgCol{
@@ -343,6 +346,9 @@ export default {
     margin-top: 150px;
     height: 40vh;
     }
+    .activeFont{
+    font-size: 1.5rem;
+}
   }
   @media(max-width: 390px){
     .banBgCol{

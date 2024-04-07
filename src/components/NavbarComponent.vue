@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-md align-items-center fixed-top shadow-sm">
       <div class="container">
-            <RouterLink to="/" >
+            <RouterLink to="/">
                 <span class="nav-link logostyle">
                     <a>lucky-trip</a>
                 </span>
@@ -27,19 +27,20 @@
               <ul class="navbar-nav">
                   <li class="nav-item">
                     <RouterLink class="nav-link text-primary active fw-bold" aria-current="page"
-                    to="/about" >關於我們</RouterLink>
+                    to="/about" data-toggle>
+                    關於我們</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link text-primary active  fw-bold" aria-current="page"
-                    to="/products" >好嗨遊行程</RouterLink>
+                    to="/products" data-toggle>好嗨遊行程</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link text-primary  fw-bold" aria-current="page"
-                    to="/qalist" >常見問題</RouterLink>
+                    to="/qalist"  data-toggle>常見問題</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link text-primary fw-bold" aria-current="page"
-                    to="/saved" >
+                    to="/saved" data-toggle>
                      <span>我的收藏</span>
                      <!-- class="position-relative align-top" -->
                      <!-- <span class="position-absolute
@@ -51,11 +52,10 @@
                   </li>
                   <li class="nav-item">
                     <RouterLink aria-current="page" to="/carts"
-                    class="nav-link cart nav-link fs-4 ms-lg-4 me-1 position-relative" >
+                    class="nav-link cart nav-link fs-4 ms-lg-4 me-1 position-relative" data-toggle>
 
                       <i class="bi bi-cart-fill fw-bolder position-relative align-top"></i>
-                      <span class="position-absolute
-                        top-20 start-100 translate-middle
+                      <span class="position-absolute cartNum translate-middle
                         badge rounded-pill bg-danger fs-6">{{this.carts?.length}}
                         <span class="visually-hidden">New alerts</span>
                       </span>
@@ -96,6 +96,30 @@ export default {
   mounted() {
     this.headerNavDrop = new Collapse(this.$refs.headerNavDrop, { toggle: false });
     this.getCart();
+    const dataToggle = document.querySelectorAll('[data-toggle]');
+    const menuToggle = document.getElementById('navbarSupportedContent');
+    const bsCollapse = new Collapse(menuToggle, {
+      toggle: false,
+    });
+
+    dataToggle.forEach((item) => {
+      item.addEventListener('click', () => {
+        bsCollapse.toggle();
+      });
+    });
   },
 };
 </script>
+
+<style>
+.cartNum{
+  top: 20%;
+  left: 90%;
+}
+@media (max-width: 430px) {
+  .cartNum{
+  top: 20%;
+  left: 70%;
+}
+}
+</style>

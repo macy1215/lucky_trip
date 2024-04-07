@@ -2,8 +2,8 @@
      <VueLoading v-model:active="isLoading"
               loader="bars"
               :is-full-page="fullpage"/>
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container position-relative finalOutBox">
+        <div class="row position-absolute top-50 start-50 translate-middle finalBox">
             <div class="col-md-6
             d-flex flex-column
             align-items-start
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-12 bgimg banner
-            container-fluid position-relative" style="z-index: 9;">
+            container-fluid position-relative d-flex align-items-center" style="z-index: 9;">
             </div>
         </div>
     </div>
@@ -42,7 +42,24 @@ export default {
 
 <style>
 .bgimg{
-    height: 100vh;
+    height: 50vh;
     background-image: url('@/assets/images/paybanner.png');
+    background-size: cover;
+    overflow: hidden;
+}
+.finalBox{
+    width: 80%;
+}
+.finalOutBox{
+    height: 70vh;
+}
+@media (max-width: 430px) {
+.finalBox{
+    width: 95%;
+    padding-left: 24px;
+    }
+.finalOutBox{
+    height: 90vh;
+}
 }
 </style>

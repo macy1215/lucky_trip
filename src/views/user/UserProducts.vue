@@ -67,10 +67,10 @@
                 <div class="col-lg-7 col-md-12 col-6">
                   售價
                   <span class="text-decoration-line-through text-black-50 fs-6 pe-2">
-                        {{ product.origin_price}}
+                        NT{{ product.origin_price}}元
                   </span>
                   <span class="text-primary h5">
-                      {{ product.price}}</span>
+                    NT{{ product.price}} 元</span>
                 </div>
                 <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
                       pt-lg-0 pt-md-3 pt-0"

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1 class="fs-4 text-primary mb-4">常見問題</h1>
-    <div class="row justify-content-center align-items-center text-start">
+    <h1 class="fs-4 text-primary mb-4 pt-4">常見問題</h1>
+    <div class="row justify-content-center align-items-center text-start pb-4">
       <div class="col-md-8">
         <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="accordion-item">
@@ -17,7 +17,7 @@
               class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne"
               data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <ol class="ps-5 lh-lg">
+                <ol class="ps-md-5 ps-3 lh-lg">
                   <li>請利用官網上提供行程，將商品加入購物車。</li>
                   <li>確認購買後，請確認您最後欲購買商品，並填寫購買者資訊。</li>
                   <li>填寫收件人資訊送出後即可進行付款。</li>
@@ -39,7 +39,7 @@
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingTwo">
               <div class="accordion-body">
-                <ol class="ps-5 lh-lg">
+                <ol class="ps-md-5 ps-3 lh-lg">
                   <li>在確認購買行程後，填寫收件人資訊時可以加入備註中</li>
                   <li>待好嗨遊接收到需求會請有專人與您洽談。</li>
                   <li>付款完成後待好嗨遊客服確認訂單，將郵寄出旅遊相關行程與票券。</li>
@@ -64,7 +64,7 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingThree">
               <div class="accordion-body">
-                <div class="ps-4 lh-lg">
+                <div class="ps-md-5 ps-0 lh-lg">
                   <p class="ms-md-1">可以的！如果需要公司團體旅遊，請先與好嗨遊確認行程地點及人數，我們會提供客製化的服務及旅遊行程。</p>
                 </div>
               </div>
@@ -84,7 +84,7 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingFour">
               <div class="accordion-body">
-                <div class="ps-4 lh-lg">
+                <div class="ps-md-5 ps-0 lh-lg">
                   <p class="ms-md-1">訂購後 5 日內，不可分開付費，請一次繳納完成。</p>
                 </div>
               </div>
@@ -104,7 +104,7 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingFive">
               <div class="accordion-body">
-                <ul class="ps-5 lh-lg">
+                <ul class="ps-md-5 ps-3 lh-lg">
                   <li class="text-danger list-unstyled">政策適用於團體及個人</li>
                   <li>旅遊開始前第31日取消:平台需賠償百分之10</li>
                   <li>旅遊開始前第21-30日取消:平台需賠償百分之20。</li>
