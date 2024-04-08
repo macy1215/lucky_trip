@@ -64,7 +64,7 @@
             <div class="card-body">
               <h5 class="card-title text-start">{{product.title}}</h5>
               <div class="row text-start justify-content-between align-items-center">
-                <div class="col-lg-7 col-md-12 col-6">
+                <div class="col-lg-7 col-md-12 col-7">
                   售價
                   <span class="text-decoration-line-through text-black-50 fs-6 pe-2">
                         NT{{ product.origin_price}}元
@@ -72,7 +72,7 @@
                   <span class="text-primary h5">
                     NT{{ product.price}} 元</span>
                 </div>
-                <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
+                <div class="col-lg-5 col-md-12 col-5 text-lg-end text-md-start text-end
                       pt-lg-0 pt-md-3 pt-0"
                   @click.prevent="addToCart(product.id, qty)">
                   <button class="btn btn-primary text-white addBtn" type="submit">加入購物車</button>
@@ -190,7 +190,7 @@ export default {
 .productBox{
   height: 460px;
   background: white;
-  position: relative;
+  /* position: relative; */
 }
 .productAllbg{
     background-image: url("@/assets/images/ban_product_all.jpg");
