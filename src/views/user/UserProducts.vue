@@ -259,4 +259,9 @@ export default {
   height: 20vh;
   }
 }
+@media(max-width: 375px){
+  .productBox{
+  height: 23vh;
+  }
+}
 </style>
