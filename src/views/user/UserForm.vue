@@ -134,7 +134,7 @@
             </v-field>
             <error-message name="地區" class="invalid-feedback"></error-message> -->
             <div class="mb-3 col-md-12 d-flex flex-column">
-                <label for="name" class="form-label text-start required">電話
+                <label for="name" class="form-label text-start required">地址
                   <strong class="text-danger fw-bold">*</strong>
                 </label>
             <VeeField

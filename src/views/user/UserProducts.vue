@@ -69,8 +69,8 @@
                   <span class="text-decoration-line-through text-black-50 fs-6 pe-2">
                         NT{{ product.origin_price}}元
                   </span>
-                  <span class="text-primary h5">
-                    NT{{ product.price}} 元</span>
+                  <div class="text-primary h5 d-sm-inline-block">
+                    NT{{ product.price}} 元</div>
                 </div>
                 <div class="col-lg-5 col-md-12 col-5 text-lg-end text-md-start text-end
                       pt-lg-0 pt-md-3 pt-0"

@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-4" :class="{ 'fullH': Object.keys(saveProductList).length < 3 }">
+    <div class="container mt-4" :class="{ 'fullH': Object.keys(saveProductList).length < 2 }">
       <h3 class="fw-bold text-start text-black-50 h3">我的收藏</h3>
         <div v-if="saveProductList.length !== 0">
           <div class="row">
@@ -34,9 +34,11 @@
                     <div class="col-lg-7 col-md-12 col-6">
                       售價
                       <span class="text-decoration-line-through text-black-50 fs-6">
-                        NT {{ savedProduct.product.origin_price }}
+                        NT {{ savedProduct.product.origin_price }}  元
                       </span>
-                      <span class="text-primary h5">NT {{ savedProduct.product.price }}</span>
+                      <div class="text-primary h5  d-sm-inline-block">
+                        NT {{ savedProduct.product.price }} 元
+                      </div>
                     </div>
                     <div class="col-lg-5 col-md-12 col-6 text-lg-end text-md-start text-end
                           pt-lg-0 pt-md-3 pt-0"
@@ -139,6 +141,9 @@ export default {
 }
 }
 @media(max-width: 767px){
+  .fullH{
+    height: 55vh;
+  }
   .productAllbg{
     height: 200px;
   }
