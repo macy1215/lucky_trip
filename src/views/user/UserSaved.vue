@@ -75,8 +75,11 @@
         </div>
       </div>
     </div>
-    <div v-else class="text-primary fw-bold h5 col-12 h-50
-          d-flex flex-column justify-content-center align-items-center">
+    <div
+      v-else
+      class="text-primary fw-bold h5 col-12 h-50 d-flex
+      flex-column justify-content-center align-items-center"
+    >
       <div class="pb-3">目前沒有收藏唷！</div>
       <RouterLink :to="`/products`">
         <button class="btn btn-primary text-white fw-bold" type="submit">

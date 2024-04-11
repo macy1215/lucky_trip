@@ -97,7 +97,7 @@
     <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
     <ul
       class="d-md-block d-none d-md-flex mt-4
-             justify-content-center align-items-center px-md-0 ps-0"
+      justify-content-center align-items-center px-md-0 ps-0"
     >
       <li class="circleBox rounded-circle mx-md-2 mx-auto">
         <RouterLink
@@ -162,17 +162,20 @@
     </ul>
     <!-- 手機版我猜你想找 -->
     <ul
-    class="d-md-none d-block d-md-flex mt-4
-           justify-content-center align-items-center px-md-0 ps-0"
+      class="d-md-none d-block d-md-flex mt-4 justify-content-center
+      align-items-center px-md-0 ps-0"
     >
       <li class="mx-md-2 mx-auto row pb-4">
-        <div class="col-10 row justify-content-center align-items-center mx-auto">
+        <div
+          class="col-10 row justify-content-center align-items-center mx-auto"
+        >
           <RouterLink
             :to="`/products?category=文化探索`"
             class="img-fluid col-6"
           >
-            <div class="img-fluid d-block walkImg text-decoration-none py-5 rounded-2">
-            </div>
+            <div
+              class="img-fluid d-block walkImg text-decoration-none py-5 rounded-2"
+            ></div>
           </RouterLink>
           <RouterLink
             :to="`/products?category=文化探索`"
@@ -187,13 +190,16 @@
         </div>
       </li>
       <li class="mx-md-2 mx-auto row pb-4">
-        <div class="col-10 row justify-content-center align-items-center mx-auto">
+        <div
+          class="col-10 row justify-content-center align-items-center mx-auto"
+        >
           <RouterLink
             :to="`/products?category=美食之旅`"
             class="img-fluid col-6"
           >
-            <div class="img-fluid d-block foodImg text-decoration-none py-5 rounded-2">
-            </div>
+            <div
+              class="img-fluid d-block foodImg text-decoration-none py-5 rounded-2"
+            ></div>
           </RouterLink>
           <RouterLink
             :to="`/products?category=美食之旅`"
@@ -208,13 +214,16 @@
         </div>
       </li>
       <li class="mx-md-2 mx-auto row pb-4">
-        <div class="col-10 row justify-content-center align-items-center mx-auto">
+        <div
+          class="col-10 row justify-content-center align-items-center mx-auto"
+        >
           <RouterLink
             :to="`/products?category=親子出遊`"
             class="img-fluid col-6"
           >
-            <div class="img-fluid d-block familyImg text-decoration-none py-5 rounded-2">
-            </div>
+            <div
+              class="img-fluid d-block familyImg text-decoration-none py-5 rounded-2"
+            ></div>
           </RouterLink>
           <RouterLink
             :to="`/products?category=親子出遊`"
@@ -229,13 +238,16 @@
         </div>
       </li>
       <li class="mx-md-2 mx-auto row pb-4">
-        <div class="col-10 row justify-content-center align-items-center mx-auto">
+        <div
+          class="col-10 row justify-content-center align-items-center mx-auto"
+        >
           <RouterLink
             :to="`/products?category=休閒渡假`"
             class="img-fluid col-6"
           >
-            <div class="img-fluid d-block vacationImg text-decoration-none py-5 rounded-2">
-            </div>
+            <div
+              class="img-fluid d-block vacationImg text-decoration-none py-5 rounded-2"
+            ></div>
           </RouterLink>
           <RouterLink
             :to="`/products?category=休閒渡假`"
@@ -250,13 +262,16 @@
         </div>
       </li>
       <li class="mx-md-2 mx-auto row pb-4">
-        <div class="col-10 row justify-content-center align-items-center mx-auto">
+        <div
+          class="col-10 row justify-content-center align-items-center mx-auto"
+        >
           <RouterLink
             :to="`/products?category=自然景色`"
             class="img-fluid col-6"
           >
-            <div class="img-fluid d-block natureImg text-decoration-none py-5 rounded-2">
-            </div>
+            <div
+              class="img-fluid d-block natureImg text-decoration-none py-5 rounded-2"
+            ></div>
           </RouterLink>
           <RouterLink
             :to="`/products?category=自然景色`"

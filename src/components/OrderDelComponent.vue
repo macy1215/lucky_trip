@@ -1,4 +1,3 @@
-<!-- eslint-disable indent -->
 <template>
   <div
     id="delOrderModal"

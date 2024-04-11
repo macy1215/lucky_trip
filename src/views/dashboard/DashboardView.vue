@@ -100,8 +100,12 @@ export default {
             this.$router.push('/login');
           });
       } else {
-        // eslint-disable-next-line no-alert
-        alert('尚未登入');
+        Swal.fire({
+          icon: 'error',
+          title: '尚未登入',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this.$router.push('/login');
       }
     },

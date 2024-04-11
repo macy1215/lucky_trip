@@ -13,6 +13,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "../src/assets/scss/helper/_main.scss";
+<style lang='scss'>
+@import '../src/assets/scss/helper/_main.scss';
 </style>

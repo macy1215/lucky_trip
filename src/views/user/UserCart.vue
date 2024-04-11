@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <div class="col-md-10 col-12 px-4">
+      <div class="col-md-10 col-12 px-3">
         <div class="position-relative m-4">
           <div class="progress" style="height: 1px">
             <div
@@ -14,16 +14,16 @@
           </div>
           <button
             type="button"
-            class="position-absolute top-0 start-0 ms-3 translate-middle
-            btn btn-sm btn-primary rounded-pill text-white"
+            class="position-absolute top-0 start-0 ms-3
+            translate-middle btn btn-sm btn-primary rounded-pill text-white"
             style="width: 2rem; height: 2rem"
           >
             1
           </button>
           <button
             type="button"
-            class="position-absolute top-0 start-50 translate-middle
-            btn btn-sm btn-secondary rounded-pill"
+            class="position-absolute top-0 start-50
+            translate-middle btn btn-sm btn-secondary rounded-pill"
             style="width: 2rem; height: 2rem; cursor: default"
           >
             2
@@ -37,8 +37,8 @@
           </button>
         </div>
         <div class="row text-primary">
-          <div class="col text-end">確認商品</div>
-          <div class="col text-secondary">確認購買資訊</div>
+          <div class="col text-start">確認商品</div>
+          <div class="col text-secondary text-center">確認購買資訊</div>
           <div class="col text-end text-secondary">付款確認</div>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <thead class="border">
             <tr>
               <th scope="col">品名</th>
-              <th scope="col" style="width: 15%;">量/單位</th>
+              <th scope="col" style="width: 15%">量/單位</th>
               <th scope="col" class="text-center">單價</th>
               <th scope="col">刪除</th>
             </tr>
@@ -65,9 +65,9 @@
                 <div class="row align-items-center">
                   <div class="col-md-3 col-6">
                     <RouterLink
-                        :to="`/product/${cart.product_id}`"
-                        class="text-decoration-none"
-                      >
+                      :to="`/product/${cart.product_id}`"
+                      class="text-decoration-none"
+                    >
                       <img
                         :src="cart.product.imageUrl"
                         class="img-fluid rounded object-fit-cover"
@@ -145,7 +145,6 @@
                 </button>
               </td>
             </tr>
-
           </tbody>
           <tfoot class="border">
             <tr>
@@ -254,13 +253,14 @@
               </RouterLink>
             </div>
           </template>
-          <div class="text-end d-md-none d-block mb-3"
-               :class="{'d-none': total !== 0}"
+          <div
+            class="text-end d-md-none d-block mb-3"
+            :class="{ 'd-none': total !== 0 }"
           >
             <button
               class="btn btn-outline-danger"
               type="button"
-              :class="{'d-none': total === 0}"
+              :class="{ 'd-none': total === 0 }"
               :disabled="carts.length === 0"
               @click="removeAllCart(carts)"
             >
@@ -297,7 +297,8 @@
               </tr>
               <tr class="align-text-bottom w-100 text-end border-top">
                 <th colspan="3" class="text-end">
-                  <span class="text-end align-bottom">總計 NT
+                  <span class="text-end align-bottom"
+                    >總計 NT
                     <strong class="fs-5">{{ final_total }} 元</strong>
                   </span>
                 </th>
@@ -310,7 +311,7 @@
         <button
           class="btn btn-outline-danger mb-md-2 mb-5"
           type="button"
-          :class="{'d-none': total === 0}"
+          :class="{ 'd-none': total === 0 }"
           :disabled="carts.length === 0"
           @click="removeAllCart(carts)"
         >
@@ -322,7 +323,7 @@
           v-if="carts.length === 0"
           class="btn btn-primary text-white"
           type="submit"
-          :class="{'d-none': total === 0}"
+          :class="{ 'd-none': total === 0 }"
           :disabled="carts.length === 0"
         >
           確認結帳

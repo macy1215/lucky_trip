@@ -14,8 +14,8 @@
           </div>
           <button
             type="button"
-            class="position-absolute top-0 start-0 ms-3 translate-middle
-            btn btn-sm btn-primary rounded-pill text-white"
+            class="position-absolute top-0 start-0 ms-3
+            translate-middle btn btn-sm btn-primary rounded-pill text-white"
             style="width: 2rem; height: 2rem; cursor: default"
           >
             1

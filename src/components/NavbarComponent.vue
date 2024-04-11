@@ -25,7 +25,7 @@
         ref="headerNavDrop"
         v-show="isNavbarOpen"
       >
-        <ul class="navbar-nav  d-flex justify-content-center align-items-center">
+        <ul class="navbar-nav d-flex justify-content-center align-items-center">
           <li class="nav-item h-100 align-middle">
             <RouterLink
               class="nav-link text-primary active fw-bold align-middle"
@@ -77,7 +77,7 @@
               <span
                 class="position-absolute cartNum translate-middle badge rounded-pill bg-danger fs-6"
                 :class="{
-                   'd-none': carts.length === 0,
+                  'd-none': carts.length === 0,
                 }"
                 >{{ this.carts?.length }}
                 <span class="visually-hidden">New alerts</span>

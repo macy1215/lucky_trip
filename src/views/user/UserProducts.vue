@@ -25,9 +25,9 @@
                   type="button"
                   class="btn btn-outline-primary btn-sm me-3 text-start btnHover mb-2"
                   :class="{
-                            'btn-primary': selectedItem === null,
-                            'text-white': selectedItem === null,
-                          }"
+                    'btn-primary': selectedItem === null,
+                    'text-white': selectedItem === null,
+                  }"
                   @click="selectItem(null)"
                 >
                   全部行程
@@ -40,9 +40,9 @@
                   type="button"
                   class="btn btn-outline-primary btn-sm me-3 text-start btnHover mb-2"
                   :class="{
-                            'btn-primary': selectedItem === item,
-                            'text-white': selectedItem === item
-                          }"
+                    'btn-primary': selectedItem === item,
+                    'text-white': selectedItem === item,
+                  }"
                   @click="selectItem(item)"
                 >
                   {{ item }}
@@ -64,7 +64,9 @@
                 :to="`/product/${product.id}`"
                 class="text-decoration-none"
               >
-                <div class="overflow-hidden productImg position-relative rounded-top img-box">
+                <div
+                  class="overflow-hidden productImg position-relative rounded-top img-box"
+                >
                   <img
                     :src="product.imageUrl"
                     class="card-img-top object-fit-cover"
@@ -91,7 +93,9 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title text-start h4 fw-bold">{{ product.title }}</h5>
+                  <h5 class="card-title text-start h4 fw-bold">
+                    {{ product.title }}
+                  </h5>
                   <div
                     class="row text-start justify-content-between align-items-center"
                   >
@@ -262,14 +266,14 @@ export default {
   height: 0;
   border-top: 50px solid rgb(255, 255, 255);
 }
-.img-box{
+.img-box {
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
-.img-box:hover{
+.img-box:hover {
   opacity: 1;
 }
-.btnSelectHover{
+.btnSelectHover {
   color: white;
 }
 .btnHover:hover {

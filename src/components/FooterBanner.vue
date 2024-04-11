@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.footer{
+.footer {
   display: block;
   unicode-bidi: isolate;
   /* position: sticky;
