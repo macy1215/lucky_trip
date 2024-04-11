@@ -24,6 +24,11 @@
                 <button
                   type="button"
                   class="btn btn-outline-primary btn-sm me-3 text-start btnHover mb-2"
+                  :class="{
+                            'btn-primary': selectedItem === null,
+                            'text-white': selectedItem === null,
+                          }"
+                  @click="selectItem(null)"
                 >
                   全部行程
                 </button>
@@ -34,6 +39,11 @@
                 <button
                   type="button"
                   class="btn btn-outline-primary btn-sm me-3 text-start btnHover mb-2"
+                  :class="{
+                            'btn-primary': selectedItem === item,
+                            'text-white': selectedItem === item
+                          }"
+                  @click="selectItem(item)"
                 >
                   {{ item }}
                 </button>
@@ -54,7 +64,7 @@
                 :to="`/product/${product.id}`"
                 class="text-decoration-none"
               >
-                <div class="overflow-hidden productImg position-relative">
+                <div class="overflow-hidden productImg position-relative rounded-top img-box">
                   <img
                     :src="product.imageUrl"
                     class="card-img-top object-fit-cover"
@@ -148,14 +158,20 @@ export default {
       pagination: {},
       // savelist: [],
       isHover: {},
+      selectedItem: null,
     };
   },
+  // 深層監聽
   watch: {
     '$route.query': {
       handler() {
+        // 路由變化時，會重新取值
         this.getUserProduct();
       },
       deep: true,
+    },
+    selectedItem() {
+      this.getUserProduct();
     },
   },
   methods: {
@@ -197,6 +213,9 @@ export default {
             showConfirmButton: false,
           });
         });
+    },
+    selectItem(item) {
+      this.selectedItem = item;
     },
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(saveStore, ['addToSave']),
@@ -242,6 +261,16 @@ export default {
   width: 0;
   height: 0;
   border-top: 50px solid rgb(255, 255, 255);
+}
+.img-box{
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+.img-box:hover{
+  opacity: 1;
+}
+.btnSelectHover{
+  color: white;
 }
 .btnHover:hover {
   color: white;

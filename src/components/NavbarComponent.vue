@@ -25,10 +25,10 @@
         ref="headerNavDrop"
         v-show="isNavbarOpen"
       >
-        <ul class="navbar-nav">
-          <li class="nav-item">
+        <ul class="navbar-nav  d-flex justify-content-center align-items-center">
+          <li class="nav-item h-100 align-middle">
             <RouterLink
-              class="nav-link text-primary active fw-bold"
+              class="nav-link text-primary active fw-bold align-middle"
               aria-current="page"
               to="/about"
               data-toggle
@@ -62,19 +62,13 @@
               data-toggle
             >
               <span>我的收藏</span>
-              <!-- class="position-relative align-top" -->
-              <!-- <span class="position-absolute
-                        top-20 start-90 translate-middle
-                        badge rounded-pill bg-danger fs-6">{{this.saveProductList?.length}}
-                        <span class="visually-hidden">New alerts</span>
-                      </span> -->
             </RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink
               aria-current="page"
               to="/carts"
-              class="nav-link cart nav-link fs-4 ms-lg-4 me-1 position-relative"
+              class="nav-link cart nav-link fs-4 ms-lg-2 me-1 position-relative"
               data-toggle
             >
               <i

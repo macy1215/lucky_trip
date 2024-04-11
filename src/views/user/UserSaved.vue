@@ -154,7 +154,7 @@ export default {
   }
 }
 .fullH {
-  height: 500px;
+  height: 60vh;
 }
 @media (max-width: 1200px) {
   .productImg {

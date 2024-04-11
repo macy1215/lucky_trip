@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="container py-5 px-md-5 px-2">
-    <div :class="{ fullH: Object.keys(carts).length < 1 }">
+    <div :class="{ fullH: Object.keys(carts).length < 2 }">
       <h2 class="text-center text-primary fs-3 fw-bold pb-2 py-4">
         購物車列表
       </h2>
@@ -359,7 +359,7 @@ export default {
 
 <style scoped>
 .fullH {
-  height: 400px;
+  height: 41vh;
 }
 .btn:hover {
   color: white;

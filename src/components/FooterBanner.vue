@@ -1,15 +1,15 @@
 <template>
-  <footer class="bottom-0">
+  <footer class="footer mt-auto pt-3">
     <div class="footerbg align-self-end">
       <div class="container">
-        <div class="row align-items-center py-3 position-relative">
-          <div class="col-md-6 col-12">
+        <div class="row align-items-center position-relative">
+          <div class="col-md-6 col-12 py-5">
             <p
               class="text-wrap footerTitle text-white text-md-start fw-bold pe-5 shadow-sm"
             >
               訂閱獲得最新情報<br />及特別折扣！
             </p>
-            <div class="input-group pe-5 pb-5">
+            <div class="input-group pe-5">
               <VeeForm
                 ref="form"
                 class="col-md-6"
@@ -101,11 +101,18 @@ export default {
 </script>
 
 <style scoped>
+.footer{
+  display: block;
+  unicode-bidi: isolate;
+  /* position: sticky;
+  bottom: 0; */
+  width: 100%;
+}
 .footerbg {
   background-size: cover;
   background-image: url(@/assets/images/footer-news.png);
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center;
 }
 .footerTitle {
   font-size: 1.5em;
