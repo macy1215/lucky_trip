@@ -1,39 +1,55 @@
 <template>
-<div id="delCouponModal" ref="delCouponModal" class="modal fade" tabindex="-1"
-    aria-labelledby="delProductModalLabel" aria-hidden="true">
+  <div
+    id="delCouponModal"
+    ref="delCouponModal"
+    class="modal fade"
+    tabindex="-1"
+    aria-labelledby="delProductModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
-    <div class="modal-content border-0">
+      <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
-        <h5 id="delCouponModalLabel" class="modal-title">
+          <h5 id="delCouponModalLabel" class="modal-title">
             <span>刪除優惠卷</span>
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body text-start">
-        是否刪除
-          <strong class="text-danger ">
+          是否刪除
+          <strong class="text-danger">
             <span class="fw-bold"></span>
-          </strong> {{ tempCoupons.title }} 優惠券
-          <div class="mt-2">
-            (刪除後將無法恢復)。
-          </div>
+          </strong>
+          {{ tempCoupons.title }} 優惠券
+          <div class="mt-2">(刪除後將無法恢復)。</div>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal"
+          >
             取消
-        </button>
-        <button type="button" class="btn btn-danger" @click="deleteCoupon">
+          </button>
+          <button type="button" class="btn btn-danger" @click="deleteCoupon">
             確認刪除
-        </button>
+          </button>
         </div>
+      </div>
     </div>
-    </div>
-</div>
+  </div>
 </template>
 
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import axios from 'axios';
+
+import Swal from 'sweetalert2';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
@@ -54,16 +70,25 @@ export default {
     },
     deleteCoupon() {
       const url = `${VITE_URL}/api/${VITE_NAME}/admin/coupon/${this.tempCoupons.id}`;
-      axios.delete(url, { data: this.tempCoupons })
+      axios
+        .delete(url, { data: this.tempCoupons })
         .then((res) => {
-          // eslint-disable-next-line no-alert
-          alert(res.data.message);
           this.hideModal();
           this.$emit('update');
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         })
         .catch((err) => {
-          // eslint-disable-next-line no-alert
-          alert(err.response.data.message);
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
     },
   },
@@ -72,7 +97,6 @@ export default {
       keyboard: false,
       backdrop: 'static',
     });
-    console.log(this.tempCoupons);
   },
 };
 </script>

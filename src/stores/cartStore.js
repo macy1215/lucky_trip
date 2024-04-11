@@ -23,8 +23,9 @@ export default defineStore('cartStore', {
         product_id: id,
         qty,
       };
-        // this.status.addCartLoading = id
-      axios.post(`${VITE_URL}/api/${VITE_NAME}/cart`, { data: cart })
+      // this.status.addCartLoading = id
+      axios
+        .post(`${VITE_URL}/api/${VITE_NAME}/cart`, { data: cart })
         .then((res) => {
           this.getCart();
           Swal.fire({
@@ -42,7 +43,8 @@ export default defineStore('cartStore', {
         });
     },
     getCart() {
-      axios.get(`${VITE_URL}/api/${VITE_NAME}/cart`)
+      axios
+        .get(`${VITE_URL}/api/${VITE_NAME}/cart`)
         .then((res) => {
           this.carts = res.data.data.carts;
           this.final_total = res.data.data.final_total;
@@ -71,7 +73,8 @@ export default defineStore('cartStore', {
         if (result.isConfirmed) {
           this.status.cartQtyLoading = id;
           this.status.showCartLoading = id;
-          axios.delete(`${VITE_URL}/api/${VITE_NAME}/cart/${id}`)
+          axios
+            .delete(`${VITE_URL}/api/${VITE_NAME}/cart/${id}`)
             .then((res) => {
               this.status.cartQtyLoading = '';
               this.status.showCartLoading = '';
@@ -104,7 +107,8 @@ export default defineStore('cartStore', {
         reverseButtons: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`${VITE_URL}/api/${VITE_NAME}/carts`)
+          axios
+            .delete(`${VITE_URL}/api/${VITE_NAME}/carts`)
             .then((res) => {
               this.getCart();
               Swal.fire({
@@ -122,14 +126,16 @@ export default defineStore('cartStore', {
         }
       });
     },
-    changeCartQty(item, qty = 1) { //  將整個購物車帶入
+    changeCartQty(item, qty = 1) {
+      //  將整個購物車帶入
       const order = {
         product_id: item.product_id,
         qty,
       };
       this.status.cartQtyLoading = item.id;
       // 帶入購物車 id
-      axios.put(`${VITE_URL}/api/${VITE_NAME}/cart/${item.id}`, { data: order })
+      axios
+        .put(`${VITE_URL}/api/${VITE_NAME}/cart/${item.id}`, { data: order })
         .then(() => {
           this.status.cartQtyLoading = '';
           // 加完購物車，會重跑顯示列表

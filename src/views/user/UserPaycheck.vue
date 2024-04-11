@@ -1,31 +1,48 @@
 <template>
   <div class="container">
     <div class="row justify-content-center mt-5">
-    <div class="col-10">
-      <div class="position-relative m-4 px-3">
-        <div class="progress" style="height: 1px;">
-          <div class="progress-bar w-100" role="progressbar"
-           aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+      <div class="col-10">
+        <div class="position-relative m-4 px-3">
+          <div class="progress" style="height: 1px">
+            <div
+              class="progress-bar w-100"
+              role="progressbar"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
+          <button
+            type="button"
+            class="position-absolute top-0 start-0 ms-3 translate-middle
+            btn btn-sm btn-primary rounded-pill text-white"
+            style="width: 2rem; height: 2rem; cursor: default"
+          >
+            1
+          </button>
+          <button
+            type="button"
+            class="position-absolute top-0 start-50 translate-middle
+            btn btn-sm btn-primary rounded-pill text-white"
+            style="width: 2rem; height: 2rem; cursor: default"
+          >
+            2
+          </button>
+          <button
+            type="button"
+            class="position-absolute top-0 translate-middle
+            btn btn-sm btn-primary rounded-pill text-white"
+            style="width: 2rem; height: 2rem; left: 99%; cursor: default"
+          >
+            3
+          </button>
         </div>
-        <button type="button" class="position-absolute
-          top-0 start-0 ms-3
-          translate-middle btn btn-sm
-          btn-primary rounded-pill text-white"
-        style="width: 2rem; height:2rem; cursor: default;">1</button>
-        <button type="button" class="position-absolute top-0 start-50 translate-middle
-        btn btn-sm btn-primary rounded-pill text-white"
-        style="width: 2rem; height:2rem; cursor: default;">2</button>
-        <button type="button" class="position-absolute top-0
-        translate-middle btn btn-sm btn-primary rounded-pill text-white"
-        style="width: 2rem; height:2rem; left: 99%; cursor: default;">3</button>
-    </div>
-    <div class="row text-primary">
-      <div class="col text-start">確認商品</div>
-      <div class="col">確認購買資訊</div>
-      <div class="col text-end">付款確認</div>
-    </div>
-    </div>
+        <div class="row text-primary">
+          <div class="col text-start">確認商品</div>
+          <div class="col">確認購買資訊</div>
+          <div class="col text-end">付款確認</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container h-100 my-5">
@@ -34,7 +51,7 @@
       <div class="col-lg-6 text-start">
         <div class="border border-1 rounded-1">
           <div class="border-bottom text-start px-3 pt-4">
-            <ul class="lh-lg  list-unstyled">
+            <ul class="lh-lg list-unstyled">
               <li>聯絡大名：{{ user.name }}</li>
               <li>Email:{{ user.email }}</li>
               <li>手機電話：{{ user.tel }}</li>
@@ -43,54 +60,72 @@
           <div class="border-bottom text-start px-3 py-4">
             地址 {{ user.address }}
           </div>
-          <div class=" text-start px-3 py-4">
+          <div class="text-start px-3 py-4">
             備註 <span>{{ message }}</span>
           </div>
         </div>
       </div>
       <div class="col-lg-4 px-md-1 pt-md-0 pt-4">
-            <div class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3">
-              <h3 class="my-lg-2 mt-2 mb-3"><i class="bi bi-list-ol pe-2"></i>購買清單</h3>
-              <div v-for="item in order" :key="item.id">
-                  <div class="d-flex row mb-3 align-items-center px-4">
-                      <div class="col-md-3 col-6 px-md-0">
-                          <img :src=item.product.imageUrl alt=""
-                          class="img-fluid rounded rounded-1">
-                      </div>
-                      <!-- PC -->
-                      <div class="col-md-6 b-md-block d-none">
-                        <div class="text-start">{{ item.product.title }}
-                       x {{item.qty}}/{{item.product.unit }}</div>
-                        <div class="col-md-3  col-2 text-end">NT${{ item.final_total }}元</div>
-                      </div>
-                      <!-- mobil -->
-                      <div class="col-6 b-md-none d-block text-start">
-                        <div class="mb-3">{{ item.product.title }}
-                       x {{item.qty}}/{{item.product.unit }}</div>
-                        <div>NT${{ item.final_total }}元</div>
-                      </div>
-                  </div>
+        <div
+          class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3"
+        >
+          <h3 class="my-lg-2 mt-2 mb-3">
+            <i class="bi bi-list-ol pe-2"></i>購買清單
+          </h3>
+          <div v-for="item in order" :key="item.id">
+            <div class="d-flex row mb-3 align-items-center px-4">
+              <div class="col-md-3 col-6 px-md-0">
+                <img
+                  :src="item.product.imageUrl"
+                  alt=""
+                  class="img-fluid rounded rounded-1"
+                />
+              </div>
+              <!-- PC -->
+              <div class="col-md-6 b-md-block d-none">
+                <div class="text-start">
+                  {{ item.product.title }} x {{ item.qty }}/{{
+                    item.product.unit
+                  }}
+                </div>
+                <div class="col-md-3 col-2 text-end">
+                  NT${{ item.final_total }}元
+                </div>
+              </div>
+              <!-- mobil -->
+              <div class="col-6 b-md-none d-block text-start">
+                <div class="mb-3">
+                  {{ item.product.title }} x {{ item.qty }}/{{
+                    item.product.unit
+                  }}
+                </div>
+                <div>NT${{ item.final_total }}元</div>
+              </div>
             </div>
-              <hr>
-            <div class="fs-3 text-end fw-bold d-flex justify-content-between
-                px-lg-0 px-4 pb-lg-0 pb-4">
-                <span>總計</span>
-                <span>NT${{ final_total }}元</span>
-            </div>
-            </div>
+          </div>
+          <hr />
+          <div
+            class="fs-3 text-end fw-bold d-flex justify-content-between px-lg-0 px-4 pb-lg-0 pb-4"
+          >
+            <span>總計</span>
+            <span>NT${{ final_total }}元</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row justify-content-start mx-auto">
       <div class="col-lg-10 col-12 mx-auto d-inline-flex p-0">
-        <button class="btn btn-primary mt-3 mb-lg-0 mb-5"
-            @click="submitPayment">
-            <span class="text-white">確定付款</span>
+        <button
+          class="btn btn-primary mt-3 mb-lg-0 mb-5"
+          @click="submitPayment"
+        >
+          <span class="text-white">確定付款</span>
         </button>
       </div>
     </div>
   </div>
 
-  <footer-banner/>
+  <footer-banner />
 </template>
 
 <script>
@@ -159,7 +194,10 @@ export default {
                 icon: 'success',
                 timer: 1500,
               });
-              this.$router.push({ name: '付款完成頁面', params: { orderId: this.orderId } });
+              this.$router.push({
+                name: '付款完成頁面',
+                params: { orderId: this.orderId },
+              });
             })
             .catch((err) => {
               Swal.fire({

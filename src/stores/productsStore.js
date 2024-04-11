@@ -1,11 +1,10 @@
-/* eslint-disable arrow-body-style */
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 
 export default defineStore('productsStore', {
-// state, action, getters
+  // state, action, getters
   state: () => ({
     products: [],
     isLoading: false,
@@ -14,18 +13,13 @@ export default defineStore('productsStore', {
     getProduct() {
       this.isLoading = true;
       const url = `${VITE_URL}/api/${VITE_NAME}/products/all`;
-      axios.get(url)
-        .then((res) => {
-          this.products = res.data.products;
-          this.isLoading = false;
-          console.log(this.products);
-        });
+      axios.get(url).then((res) => {
+        this.products = res.data.products;
+        this.isLoading = false;
+      });
     },
   },
   getters: {
-    sortProducts: ({ products }) => {
-      console.log(products);
-      return products.sort((a, b) => a.price - b.price);
-    },
+    sortProducts: ({ products }) => products.sort((a, b) => a.price - b.price),
   },
 });

@@ -1,15 +1,18 @@
 <template>
-    <h1>This is About page.</h1>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <div class="container">
-      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
-    </div>
+  <h1>This is About page.</h1>
+  <router-link to="/">Home</router-link> |
+  <router-link to="/about">About</router-link>
+  <div class="container">
+    <ckeditor
+      :editor="editor"
+      v-model="editorData"
+      :config="editorConfig"
+    ></ckeditor>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import Swal from 'sweetalert2';
@@ -22,7 +25,6 @@ export default {
       editor: ClassicEditor,
       editorData: '',
       editorConfig: {
-        // toolbar: ['heading', '|', 'bold', 'italic', 'link'],
         dataProcessor: {
           writer: {
             enter: '<br>',
@@ -63,5 +65,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

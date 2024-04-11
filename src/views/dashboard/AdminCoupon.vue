@@ -1,15 +1,20 @@
 <template>
-    <VueLoading v-model:active="isLoading"
-              loader="bars"
-              :is-full-page="fullpage"/>
-    <div class="container">
-      <div class="d-flex justify-content-between mt-4">
-        <h2 class="text-primary mb-3 h2 text-start col-6">優惠卷列表</h2>
-        <button class="btn btn-primary text-white fw-bold" type="button"
-        @click="openCouponModal('createNew')">
-          建立新的優惠卷
-        </button>
-      </div>
+  <VueLoading
+    v-model:active="isLoading"
+    loader="bars"
+    :is-full-page="fullpage"
+  />
+  <div class="container">
+    <div class="d-flex justify-content-between mt-4">
+      <h2 class="text-primary mb-3 h2 text-start col-6">優惠卷列表</h2>
+      <button
+        class="btn btn-primary text-white fw-bold"
+        type="button"
+        @click="openCouponModal('createNew')"
+      >
+        建立新的優惠卷
+      </button>
+    </div>
     <table class="table table-hover border rounded rounded-3 mt-4">
       <thead>
         <tr>
@@ -21,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,key) in coupons" :key="key">
+        <tr v-for="(item, key) in coupons" :key="key">
           <td>{{ item.title }}</td>
           <td>{{ item.percent }}%</td>
           <td>{{ formatDate(item.due_date) }}</td>
@@ -31,10 +36,20 @@
           </td>
           <td>
             <div class="btn-group">
-              <button type="button" class="btn btn-outline-primary btn-sm"
-                @click="openCouponModal('edit', item)">編輯</button>
-              <button type="button" class="btn btn-outline-danger btn-sm"
-                @click="openCouponModal('delete', item)">刪除</button>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                @click="openCouponModal('edit', item)"
+              >
+                編輯
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                @click="openCouponModal('delete', item)"
+              >
+                刪除
+              </button>
             </div>
           </td>
         </tr>
@@ -44,22 +59,26 @@
     <Pagination :pagination="pagination" @emit-pages="getCoupon"></Pagination>
   </div>
   <!-- 編輯新增優惠券 -->
-  <ModalCoupon ref="couponModal"
-  :temp-Coupons="tempCoupons"
-  :is-new="isNew"
-  :clear-input="clearInput"
-  @update="getCoupon"
+  <ModalCoupon
+    ref="couponModal"
+    :temp-Coupons="tempCoupons"
+    :is-new="isNew"
+    :clear-input="clearInput"
+    @update="getCoupon"
   ></ModalCoupon>
 
   <!-- 刪除優惠券 -->
- <ModalDelCoupon ref="couponDelModal" :is-new="isNew"
-  :temp-Coupons="tempCoupons" @update="getCoupon">
- </ModalDelCoupon>
+  <ModalDelCoupon
+    ref="couponDelModal"
+    :is-new="isNew"
+    :temp-Coupons="tempCoupons"
+    @update="getCoupon"
+  >
+  </ModalDelCoupon>
 </template>
 
 <script>
 import Swal from 'sweetalert2';
-// import axios from 'axios';
 
 import Pagination from '@/components/PaginationView.vue';
 import ModalCoupon from '../../components/ModalCoupon.vue';
@@ -95,7 +114,6 @@ export default {
           this.isLoading = false;
           this.fullpage = false;
           this.pagination = res.data.pagination;
-          // eslint-disable-next-line no-console
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -105,8 +123,10 @@ export default {
           });
         })
         .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.message,
+          });
           this.$router.push('/login');
         });
     },
@@ -126,22 +146,15 @@ export default {
       } else if (isNew === 'edit') {
         this.tempCoupons = { ...item }; // 帶入資料
         this.isNew = false;
-        // console.log('父元件', this.tempCoupons);
         this.$refs.couponModal.showModal();
       } else if (isNew === 'delete') {
         this.tempCoupons = { ...item };
         this.$refs.couponDelModal.showModal();
       }
     },
-    // getCurrentDate() {
-    //   const today = new Date(); // 紀錄當下時間戳
-    //   const year = today.getFullYear(); // 年份
-    //   const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份
-    //   const date = String(today.getDate()).padStart(2, '0'); // 日期
-    //   return `${year}/${month}/${date}`; // 回傳日期字串
-    // },
     clearInput() {
-      this.tempCoupons = { // 清除
+      this.tempCoupons = {
+        // 清除
       };
     },
   },

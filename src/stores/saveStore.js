@@ -9,7 +9,9 @@ export default defineStore('saveStore', {
   }),
   actions: {
     addToSave(product) {
-      const index = this.saveIdlist.findIndex((item) => item.productId === product.id);
+      const index = this.saveIdlist.findIndex(
+        (item) => item.productId === product.id,
+      );
       if (index === -1) {
         // 如果 savelist 中不存在该 productId，则添加到 savelist
         Swal.fire({

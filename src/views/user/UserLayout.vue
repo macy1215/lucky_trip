@@ -1,6 +1,6 @@
 <template>
-    <Navbar-Component class="bg-white"></Navbar-Component>
-    <RouterView></RouterView>
+  <Navbar-Component class="bg-white"></Navbar-Component>
+  <RouterView></RouterView>
 </template>
 
 <script>
@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../src/assets/scss/helper/_main.scss';
+@import "../src/assets/scss/helper/_main.scss";
 </style>
