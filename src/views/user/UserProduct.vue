@@ -108,69 +108,67 @@
             </div>
           </div>
           <!-- 產品重點 -->
-          <div>
-            <div class="my-lg-5 my-3">
-              <ul class="text-start list-unstyled lh-lg">
-                <li>
-                  <strong class="text-primary">費用包含 | </strong
-                  >{{ product.feeincluded }}
-                </li>
-                <li>
-                  <strong class="text-primary">可成團人數 | </strong
-                  >{{ product.minpeople }} 人
-                </li>
-                <li>
-                  <strong class="text-primary">最高報名人數 | </strong
-                  >{{ product.regist }} 人
-                </li>
-                <li>
-                  <strong class="text-primary">交通方式 | </strong>
-                  <span v-if="product.is_intercitybus === 1"
-                    >包車(租賃、遊覽車)</span
-                  >
-                  <span v-if="product.is_walk === 1">雙腳萬能</span>
-                  <span v-if="product.is_publictrans === 1"
-                    >大眾交通(火車、公車、捷運等)</span
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="row justify-content-start align-self-end mt-auto">
-              <div class="col-md-6 col-12 d-lg-block d-inline-block">
-                <!-- 原價 -->
-                <div
-                  class="align-middle text-black-50 text-start"
-                  v-if="typeof product.origin_price === 'number'"
+          <div class="my-lg-5 my-3">
+            <ul class="text-start list-unstyled lh-lg">
+              <li>
+                <strong class="text-primary">費用包含 | </strong
+                >{{ product.feeincluded }}
+              </li>
+              <li>
+                <strong class="text-primary">可成團人數 | </strong
+                >{{ product.minpeople }} 人
+              </li>
+              <li>
+                <strong class="text-primary">最高報名人數 | </strong
+                >{{ product.regist }} 人
+              </li>
+              <li>
+                <strong class="text-primary">交通方式 | </strong>
+                <span v-if="product.is_intercitybus === 1"
+                  >包車(租賃、遊覽車)</span
                 >
-                  原價
-                  <span class="text-decoration-line-through text-black-50">
-                    {{ product.origin_price }} 元
-                  </span>
-                </div>
-                <!--  售價 -->
-                <div
-                  class="text-start"
-                  v-if="typeof product.origin_price === 'number'"
+                <span v-if="product.is_walk === 1">雙腳萬能</span>
+                <span v-if="product.is_publictrans === 1"
+                  >大眾交通(火車、公車、捷運等)</span
                 >
-                  <span class="fw-bold me-2">好遊價</span>
-                  <span class="fs-3 text-primary fw-bold">
-                    {{ product.price }} 元
-                  </span>
-                </div>
-              </div>
-              <!--  按鈕 -->
+              </li>
+            </ul>
+          </div>
+          <div class="row justify-content-start align-self-end mt-auto px-0">
+            <div class="col-md-6 col-12 d-lg-block d-inline-block px-0">
+              <!-- 原價 -->
               <div
-                class="col-6 text-start align-self-end mt-lg-0 mt-3 mb-lg-0 mb-5"
+                class="align-middle text-black-50 text-start"
+                v-if="typeof product.origin_price === 'number'"
               >
-                <button
-                  type="button"
-                  @click.prevent="addToCart(product.id)"
-                  class="btn btn-primary text-white round-0 px-4 addBtn"
-                >
-                  加入購物車
-                  <i class="bi bi-cart-plus text-white"></i>
-                </button>
+                原價
+                <span class="text-decoration-line-through text-black-50">
+                  {{ product.origin_price }} 元
+                </span>
               </div>
+              <!--  售價 -->
+              <div
+                class="text-start"
+                v-if="typeof product.origin_price === 'number'"
+              >
+                <span class="fw-bold me-2">好遊價</span>
+                <span class="fs-3 text-primary fw-bold">
+                  {{ product.price }} 元
+                </span>
+              </div>
+            </div>
+            <!--  按鈕 -->
+            <div
+              class="col-6 text-start align-self-end mt-lg-0 mt-3 mb-lg-0 mb-5"
+            >
+              <button
+                type="button"
+                @click.prevent="addToCart(product.id)"
+                class="btn btn-primary text-white round-0 px-4 addBtn"
+              >
+                加入購物車
+                <i class="bi bi-cart-plus text-white"></i>
+              </button>
             </div>
           </div>
         </div>

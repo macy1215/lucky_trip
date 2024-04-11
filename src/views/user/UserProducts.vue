@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title text-start">{{ product.title }}</h5>
+                  <h5 class="card-title text-start h4 fw-bold">{{ product.title }}</h5>
                   <div
                     class="row text-start justify-content-between align-items-center"
                   >

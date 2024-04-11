@@ -114,7 +114,7 @@
       </div>
     </div>
     <div class="row justify-content-start mx-auto">
-      <div class="col-lg-10 col-12 mx-auto d-inline-flex p-0">
+      <div class="col-lg-10 col-12 mx-auto d-inline-flex flex-row-reverse p-0">
         <button
           class="btn btn-primary mt-3 mb-lg-0 mb-5"
           @click="submitPayment"

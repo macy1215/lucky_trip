@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <div class="col-md-10 col-12">
-        <div class="position-relative m-4 px-5">
+      <div class="col-md-10 col-12 px-4">
+        <div class="position-relative m-4">
           <div class="progress" style="height: 1px">
             <div
               class="progress-bar"
@@ -37,123 +37,115 @@
           </button>
         </div>
         <div class="row text-primary">
-          <div class="col text-start">確認商品</div>
-          <div class="col">確認購買資訊</div>
-          <div class="col text-end">付款確認</div>
+          <div class="col text-end">確認商品</div>
+          <div class="col text-secondary">確認購買資訊</div>
+          <div class="col text-end text-secondary">付款確認</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container py-5 px-md-5 px-2">
+  <div class="container py-5 px-md-5 px-3">
     <div :class="{ fullH: Object.keys(carts).length < 2 }">
       <h2 class="text-center text-primary fs-3 fw-bold pb-2 py-4">
         購物車列表
       </h2>
-      <div class="d-md-block d-none">
+      <div class="d-md-block d-none" v-if="total !== 0">
         <table class="table">
           <thead class="border">
             <tr>
               <th scope="col">品名</th>
-              <th scope="col">數量/單位</th>
+              <th scope="col" style="width: 15%;">量/單位</th>
               <th scope="col" class="text-center">單價</th>
               <th scope="col">刪除</th>
             </tr>
           </thead>
           <tbody class="border mx-auto align-middle">
-            <tr v-if="total !== 0">
-              <template v-for="cart in carts" :key="cart.id">
-                <th>
-                  <div class="row align-items-center">
-                    <div class="col-md-3 col-6">
+            <tr v-for="cart in carts" :key="cart.id">
+              <th>
+                <div class="row align-items-center">
+                  <div class="col-md-3 col-6">
+                    <RouterLink
+                        :to="`/product/${cart.product_id}`"
+                        class="text-decoration-none"
+                      >
                       <img
                         :src="cart.product.imageUrl"
                         class="img-fluid rounded object-fit-cover"
                         :alt="product.title"
                       />
-                    </div>
-                    <h4 class="col-md-9 col-6 my-0 py-0 text-start ps-4">
-                      {{ cart.product.title }}
-                    </h4>
+                    </RouterLink>
                   </div>
-                </th>
-                <td>
-                  <div class="input-group input-group-sm">
-                    <div class="input-group mb-3">
-                      <button
-                        typr="button"
-                        class="btn btn-outline-primary"
-                        :disabled="cart.qty === 1"
-                        @click="
-                          cart.qty--;
-                          changeCartQty(cart, cart.qty);
-                        "
-                        v-if="cart.qty > 1"
-                      >
-                        -
-                      </button>
-                      <button
-                        typr="button"
-                        class="btn btn-outline-danger"
-                        v-else
-                        @click="removeCartItem(cart.id)"
-                      >
-                        <i class="bi bi-trash3"></i>
-                      </button>
+                  <h4 class="col-md-9 col-6 my-0 py-0 text-start ps-4">
+                    {{ cart.product.title }}
+                  </h4>
+                </div>
+              </th>
+              <td>
+                <div class="input-group input-group-sm">
+                  <div class="input-group mb-3">
+                    <button
+                      typr="button"
+                      class="btn btn-outline-primary"
+                      :disabled="cart.qty === 1"
+                      @click="
+                        cart.qty--;
+                        changeCartQty(cart, cart.qty);
+                      "
+                      v-if="cart.qty > 1"
+                    >
+                      -
+                    </button>
+                    <button
+                      typr="button"
+                      class="btn btn-outline-danger"
+                      v-else
+                      @click="removeCartItem(cart.id)"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
 
-                      <input
-                        min="1"
-                        typr="number"
-                        class="form-control text-center"
-                        v-model="cart.qty"
-                        :disabled="cart.id === status.cartQtyLoading"
-                        readonly
-                      />
+                    <input
+                      min="1"
+                      typr="number"
+                      class="form-control text-center"
+                      v-model="cart.qty"
+                      :disabled="cart.id === status.cartQtyLoading"
+                      readonly
+                    />
 
-                      <button
-                        typr="button"
-                        class="btn btn-outline-primary"
-                        @click="
-                          cart.qty++;
-                          changeCartQty(cart, cart.qty);
-                        "
-                      >
-                        +
-                      </button>
+                    <button
+                      typr="button"
+                      class="btn btn-outline-primary"
+                      @click="
+                        cart.qty++;
+                        changeCartQty(cart, cart.qty);
+                      "
+                    >
+                      +
+                    </button>
 
-                      <span class="input-group-text" id="basic-addon2">{{
-                        cart.product.unit
-                      }}</span>
-                    </div>
+                    <span class="input-group-text" id="basic-addon2">{{
+                      cart.product.unit
+                    }}</span>
                   </div>
-                </td>
-                <td>NT {{ cart.total }} 元</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-link"
-                    @click="removeCartItem(cart.id)"
-                    :disabled="cart.id === status.cartQtyLoading"
-                  >
-                    <!-- <i class="fas fa-spinner fa-pulse"
-                      v-if="cart.id === status.showCartLoading">
-                      </i> v-if="cart.id === status.showCartLoading"-->
-                    <i class="bi bi-x-lg text-danger fs-5"></i>
-                  </button>
-                </td>
-              </template>
-            </tr>
-
-            <tr v-else>
-              <td class="py-4 mx-auto" colspan="4">
-                <p class="h4">購物車目前沒有品項</p>
-                <RouterLink :to="`/products`" class="text-decoration-none">
-                  <div class="btnProduct">
-                    來去找行程
-                    <i class="bi bi-chevron-double-right"></i>
-                  </div>
-                </RouterLink>
+                </div>
+              </td>
+              <td>NT {{ cart.total }} 元</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-link"
+                  @click="removeCartItem(cart.id)"
+                  :disabled="cart.id === status.cartQtyLoading"
+                >
+                  <!-- <i class="fas fa-spinner fa-pulse"
+                    v-if="cart.id === status.showCartLoading">
+                    </i> v-if="cart.id === status.showCartLoading"-->
+                  <i class="bi bi-x-lg text-danger fs-5"></i>
+                </button>
               </td>
             </tr>
+
           </tbody>
           <tfoot class="border">
             <tr>
@@ -162,6 +154,19 @@
             </tr>
           </tfoot>
         </table>
+      </div>
+      <div v-else>
+        <div>
+          <div class="py-4 mx-auto" colspan="4">
+            <p class="h4">購物車目前沒有品項</p>
+            <RouterLink :to="`/products`" class="text-decoration-none">
+              <div class="btnProduct">
+                來去找行程
+                <i class="bi bi-chevron-double-right"></i>
+              </div>
+            </RouterLink>
+          </div>
+        </div>
       </div>
 
       <div class="d-md-none d-block">
@@ -173,11 +178,16 @@
             <template v-for="cart in carts" :key="cart.id">
               <div class="row align-items-center justify-content-center mb-2">
                 <div class="col-12">
-                  <img
-                    :src="cart.product.imageUrl"
-                    class="img-fluid rounded object-fit-cover"
-                    :alt="product.title"
-                  />
+                  <RouterLink
+                    :to="`/product/${cart.id}`"
+                    class="text-decoration-none"
+                  >
+                    <img
+                      :src="cart.product.imageUrl"
+                      class="img-fluid rounded object-fit-cover"
+                      :alt="product.title"
+                    />
+                  </RouterLink>
                 </div>
                 <div class="col-12 my-0 py-0 text-start">
                   <h4 class="my-2 pb-1">{{ cart.product.title }}</h4>
@@ -244,10 +254,13 @@
               </RouterLink>
             </div>
           </template>
-          <div class="text-end d-md-none d-block mb-3">
+          <div class="text-end d-md-none d-block mb-3"
+               :class="{'d-none': total !== 0}"
+          >
             <button
               class="btn btn-outline-danger"
               type="button"
+              :class="{'d-none': total === 0}"
               :disabled="carts.length === 0"
               @click="removeAllCart(carts)"
             >
@@ -262,21 +275,19 @@
               <tr>
                 <th scope="col">品名</th>
                 <th scope="col">數量</th>
-                <th scope="col" class="w-25">單價</th>
+                <th scope="col">單價</th>
               </tr>
             </thead>
             <tbody>
               <tr v-if="total !== 0">
                 <template v-for="cart in carts" :key="cart.id">
-                  <tr>
-                    <td class="col-6 my-0 text-start align-top">
-                      {{ cart.product.title }}
-                    </td>
-                    <td class="col-2 align-top">{{ cart.qty }}/人</td>
-                    <td class="col-4 align-top text-end">
-                      NT {{ cart.final_total }} 元
-                    </td>
-                  </tr>
+                  <td class="col-6 my-0 text-start align-top">
+                    {{ cart.product.title }}
+                  </td>
+                  <td class="col-2 align-top">{{ cart.qty }}/人</td>
+                  <td class="col-4 align-top text-end">
+                    NT {{ cart.final_total }} 元
+                  </td>
                 </template>
               </tr>
               <tr v-else>
@@ -284,16 +295,14 @@
                   <p>購物車目前沒有品項</p>
                 </td>
               </tr>
+              <tr class="align-text-bottom w-100 text-end border-top">
+                <th colspan="3" class="text-end">
+                  <span class="text-end align-bottom">總計 NT
+                    <strong class="fs-5">{{ final_total }} 元</strong>
+                  </span>
+                </th>
+              </tr>
             </tbody>
-            <hr class="border border-1" />
-            <div>
-              <div class="align-text-bottom w-100 text-end">
-                <span class="text-end align-bottom" colspan="2">總計</span>
-                <span class="text-end fs-5 align-bottom"
-                  >NT {{ final_total }} 元</span
-                >
-              </div>
-            </div>
           </table>
         </div>
       </div>
@@ -301,6 +310,7 @@
         <button
           class="btn btn-outline-danger mb-md-2 mb-5"
           type="button"
+          :class="{'d-none': total === 0}"
           :disabled="carts.length === 0"
           @click="removeAllCart(carts)"
         >
@@ -312,6 +322,7 @@
           v-if="carts.length === 0"
           class="btn btn-primary text-white"
           type="submit"
+          :class="{'d-none': total === 0}"
           :disabled="carts.length === 0"
         >
           確認結帳
@@ -366,7 +377,7 @@ export default {
 }
 @media (max-width: 767px) {
   .fullH {
-    height: 70vh;
+    height: 100vh;
   }
 }
 </style>

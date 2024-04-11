@@ -39,7 +39,7 @@
         <div class="row text-primary">
           <div class="col text-start">確認商品</div>
           <div class="col">確認購買資訊</div>
-          <div class="col text-end">付款確認</div>
+          <div class="col text-end text-secondary">付款確認</div>
         </div>
       </div>
     </div>

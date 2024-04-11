@@ -76,6 +76,9 @@
               ></i>
               <span
                 class="position-absolute cartNum translate-middle badge rounded-pill bg-danger fs-6"
+                :class="{
+                   'd-none': carts.length === 0,
+                }"
                 >{{ this.carts?.length }}
                 <span class="visually-hidden">New alerts</span>
               </span>

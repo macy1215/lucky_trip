@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer mt-auto pt-3">
+  <footer class="footer mt-auto">
     <div class="footerbg align-self-end">
       <div class="container">
         <div class="row align-items-center position-relative">

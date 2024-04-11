@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container py-4 mb-3">
     <h1 class="fs-4 text-primary mb-4 pt-4">常見問題</h1>
     <div class="row justify-content-center align-items-center text-start pb-4">
       <div class="col-md-8">
