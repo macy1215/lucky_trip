@@ -75,7 +75,7 @@
               :src="product.imageUrl"
               :alt="product"
             />
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title h5 text-primary">{{ product.title }}</h5>
               <p
                 class="card-text overflow-hidden lh-base text-start"
