@@ -20,6 +20,7 @@ export default defineStore('productsStore', {
     },
   },
   getters: {
+    // 用解構方始將 state中的 product 做取用，所以在 函式中用解構的方式將資料帶入 ({product})
     sortProducts: ({ products }) => products.sort((a, b) => a.price - b.price),
   },
 });

@@ -39,7 +39,7 @@
     <swiper-banner></swiper-banner>
   </div>
   <div class="container">
-    <div class="section mt-5 mx-auto pt-4 justify-content-between introBox">
+    <div class="section mt-5 mx-auto pt-4 justify-content-between introBox text-center">
       <h2 class="h2 text-primary fw-bold">好嗨遊推薦</h2>
       <p class="text-wrap mx-auto px-md-0 px-2 lh-base mt-3 lh-lg">
         <span style="color: #ab6418" class="fw-bold"
@@ -59,7 +59,7 @@
       </RouterLink>
     </div>
     <div class="mt-5 pt-4 justify-content-between container px-lg-5 px-2">
-      <h3 class="h3 text-primary fw-bold">焦點話題</h3>
+      <h3 class="h3 text-primary fw-bold text-center">焦點話題</h3>
       <div class="row pt-3 px-1 d-md-flex mx-auto justify-content-center">
         <div
           class="card col-md-3 col-12 p-0 mb-md-0 mb-4 border-0 me-md-4 me-0 shadow hover"
@@ -94,7 +94,7 @@
   </div>
 
   <div class="container mt-5 pt-4 pb-4 justify-content-between">
-    <h2 class="h2 text-primary fw-bold">我猜你想找...</h2>
+    <h2 class="h2 text-primary fw-bold text-center">我猜你想找...</h2>
     <ul
       class="d-md-block d-none d-md-flex mt-4
       justify-content-center align-items-center px-md-0 ps-0"

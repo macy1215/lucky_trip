@@ -392,7 +392,9 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal';
 import axios from 'axios';
+// import productsStore from '@/stores/productsStore';
 import Swal from 'sweetalert2';
+// import { mapActions, mapState } from 'pinia';
 
 const { VITE_URL, VITE_NAME } = import.meta.env;
 

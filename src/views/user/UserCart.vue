@@ -318,7 +318,8 @@
           <i class="bi bi-trash3-fill"></i>一鍵清空購物車
         </button>
       </div>
-      <div>
+      <div class="d-flex justify-content-center"
+      >
         <button
           v-if="carts.length === 0"
           class="btn btn-primary text-white"
