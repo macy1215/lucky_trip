@@ -53,10 +53,10 @@
         <table class="table">
           <thead class="border">
             <tr>
-              <th scope="col">品名</th>
-              <th scope="col" style="width: 15%">量/單位</th>
+              <th scope="col" class="text-center">品名</th>
+              <th scope="col" class="text-center" style="width: 20%">數量/單位</th>
               <th scope="col" class="text-center">單價</th>
-              <th scope="col">刪除</th>
+              <th scope="col" class="text-center">刪除</th>
             </tr>
           </thead>
           <tbody class="border mx-auto align-middle">
@@ -82,7 +82,7 @@
               </th>
               <td>
                 <div class="input-group input-group-sm">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-3 w-75 mx-auto">
                     <button
                       typr="button"
                       class="btn btn-outline-primary"
