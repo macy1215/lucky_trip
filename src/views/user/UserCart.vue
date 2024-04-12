@@ -156,10 +156,10 @@
       </div>
       <div v-else>
         <div>
-          <div class="py-4 mx-auto" colspan="4">
+          <div class="py-4 mx-auto text-center" colspan="4">
             <p class="h4">購物車目前沒有品項</p>
             <RouterLink :to="`/products`" class="text-decoration-none">
-              <div class="btnProduct">
+              <div class="btnProduct ">
                 來去找行程
                 <i class="bi bi-chevron-double-right"></i>
               </div>
