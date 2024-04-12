@@ -104,7 +104,7 @@
           :to="`/products?category=文化探索`"
           class="img-fluid d-block walkImg h-100 w-100 text-decoration-none"
         >
-          <div class="coverTxtBox">
+          <div class="coverTxtBox text-center">
             <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
               文化探索
             </span>
@@ -116,7 +116,7 @@
           :to="`/products?category=美食之旅`"
           class="img-fluid d-block foodImg h-100 w-100 text-decoration-none"
         >
-          <div class="coverTxtBox">
+          <div class="coverTxtBox  text-center">
             <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
               美食之旅
             </span>
@@ -128,7 +128,7 @@
           :to="`/products?category=親子出遊`"
           class="img-fluid d-block familyImg h-100 w-100 text-decoration-none"
         >
-          <div class="coverTxtBox">
+          <div class="coverTxtBox text-center">
             <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
               親子旅遊
             </span>
@@ -140,7 +140,7 @@
           :to="`/products?category=休閒渡假`"
           class="img-fluid d-block vacationImg h-100 w-100 text-decoration-none"
         >
-          <div class="coverTxtBox">
+          <div class="coverTxtBox text-center">
             <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
               休閒渡假
             </span>
@@ -152,7 +152,7 @@
           :to="`/products?category=自然景色`"
           class="img-fluid d-block natureImg h-100 w-100 text-decoration-none"
         >
-          <div class="coverTxtBox">
+          <div class="coverTxtBox text-center">
             <span class="fs-3 fw-bold text-warp text-white flex-shrink-1">
               自然景色
             </span>
