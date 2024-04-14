@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <div class="col-10">
+      <div class="col-md-10 col-12 px-3">
         <div class="position-relative m-4 px-3">
           <div class="progress" style="height: 1px">
             <div
