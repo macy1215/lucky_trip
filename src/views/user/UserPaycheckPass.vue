@@ -59,6 +59,14 @@ export default {
 .finalOutBox {
   height: 70vh;
 }
+@media (max-width: 767px) {
+  .finalBox {
+    top: 60;
+  }
+  .finalOutBox {
+    height: 90vh;
+  }
+}
 @media (max-width: 430px) {
   .finalBox {
     width: 95%;
