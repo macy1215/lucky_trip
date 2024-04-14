@@ -135,10 +135,10 @@
             </ul>
           </div>
           <div class="row justify-content-start align-self-end mt-auto px-0">
-            <div class="col-md-6 col-12 d-lg-block d-inline-block px-0">
+            <div class="col-md-6 col-12 px-0 mb-md-3">
               <!-- 原價 -->
               <div
-                class="align-middle text-black-50 text-start"
+                class="align-middle text-black-50 text-start pb-1"
                 v-if="typeof product.origin_price === 'number'"
               >
                 原價
@@ -164,7 +164,7 @@
             </div>
             <!--  按鈕 -->
             <div
-              class="col-6 text-start align-self-end mt-lg-0 mt-3 mb-lg-0 mb-5"
+              class="col-12 text-start align-self-end mt-lg-0 mt-3 mb-lg-0 mb-5 px-0"
             >
               <button
                 type="button"
@@ -180,7 +180,7 @@
       </div>
       <div class="col-lg-11 col-12 my-4 text-start">
         <h4 class="fs-4 fw-bold pb-2">旅遊行程</h4>
-        <div>{{ product.schedule }}</div>
+        <div class="fs-5 lh-base">{{ product.schedule }}</div>
       </div>
       <div class="col-lg-11 col-12 my-4 text-start">
         <h4 class="fs-4 fw-bold pb-2">注意事項</h4>
