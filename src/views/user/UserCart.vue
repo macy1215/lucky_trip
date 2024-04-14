@@ -49,13 +49,13 @@
       <h2 class="text-center text-primary fs-3 fw-bold pb-2 py-4">
         購物車列表
       </h2>
-      <div class="d-md-block d-none" v-if="total !== 0">
+      <div class="d-lg-block d-none" v-if="total !== 0">
         <table class="table">
           <thead class="border">
             <tr>
               <th scope="col" class="text-center">品名</th>
-              <th scope="col" class="text-center" style="width: 20%">數量/單位</th>
-              <th scope="col" class="text-center">單價</th>
+              <th scope="col" class="text-center" style="width: 30%">數量/單位</th>
+              <th scope="col" class="text-center" style="width: 15%">單價</th>
               <th scope="col" class="text-center">刪除</th>
             </tr>
           </thead>
@@ -82,7 +82,7 @@
               </th>
               <td>
                 <div class="input-group input-group-sm">
-                  <div class="input-group mb-3 w-75 mx-auto">
+                  <div class="input-group w-75 mx-auto">
                     <button
                       typr="button"
                       class="btn btn-outline-primary"
@@ -138,9 +138,6 @@
                   @click="removeCartItem(cart.id)"
                   :disabled="cart.id === status.cartQtyLoading"
                 >
-                  <!-- <i class="fas fa-spinner fa-pulse"
-                    v-if="cart.id === status.showCartLoading">
-                    </i> v-if="cart.id === status.showCartLoading"-->
                   <i class="bi bi-x-lg text-danger fs-5"></i>
                 </button>
               </td>
@@ -148,14 +145,17 @@
           </tbody>
           <tfoot class="border">
             <tr>
-              <td colspan="3" class="text-end">總計</td>
-              <td class="text-end fs-5">{{ final_total }}</td>
+              <td colspan="2" class="text-end">總計</td>
+              <td colspan="2" class="text-end fs-5">
+                NT {{ final_total.toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                              minimumFractionDigits: 0, maximumFractionDigits: 0 }) }} 元
+              </td>
             </tr>
           </tfoot>
         </table>
       </div>
       <div v-else>
-        <div>
+        <div class='d-lg-block d-none'>
           <div class="py-4 mx-auto text-center" colspan="4">
             <p class="h4">購物車目前沒有品項</p>
             <RouterLink :to="`/products`" class="text-decoration-none">
@@ -168,14 +168,14 @@
         </div>
       </div>
 
-      <div class="d-md-none d-block">
-        <div class="bg-light px-4 py-2">
+      <div class="d-lg-none d-block">
+        <div class="bg-light px-4 py-2 text-center">
           <h4 class="fw-bold fs-3 my-3">
             <i class="bi bi-list-ol pe-2"></i>購物車明細
           </h4>
           <template v-if="total !== 0">
             <template v-for="cart in carts" :key="cart.id">
-              <div class="row align-items-center justify-content-center mb-2">
+              <div class="row align-items-center justify-content-center mb-md-2 mb-4">
                 <div class="col-12">
                   <RouterLink
                     :to="`/product/${cart.id}`"
@@ -191,7 +191,7 @@
                 <div class="col-12 my-0 py-0 text-start">
                   <h4 class="my-2 pb-1">{{ cart.product.title }}</h4>
                   <div>
-                    <div class="input-group input-group-sm mb-3 w-50">
+                    <div class="input-group input-group-sm w-50">
                       <button
                         typr="button"
                         class="btn btn-outline-primary"
@@ -254,7 +254,7 @@
             </div>
           </template>
           <div
-            class="text-end d-md-none d-block mb-3"
+            class="text-end d-block mb-3"
             :class="{ 'd-none': total !== 0 }"
           >
             <button
@@ -270,44 +270,50 @@
         </div>
         <div class="border border-1 px-2 py-2 my-3 table-responsive">
           <h4 class="fw-bold"><i class="bi bi-vector-pen pe-2"></i>訂單摘要</h4>
-          <table class="table align-middle d-md-none d-block table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">品名</th>
-                <th scope="col">數量</th>
-                <th scope="col">單價</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-if="total !== 0">
-                <template v-for="cart in carts" :key="cart.id">
-                  <td class="col-6 my-0 text-start align-top">
-                    {{ cart.product.title }}
-                  </td>
-                  <td class="col-2 align-top">{{ cart.qty }}/人</td>
-                  <td class="col-4 align-top text-end">
-                    NT {{ cart.final_total }} 元
-                  </td>
+          <template class=" align-middle d-lg-none d-block ">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">品名</th>
+                  <th scope="col">數量</th>
+                  <th scope="col">單價</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template v-if="total !== 0"  >
+                <tr v-for="cart in carts" :key="cart.id">
+                    <td class="col-6 my-0 text-start align-top">
+                      {{ cart.product.title }}
+                    </td>
+                    <td class="col-2 align-top">{{ cart.qty }}/人</td>
+                    <td class="col-4 align-top text-end">
+                      NT {{ cart.final_total.
+                              toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                              minimumFractionDigits: 0, maximumFractionDigits: 0 }) }} 元
+                    </td>
+                  </tr>
                 </template>
-              </tr>
-              <tr v-else>
-                <td colspan="3">
-                  <p>購物車目前沒有品項</p>
-                </td>
-              </tr>
-              <tr class="align-text-bottom w-100 text-end border-top">
-                <th colspan="3" class="text-end">
-                  <span class="text-end align-bottom"
-                    >總計 NT
-                    <strong class="fs-5">{{ final_total }} 元</strong>
-                  </span>
-                </th>
-              </tr>
-            </tbody>
-          </table>
+                <tr v-else>
+                  <td colspan="3" class="py-3">
+                    <p>購物車目前沒有品項</p>
+                  </td>
+                </tr>
+                <tr class="align-text-bottom w-100 text-end border-top">
+                  <th colspan="3" class="text-end">
+                    <span class="text-end align-bottom"
+                      >總計 NT
+                      <strong class="fs-5">{{ final_total.
+                              toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                              minimumFractionDigits: 0, maximumFractionDigits: 0 })  }} 元</strong>
+                    </span>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </template>
         </div>
       </div>
-      <div class="text-end d-md-block d-none">
+      <div class="text-end">
         <button
           class="btn btn-outline-danger mb-md-2 mb-5"
           type="button"
@@ -377,9 +383,19 @@ export default {
 .btn:hover {
   color: white;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .fullH {
-    height: 100vh;
+    height: 95vh;
+  }
+}
+@media (max-width: 772px) {
+  .fullH {
+    height: 80vh;
+  }
+}
+@media (max-width: 498px) {
+  .fullH {
+    height: 70vh;
   }
 }
 </style>

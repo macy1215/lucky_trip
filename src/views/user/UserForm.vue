@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <div class="col-10">
+      <div class="col-md-10 col-12 px-3">
         <div class="position-relative m-4 px-md-5 px-2">
           <div class="progress" style="height: 1px">
             <div
@@ -50,7 +50,7 @@
         <div
           class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3 mb-3 mt-5"
         >
-          <h3 class="my-md-0 my-2 pb-2">
+          <h3 class="my-md-0 my-2 pb-2 text-center">
             <i class="bi bi-list-ol pe-2"></i>購買清單
           </h3>
           <div v-for="cart in carts" :key="cart.id">
@@ -219,7 +219,7 @@
         <div
           class="bg-secondary bg-opacity-10 rounded-2 px-md-2 pb-md-4 pt-md-3 h-auto pt-3 mb-5"
         >
-          <h3 class="my-md-0 my-2 pb-2">
+          <h3 class="my-md-0 my-2 pb-2 text-center">
             <i class="bi bi-list-ol pe-2"></i>購買清單
           </h3>
           <div v-for="cart in carts" :key="cart.id">

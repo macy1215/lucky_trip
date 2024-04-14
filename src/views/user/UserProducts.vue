@@ -93,21 +93,29 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title text-start h4 fw-bold">
+                  <h5 class="card-title text-start h4 fw-bold mb-3">
                     {{ product.title }}
                   </h5>
                   <div
                     class="row text-start justify-content-between align-items-center"
                   >
                     <div class="col-lg-7 col-md-12 col-7">
-                      售價
-                      <span
-                        class="text-decoration-line-through text-black-50 fs-6 pe-2"
-                      >
-                        NT{{ product.origin_price }}元
-                      </span>
+                      <div class="mb-1">
+                        售價
+                        <span
+                          class="text-decoration-line-through text-black-50 fs-6 pe-2"
+                        >
+                          NT{{ product.origin_price.
+                                toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                                minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                            }}元
+                        </span>
+                      </div>
                       <div class="text-primary h5 d-sm-inline-block">
-                        NT{{ product.price }} 元
+                        NT{{ product.price.
+                              toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                              minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                          }} 元
                       </div>
                     </div>
                     <div

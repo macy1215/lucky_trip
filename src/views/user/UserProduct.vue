@@ -143,7 +143,10 @@
               >
                 原價
                 <span class="text-decoration-line-through text-black-50">
-                  {{ product.origin_price }} 元
+                  {{ product.origin_price.
+                      toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                      minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                  }} 元
                 </span>
               </div>
               <!--  售價 -->
@@ -153,7 +156,9 @@
               >
                 <span class="fw-bold me-2">好遊價</span>
                 <span class="fs-3 text-primary fw-bold">
-                  {{ product.price }} 元
+                  {{ product.price.toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
+                                   minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                  }} 元
                 </span>
               </div>
             </div>
