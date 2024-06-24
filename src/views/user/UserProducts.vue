@@ -13,8 +13,7 @@
     <div class="row py-5">
       <div class="col-md-3 col-12">
         <div
-          class="bg-white shadow border-0 rounded-3 justify-content-start
-          text-start py-md-4 py-3 px-4 my-md-0 mt-2 mb-4"
+          class="bg-white shadow border-0 rounded-3 justify-content-start text-start py-md-4 py-3 px-4 my-md-0 mt-2 mb-4"
         >
           <h3 class="fw-bold text-start">主題選擇</h3>
           <hr />
@@ -105,22 +104,30 @@
                         <span
                           class="text-decoration-line-through text-black-50 fs-6 pe-2"
                         >
-                          NT{{ product.origin_price.
-                                toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
-                                minimumFractionDigits: 0, maximumFractionDigits: 0 })
-                            }}元
+                          NT{{
+                            product.origin_price.toLocaleString('zh-TW', {
+                              style: 'currency',
+                              currency: 'TWD',
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 0,
+                            })
+                          }}元
                         </span>
                       </div>
                       <div class="text-primary h5 d-sm-inline-block">
-                        NT{{ product.price.
-                              toLocaleString('zh-TW', { style: 'currency', currency: 'TWD',
-                              minimumFractionDigits: 0, maximumFractionDigits: 0 })
-                          }} 元
+                        NT{{
+                          product.price.toLocaleString('zh-TW', {
+                            style: 'currency',
+                            currency: 'TWD',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0,
+                          })
+                        }}
+                        元
                       </div>
                     </div>
                     <div
-                      class="col-lg-5 col-md-12 col-5 text-lg-end
-                      text-md-start text-end pt-lg-0 pt-md-3 pt-0"
+                      class="col-lg-5 col-md-12 col-5 text-lg-end text-md-start text-end pt-lg-0 pt-md-3 pt-0"
                       @click.prevent="addToCart(product.id, qty)"
                     >
                       <button
@@ -258,7 +265,7 @@ export default {
   /* position: relative; */
 }
 .productAllbg {
-  background-image: url("@/assets/images/ban_product_all.jpg");
+  background-image: url('@/assets/images/ban_product_all.jpg');
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -266,7 +273,7 @@ export default {
   background: linear-gradient(45deg, #fff 50%);
 }
 .productAllbg::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0px;
   left: 0;
