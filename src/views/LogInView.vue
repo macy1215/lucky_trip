@@ -4,7 +4,7 @@
     style="min-height: 100vh"
   >
     <div class="container">
-      <h2 class="h3 mb-3 font-weight-normal text-primary">管理者登入頁面</h2>
+      <h2 class="h3 mb-3 font-weight-normal text-primary text-center">管理者登入頁面</h2>
       <h2 class="brandImg justify-content-cente mx-auto mb-4">
         <a>lucky-trip</a>
       </h2>
@@ -45,7 +45,7 @@
               </button>
             </form>
           </div>
-          <p class="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
+          <p class="mt-5 mb-3 text-muted text-center">&copy; 2024 lucky-trip 好嗨遊旅遊網</p>
         </div>
       </div>
     </div>

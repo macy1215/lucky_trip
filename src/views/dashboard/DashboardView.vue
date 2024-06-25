@@ -19,7 +19,7 @@
         <i class="bi bi-list" style="font-size: 2.5rem"></i>
       </button>
       <div
-        class="collapse navbar-collapse navbar-nav ms-auto py-10 py-lg-0"
+        class="collapse navbar-collapse navbar-nav ms-auto py-10 py-lg-0 justify-content-end"
         id="navbarSupportedContent"
         ref="headerNavDrop"
         v-show="isNavbarOpen"

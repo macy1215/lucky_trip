@@ -13,7 +13,8 @@
     <div class="row py-5">
       <div class="col-md-3 col-12">
         <div
-          class="bg-white shadow border-0 rounded-3 justify-content-start text-start py-md-4 py-3 px-4 my-md-0 mt-2 mb-4"
+          class="bg-white shadow border-0 rounded-3 justify-content-start
+          text-start py-md-4 py-3 px-4 my-md-0 mt-2 mb-4"
         >
           <h3 class="fw-bold text-start">主題選擇</h3>
           <hr />
@@ -127,7 +128,8 @@
                       </div>
                     </div>
                     <div
-                      class="col-lg-5 col-md-12 col-5 text-lg-end text-md-start text-end pt-lg-0 pt-md-3 pt-0"
+                      class="col-lg-5 col-md-12 col-5 text-lg-end text-md-start
+                      text-end pt-lg-0 pt-md-3 pt-0"
                       @click.prevent="addToCart(product.id, qty)"
                     >
                       <button
